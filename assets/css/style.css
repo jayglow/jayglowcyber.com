@@ -124,3 +124,10 @@ nav a:hover {
   text-align: center;
   color: var(--muted);
 }
+
+.course-img {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
