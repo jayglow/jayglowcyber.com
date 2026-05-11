@@ -1,6 +1,7 @@
 title: JayGlow Cyber
 description: Advanced Malware Analysis, Detection Engineering, and Solo Purple Teaming Research.
-theme: minima
+url: "jayglowcyber.com"
+baseurl: ""
 
-author:
-  name: JayGlow
+markdown: kramdown
+permalink: /research/:title/
