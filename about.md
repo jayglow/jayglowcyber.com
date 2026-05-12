@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-<section class="hero">
+<section class="page-hero">
   <img
     src="/assets/images/jayglowcyber-logo.png"
     alt="JayGlowCyber Logo"
