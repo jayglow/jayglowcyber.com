@@ -1,29 +1,87 @@
-<header class="topbar">
-  <div class="topbar-inner">
-
-    <a class="brand" href="/">
-      <div class="brand-icon">
-        ☠
-      </div>
-
-      <div class="brand-text">
-        <span class="brand-main">JAYGLOW</span>
-        <span class="brand-sub">CYBER</span>
-      </div>
+<!-- HEADER / NAVIGATION -->
+<header class="site-header">
+  <div class="nav-container">
+    <a href="/" class="logo-wrap">
+      <img
+        src="/assets/images/jayglowcyber-logo.png"
+        alt="JayGlowCyber Logo"
+        class="site-logo"
+      >
+      <span class="logo-text">JayGlowCyber</span>
     </a>
 
-    <nav class="nav-links">
-      <a class="active" href="/">Home</a>
-      <a href="/research/">Research</a>
-      <a href="/labs/">Labs</a>
-      <a href="/tools/">Tools</a>
-      <a href="/courses/">Courses</a>
-      <a href="/about/">About</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/courses">Courses</a>
+      <a href="/about">About</a>
     </nav>
-
-    <a class="blog-btn" href="/research/">
-      Blog
-    </a>
-
   </div>
 </header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 15, 25, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(96, 165, 250, 0.15);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .site-logo {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.35);
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: 0.5px;
+  }
+
+  nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover {
+    color: #60a5fa;
+  }
+
+  @media (max-width: 768px) {
+    .logo-text {
+      display: none;
+    }
+
+    nav {
+      gap: 16px;
+    }
+  }
+</style>
