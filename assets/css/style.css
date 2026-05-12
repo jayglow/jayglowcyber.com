@@ -376,11 +376,11 @@ nav a:hover {
 }
 
 .hero h1 span:nth-child(1) {
-  color: var(--blue);
+  color: var(--red);
 }
 
 .hero h1 span:nth-child(2) {
-  color: var(--purple);
+  color: var(--blue);
 }
 
 .hero h1 span:nth-child(3) {
