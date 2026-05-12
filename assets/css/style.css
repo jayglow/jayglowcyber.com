@@ -726,3 +726,55 @@ nav a:hover {
 
   font-size: 1.05rem;
 }
+
+.about-hero-layout {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+
+  width: 100%;
+}
+
+.about-logo-wrapper {
+  flex-shrink: 0;
+}
+
+.about-logo {
+  width: 210px;
+  height: 210px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(56, 189, 248, 0.22);
+
+  box-shadow:
+    0 0 40px rgba(56, 189, 248, 0.18),
+    0 0 70px rgba(168, 85, 247, 0.12);
+}
+
+.about-hero-content {
+  flex: 1;
+}
+
+.about-hero-content h1 {
+  margin-top: 0.35rem;
+}
+
+.about-hero-content p:last-child {
+  max-width: 720px;
+}
+
+@media (max-width: 850px) {
+
+  .about-hero-layout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-logo {
+    width: 160px;
+    height: 160px;
+  }
+}
