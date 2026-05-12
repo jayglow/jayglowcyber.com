@@ -4,8 +4,16 @@ title: About
 ---
 
 <section class="hero">
+  <img
+    src="/assets/images/jayglowcyber-logo.png"
+    alt="JayGlowCyber Logo"
+    class="about-logo"
+  >
+
   <p class="tag">Cybersecurity • Research • Education</p>
+
   <h1>About Me</h1>
+
   <p>
     Cybersecurity researcher, educator, and defender focused on practical security,
     adversary tradecraft, and hands-on learning.
@@ -24,22 +32,24 @@ title: About
     <p>
       In addition to industry work, I teach cybersecurity and computer science
       courses at a community college in Northern Illinois, including network
-      security and ethical hacking. Education and mentorship have become an
-      important part of my journey, and I am passionate about helping others
-      build practical skills and deeper technical understanding.
+      security and ethical hacking.
     </p>
 
     <p>
       I am currently transitioning into a new chapter focused on independent
       research and content creation. My goal is to contribute back to the
       cybersecurity community through research, hands-on labs, technical
-      breakdowns, and practical training designed to help others continue
-      learning and growing in the field.
-    </p>
-
-    <p>
-      JayGlowCyber serves as a place to share research, projects, tutorials,
-      labs, and lessons learned throughout that journey.
+      breakdowns, and practical training.
     </p>
   </div>
 </section>
+
+<style>
+  .about-logo {
+    width: 180px;
+    max-width: 80%;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(96, 165, 250, 0.35);
+  }
+</style>
