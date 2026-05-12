@@ -3,21 +3,33 @@ layout: default
 title: About
 ---
 
-<section class="page-hero">
-  <img
-    src="/assets/images/jayglowcyber-logo.png"
-    alt="JayGlowCyber Logo"
-    class="about-logo"
-  >
+<section class="page-hero about-hero">
 
-  <p class="tag">Cybersecurity • Research • Education</p>
+  <div class="about-hero-layout">
 
-  <h1>About Me</h1>
+    <div class="about-logo-wrapper">
+      <img
+        src="/assets/images/jayglowcyber-logo.png"
+        alt="JayGlowCyber Logo"
+        class="about-logo"
+      >
+    </div>
 
-  <p>
-    Cybersecurity researcher, educator, and defender focused on practical security,
-    adversary tradecraft, and hands-on learning.
-  </p>
+    <div class="about-hero-content">
+
+      <p class="tag">Cybersecurity • Research • Education</p>
+
+      <h1>About Me</h1>
+
+      <p>
+        Cybersecurity researcher, educator, and defender focused on practical security,
+        adversary tradecraft, and hands-on learning.
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
 <section class="content-section">
