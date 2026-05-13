@@ -909,3 +909,51 @@ th {
     margin: 0 auto;
   }
 }
+.article-hero {
+  margin-bottom: 2rem;
+}
+
+.article-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.article-logo {
+  width: 110px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.article-title-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article-title-block h1 {
+  margin-bottom: 0.4rem;
+  line-height: 1.1;
+}
+
+.article-title-block .tag {
+  margin: 0;
+}
+
+.hero-description {
+  max-width: 850px;
+  margin-top: 1rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .article-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-logo {
+    width: 85px;
+  }
+}
