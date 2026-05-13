@@ -910,18 +910,18 @@ th {
   }
 }
 .article-hero {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .article-title-row {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .article-logo {
-  width: 110px;
+  width: 200px;
   height: auto;
   flex-shrink: 0;
 }
@@ -943,7 +943,7 @@ th {
 
 .hero-description {
   max-width: 850px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 /* Mobile responsiveness */
@@ -954,6 +954,6 @@ th {
   }
 
   .article-logo {
-    width: 85px;
+    width: 185px;
   }
 }
