@@ -20,12 +20,12 @@ permalink: /solar-powering-your-cyber-lab/
         Cyber Lab • Solar Power • Infrastructure
       </p>
     </div>
+    
+  </div>
     <p class="hero-description">
     Can a cybersecurity lab realistically run on solar power? I decided to find out by building a small-scale solar setup
     designed to offset the power usage of my Solo Purple Teaming and malware analysis labs.
     </p>
-  </div>
-
 </div>
 
 <div class="content-section">
