@@ -921,7 +921,7 @@ th {
 }
 
 .article-logo {
-  width: 200px;
+  width: 100px;
   height: auto;
   flex-shrink: 0;
 }
@@ -954,6 +954,6 @@ th {
   }
 
   .article-logo {
-    width: 185px;
+    width: 85px;
   }
 }
