@@ -4,7 +4,7 @@ title: Solar Powering Your Cyber Lab — Is the ROI Worth It?
 permalink: /solar-powering-your-cyber-lab/
 ---
 
-<section class="hero article-hero">
+<div class="hero article-hero">
 
   <div class="article-title-row">
     <img
@@ -27,9 +27,9 @@ permalink: /solar-powering-your-cyber-lab/
     designed to offset the power usage of my Solo Purple Teaming and malware analysis labs.
   </p>
 
-</section>
+</div>
 
-<section class="content-section">
+<div class="content-section">
   <div class="content-card">
 
     <h2>Why I Started This Project</h2>
@@ -375,4 +375,4 @@ permalink: /solar-powering-your-cyber-lab/
     </p>
 
   </div>
-</section>
+</div>
