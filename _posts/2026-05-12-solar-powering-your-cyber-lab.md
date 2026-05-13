@@ -4,7 +4,7 @@ title: Solar Powering Your Cyber Lab — Is the ROI Worth It?
 permalink: /solar-powering-your-cyber-lab/
 ---
 
-<div class="hero article-hero">
+<div class="article-hero">
 
   <div class="article-title-row">
     <img
