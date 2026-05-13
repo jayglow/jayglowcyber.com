@@ -910,14 +910,14 @@ th {
   }
 }
 .article-hero {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .article-title-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.1rem;
+  margin-bottom: 0.1rem;
 }
 
 .article-logo {
@@ -933,7 +933,7 @@ th {
 }
 
 .article-title-block h1 {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.1rem;
   line-height: 1.1;
 }
 
@@ -943,7 +943,7 @@ th {
 
 .hero-description {
   max-width: 850px;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 /* Mobile responsiveness */
