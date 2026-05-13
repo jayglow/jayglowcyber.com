@@ -4,13 +4,29 @@ title: Solar Powering Your Cyber Lab — Is the ROI Worth It?
 permalink: /solar-powering-your-cyber-lab/
 ---
 
-<section class="hero">
-  <h1>Solar Powering Your Cyber Lab — Is the ROI Worth It?</h1>
-  <p class="tag">Cyber Lab • Solar Power • Infrastructure</p>
-  <p>
+<section class="hero article-hero">
+
+  <div class="article-title-row">
+    <img
+      src="/assets/images/jayglowcyber-logo.png"
+      alt="JayGlowCyber Logo"
+      class="article-logo"
+    >
+
+    <div class="article-title-block">
+      <h1>Solar Powering Your Cyber Lab — Is the ROI Worth It?</h1>
+
+      <p class="tag">
+        Cyber Lab • Solar Power • Infrastructure
+      </p>
+    </div>
+  </div>
+
+  <p class="hero-description">
     Can a cybersecurity lab realistically run on solar power? I decided to find out by building a small-scale solar setup
     designed to offset the power usage of my Solo Purple Teaming and malware analysis labs.
   </p>
+
 </section>
 
 <section class="content-section">
