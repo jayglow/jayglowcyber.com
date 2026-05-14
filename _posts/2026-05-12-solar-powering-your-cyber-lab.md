@@ -8,7 +8,7 @@ permalink: /solar-powering-your-cyber-lab/
 
   <div class="article-title-row">
     <img
-      src="/assets/images/jayglowcyber-logo.png"
+      src="/assets/images/jayglow-avatar.png"
       alt="JayGlowCyber Logo"
       class="article-logo"
     >
