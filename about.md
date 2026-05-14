@@ -9,7 +9,7 @@ title: About
 
     <div class="about-logo-wrapper">
       <img
-        src="/assets/images/jayglowcyber-logo.png"
+        src="/assets/images/jayglowc-avatar.png"
         alt="JayGlowCyber Logo"
         class="about-logo"
       >
