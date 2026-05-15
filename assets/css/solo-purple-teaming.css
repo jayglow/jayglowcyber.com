@@ -11,3 +11,70 @@
 .spt-content code { white-space: pre-wrap; }
 .spt-note { border-left: 4px solid #a78bfa; padding: .8rem 1rem; background: rgba(88,28,135,.15); border-radius: 12px; margin: 1rem 0 1.5rem; }
 .spt-back { display: inline-block; margin-bottom: 1rem; }
+
+/* Optional polish for /solo-purple-teaming/ */
+.course-page .content-card {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.course-page h2 {
+  margin-top: 2.25rem;
+}
+
+.course-page h2:first-child {
+  margin-top: 0;
+}
+
+.course-page h3 {
+  margin-top: 1.5rem;
+}
+
+.course-page ul {
+  padding-left: 1.25rem;
+}
+
+.course-page li {
+  margin: 0.5rem 0;
+}
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.25rem;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 18px;
+  background: rgba(168, 85, 247, 0.08);
+}
+
+.warning-callout {
+  border-color: rgba(248, 113, 113, 0.45);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.resource-card {
+  display: block;
+  padding: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 18px;
+  text-decoration: none;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.resource-card strong {
+  display: block;
+  margin: 0.35rem 0;
+}
+
+.resource-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
