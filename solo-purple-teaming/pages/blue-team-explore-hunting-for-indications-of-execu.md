@@ -3,7 +3,6 @@ layout: default
 title: "Blue Team Explore Hunting For Indications of execu"
 permalink: /solo-purple-teaming/blue-team-explore-hunting-for-indications-of-execu/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,142 +12,194 @@ permalink: /solo-purple-teaming/blue-team-explore-hunting-for-indications-of-exe
 <h1>Blue Team Explore Hunting For Indications of execu</h1>
 </section>
 <section class="spt-content">
-
-# Blue Team Explore: Hunting For Indications of execute_assembly
-
-Owner: Mike Sterrett
-
-## Introduction
-
-In this exercise, we’ll explore telemetry to detect:
-
-- **Process Injection**
-- **Inter-Process Communications (IPC)**
-- **C2 (Command & Control) Communications**
-
-We’ll use Mythic, Wazuh, and PowerPoint for diagramming our findings.
-
----
-
-### **1. Initial Setup**
-
-1. **Log into the assumed breach host** in the lab.
-2. **Execute Initial Access Payload**:
-    - Open the **Run** dialog.
-    - The last command should be pre-filled; click **OK** to execute it.
-    - Confirm you get a callback in Mythic.
-3. **Set Tab Description**:
-    - In Mythic, set the tab description to `Blue Team Explore`.
-4. **Switch to Reverse Engineering Host**:
-    - Register the **service_scan_demo.exe** assembly in Mythic using the modal dialog.
-    - Task the agent to load it.
-
----
-
-### **2. Configure Injection Technique**
-
-1. In Mythic, run:
-    - `get injection techniques`
-    - Set the technique to `syscallx64 NtCreateThreadx`.
-2. Set the spawn process to `smartscreen.exe` using the modal dialog.
-3. Execute `service_scan_demo.exe` and wait for results.
-
----
-
-### **3. Reviewing Execute Assembly Documentation**
-
-1. In Mythic:
-    - View **metadata** for `execute assembly`.
-    - This confirms it:
-        - Uses the .NET CLR loader.
-        - Injects into a **sacrificial process** defined by `spawn_to_x64`.
-        - Indicates **process injection** into `smartscreen.exe`.
-2. **Conclusion**: The original PowerShell process will open a handle to `smartscreen.exe`.
-
----
-
-### **4. Hunting in Wazuh for Process Injection**
-
-1. Go to **Explore → Discover** in Wazuh.
-2. Change the index pattern to `wazuh-archives`.
-3. Search for **Sysmon Event ID 10** (process access events).
-4. Use Boolean AND conditions:
-    - **Source Image**: `powershell.exe`
-    - **Target Image**: `smartscreen.exe`
-5. Fix case sensitivity issues:
-    - `eventdata` field is lowercase, but `sourceImage` is camel case.
-6. **Key IOC Found**:
-    
-    PowerShell accessed SmartScreen with **Granted Access = 0x1ffff** (full process rights).
-    
-
----
-
-### **5. Diagramming IOCs**
-
-- Use **PowerPoint** for IOC diagrams.
-- Add:
-    - PowerShell process details (image name, process GUID in red).
-    - C2 communication icon.
-    - Granted access details for process injection.
-
----
-
-### **6. Identifying C2 Communications**
-
-1. Search by **Process GUID** for the PowerShell process.
-2. Identify network events:
-    - **Event ID 3** (Network Connect).
-    - Destination IP: `192.168.100.101` (attack infrastructure).
-    - Destination Port: `80`.
-3. Add to diagram:
-    - Beaconing process with port details.
-
----
-
-### **7. Investigating Target Process (smartscreen.exe)**
-
-1. Search for events linked to **SmartScreen’s Process GUID**.
-2. Identify:
-    - **Pipe creation** (Event ID 17) → Named Pipe with a unique GUID.
-    - **Pipe connection** (Event ID 18) → Unexpectedly connected by `System` process.
-3. Add pipe creation & connection to diagram (mark pipe name in red).
-
----
-
-### **8. Loaded Modules Analysis**
-
-1. Search for **Image Load Events** for SmartScreen process.
-2. Identify .NET DLLs:
-    - `System.Management.ni.dll`
-    - `System.Core.dll`
-    - `System.Xml.dll`
-    - Others.
-3. **Hypothesis**: These may be loaded because our .NET assembly was injected.
-
----
-
-### **9. Key Takeaways**
-
-- **Process Injection IOC**:
-    - PowerShell accessing SmartScreen with `0x1ffff` rights.
-- **IPC IOC**:
-    - Named pipe creation & connection events.
-- **C2 IOC**:
-    - Outbound connections to attacker IP on port 80.
-- **Possible Anomaly**:
-    - SmartScreen loading multiple .NET DLLs.
-
----
-
-### **10. Next Steps**
-
-- Before next lecture:
-    - Complete your IOC diagram.
-    - Map process injection, pipe events, and C2 communications.
-- **Next Lab**:
-    - Enable Sysmon Event IDs 12, 13, and 14 (registry events).
-    - Hunt for malicious registry changes linked to Attack Path Level One.
-
+<h1
+id="blue-team-explore-hunting-for-indications-of-execute_assembly">Blue
+Team Explore: Hunting For Indications of execute_assembly</h1>
+<p>Owner: Mike Sterrett</p>
+<h2 id="introduction">Introduction</h2>
+<p>In this exercise, we’ll explore telemetry to detect:</p>
+<ul>
+<li><strong>Process Injection</strong></li>
+<li><strong>Inter-Process Communications (IPC)</strong></li>
+<li><strong>C2 (Command &amp; Control) Communications</strong></li>
+</ul>
+<p>We’ll use Mythic, Wazuh, and PowerPoint for diagramming our
+findings.</p>
+<hr />
+<h3 id="1-initial-setup"><strong>1. Initial Setup</strong></h3>
+<ol type="1">
+<li><strong>Log into the assumed breach host</strong> in the lab.</li>
+<li><strong>Execute Initial Access Payload</strong>:
+<ul>
+<li>Open the <strong>Run</strong> dialog.</li>
+<li>The last command should be pre-filled; click <strong>OK</strong> to
+execute it.</li>
+<li>Confirm you get a callback in Mythic.</li>
+</ul></li>
+<li><strong>Set Tab Description</strong>:
+<ul>
+<li>In Mythic, set the tab description to
+<code>Blue Team Explore</code>.</li>
+</ul></li>
+<li><strong>Switch to Reverse Engineering Host</strong>:
+<ul>
+<li>Register the <strong>service_scan_demo.exe</strong> assembly in
+Mythic using the modal dialog.</li>
+<li>Task the agent to load it.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="2-configure-injection-technique"><strong>2. Configure Injection
+Technique</strong></h3>
+<ol type="1">
+<li>In Mythic, run:
+<ul>
+<li><code>get injection techniques</code></li>
+<li>Set the technique to <code>syscallx64 NtCreateThreadx</code>.</li>
+</ul></li>
+<li>Set the spawn process to <code>smartscreen.exe</code> using the
+modal dialog.</li>
+<li>Execute <code>service_scan_demo.exe</code> and wait for
+results.</li>
+</ol>
+<hr />
+<h3 id="3-reviewing-execute-assembly-documentation"><strong>3. Reviewing
+Execute Assembly Documentation</strong></h3>
+<ol type="1">
+<li>In Mythic:
+<ul>
+<li>View <strong>metadata</strong> for
+<code>execute assembly</code>.</li>
+<li>This confirms it:
+<ul>
+<li>Uses the .NET CLR loader.</li>
+<li>Injects into a <strong>sacrificial process</strong> defined by
+<code>spawn_to_x64</code>.</li>
+<li>Indicates <strong>process injection</strong> into
+<code>smartscreen.exe</code>.</li>
+</ul></li>
+</ul></li>
+<li><strong>Conclusion</strong>: The original PowerShell process will
+open a handle to <code>smartscreen.exe</code>.</li>
+</ol>
+<hr />
+<h3 id="4-hunting-in-wazuh-for-process-injection"><strong>4. Hunting in
+Wazuh for Process Injection</strong></h3>
+<ol type="1">
+<li><p>Go to <strong>Explore → Discover</strong> in Wazuh.</p></li>
+<li><p>Change the index pattern to <code>wazuh-archives</code>.</p></li>
+<li><p>Search for <strong>Sysmon Event ID 10</strong> (process access
+events).</p></li>
+<li><p>Use Boolean AND conditions:</p>
+<ul>
+<li><strong>Source Image</strong>: <code>powershell.exe</code></li>
+<li><strong>Target Image</strong>: <code>smartscreen.exe</code></li>
+</ul></li>
+<li><p>Fix case sensitivity issues:</p>
+<ul>
+<li><code>eventdata</code> field is lowercase, but
+<code>sourceImage</code> is camel case.</li>
+</ul></li>
+<li><p><strong>Key IOC Found</strong>:</p>
+<p>PowerShell accessed SmartScreen with <strong>Granted Access =
+0x1ffff</strong> (full process rights).</p></li>
+</ol>
+<hr />
+<h3 id="5-diagramming-iocs"><strong>5. Diagramming IOCs</strong></h3>
+<ul>
+<li>Use <strong>PowerPoint</strong> for IOC diagrams.</li>
+<li>Add:
+<ul>
+<li>PowerShell process details (image name, process GUID in red).</li>
+<li>C2 communication icon.</li>
+<li>Granted access details for process injection.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="6-identifying-c2-communications"><strong>6. Identifying C2
+Communications</strong></h3>
+<ol type="1">
+<li>Search by <strong>Process GUID</strong> for the PowerShell
+process.</li>
+<li>Identify network events:
+<ul>
+<li><strong>Event ID 3</strong> (Network Connect).</li>
+<li>Destination IP: <code>192.168.100.101</code> (attack
+infrastructure).</li>
+<li>Destination Port: <code>80</code>.</li>
+</ul></li>
+<li>Add to diagram:
+<ul>
+<li>Beaconing process with port details.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="7-investigating-target-process-smartscreenexe"><strong>7.
+Investigating Target Process (smartscreen.exe)</strong></h3>
+<ol type="1">
+<li>Search for events linked to <strong>SmartScreen’s Process
+GUID</strong>.</li>
+<li>Identify:
+<ul>
+<li><strong>Pipe creation</strong> (Event ID 17) → Named Pipe with a
+unique GUID.</li>
+<li><strong>Pipe connection</strong> (Event ID 18) → Unexpectedly
+connected by <code>System</code> process.</li>
+</ul></li>
+<li>Add pipe creation &amp; connection to diagram (mark pipe name in
+red).</li>
+</ol>
+<hr />
+<h3 id="8-loaded-modules-analysis"><strong>8. Loaded Modules
+Analysis</strong></h3>
+<ol type="1">
+<li>Search for <strong>Image Load Events</strong> for SmartScreen
+process.</li>
+<li>Identify .NET DLLs:
+<ul>
+<li><code>System.Management.ni.dll</code></li>
+<li><code>System.Core.dll</code></li>
+<li><code>System.Xml.dll</code></li>
+<li>Others.</li>
+</ul></li>
+<li><strong>Hypothesis</strong>: These may be loaded because our .NET
+assembly was injected.</li>
+</ol>
+<hr />
+<h3 id="9-key-takeaways"><strong>9. Key Takeaways</strong></h3>
+<ul>
+<li><strong>Process Injection IOC</strong>:
+<ul>
+<li>PowerShell accessing SmartScreen with <code>0x1ffff</code>
+rights.</li>
+</ul></li>
+<li><strong>IPC IOC</strong>:
+<ul>
+<li>Named pipe creation &amp; connection events.</li>
+</ul></li>
+<li><strong>C2 IOC</strong>:
+<ul>
+<li>Outbound connections to attacker IP on port 80.</li>
+</ul></li>
+<li><strong>Possible Anomaly</strong>:
+<ul>
+<li>SmartScreen loading multiple .NET DLLs.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="10-next-steps"><strong>10. Next Steps</strong></h3>
+<ul>
+<li>Before next lecture:
+<ul>
+<li>Complete your IOC diagram.</li>
+<li>Map process injection, pipe events, and C2 communications.</li>
+</ul></li>
+<li><strong>Next Lab</strong>:
+<ul>
+<li>Enable Sysmon Event IDs 12, 13, and 14 (registry events).</li>
+<li>Hunt for malicious registry changes linked to Attack Path Level
+One.</li>
+</ul></li>
+</ul>
 </section>
 </div>

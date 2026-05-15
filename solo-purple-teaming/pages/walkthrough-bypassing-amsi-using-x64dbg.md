@@ -3,7 +3,6 @@ layout: default
 title: "Walkthrough Bypassing AMSI Using x64dbg"
 permalink: /solo-purple-teaming/walkthrough-bypassing-amsi-using-x64dbg/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,10 +12,8 @@ permalink: /solo-purple-teaming/walkthrough-bypassing-amsi-using-x64dbg/
 <h1>Walkthrough Bypassing AMSI Using x64dbg</h1>
 </section>
 <section class="spt-content">
-
-# Walkthrough: Bypassing AMSI Using x64dbg
-
-Owner: Josh
-
+<h1 id="walkthrough-bypassing-amsi-using-x64dbg">Walkthrough: Bypassing
+AMSI Using x64dbg</h1>
+<p>Owner: Josh</p>
 </section>
 </div>

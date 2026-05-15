@@ -3,7 +3,6 @@ layout: default
 title: "Setup the Wazuh Server"
 permalink: /solo-purple-teaming/setup-the-wazuh-server/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,203 +12,216 @@ permalink: /solo-purple-teaming/setup-the-wazuh-server/
 <h1>Setup the Wazuh Server</h1>
 </section>
 <section class="spt-content">
-
-Owner: Mike Sterrett
-
-### **1. Objective**
-
-In this lecture, we will:
-
-- Create a new server VM.
-- Install **Wazuh** on it.
-- Configure it to work within the **AllSafe LAN**.
-- Prepare it for future lectures where we’ll use Wazuh to monitor endpoints.
-
----
-
-### **2. Lab Overview**
-
-Our lab diagram now includes a **new LAN** called **AllSafe**.
-
-The Wazuh server will be installed in this LAN and connected via our pfSense Edge device.
-
-![image.png](Setup%20the%20Wazuh%20Server/image.png)
-
----
-
-### **3. Creating the Wazuh Server VM**
-
-**Steps:**
-
-1. **Select Host in Proxmox**
-    - In the example, `PVE4` is used (in a four-host cluster).
-    - You can choose any available host in your environment.
-2. **Create a New VM**
-    - Give it a name (e.g., `wazuh-demo`).
-    - Select the ISO: **Ubuntu 24.04 LTS** (other Linux distributions will work as well).
-    - Check the **QEMU agent** option (optional but useful).
-3. **Assign Resources** (based on Wazuh’s recommendations for 100–125 agents):
-    - **Disk**: 100 GB
-    - **CPUs**: 4
-    - **RAM**: 8 GB (8192 MB)
-4. **Disable the Proxmox Firewall** for this VM (optional for lab use).
-5. **Finish VM Creation** and **Start** it.
-
----
-
-### **4. Installing Ubuntu**
-
-1. Launch the VM console.
-2. Select **Try or Install Ubuntu**.
-3. Go through the setup wizard:
-    - Language, time zone, and keyboard layout.
-    - **Normal Installation** (for browser and utilities).
-    - Erase disk and install Ubuntu.
-    - Create a user account and password.
-4. Wait for the installation to complete, then **restart** the VM.
-5. **Remove the installation ISO**:
-    - Hardware → CD/DVD Drive → **Do Not Use Media**.
-6. Log in to Ubuntu.
-
----
-
-### **5. Installing Wazuh**
-
-1. Open a browser and navigate to the **Wazuh Quickstart Installation** documentation.
-2. Review system requirements — our VM meets them.
-3. Copy the installation command from the documentation.
-4. Open a terminal, paste the command, and run it.
-    
-    *(You will be prompted for your password.)*
-    
-5. Wait for the installation to complete — this takes several minutes.
-
----
-
-### **6. Saving Admin Credentials**
-
-- After installation, Wazuh provides an **admin password**.
-- **Save this password securely** — it is difficult to recover if lost.
-
----
-
-### **7. First Login to Wazuh Web UI**
-
-1. In a browser, go to:
-    
-    ```
-    https://localhost
-    
-    ```
-    
-2. Accept the **self-signed certificate** warning.
-3. Log in with:
-    - Username: `admin`
-    - Password: (the one provided during install)
-
----
-
-### **8. Creating a Secondary Admin Account**
-
-1. Navigate to:
-    
-    **Management → Security → Internal Users**.
-    
-2. Create a new user account with a memorable password.
-3. Assign **admin privileges** to this account.
-    
-    *(This ensures you can still log in if the original password is lost.)*
-    
-
----
-
-### **9. Assigning a Static IP (AllSafe LAN)**
-
-1. Open **Network Settings** in Ubuntu.
-2. Edit the active wired connection.
-3. Under **IPv4 Settings**:
-    - Change to **Manual**.
-    - Address: `10.0.4.2`
-    - Netmask: `/24`
-    - Gateway: `10.0.4.3` (LAN interface on AllSafe pfSense)
-    - DNS: `192.168.10.1` (router interface)
-4. Save and reconnect.
-5. Verify connectivity:
-    - `ping google.com` (external test)
-    - `ip a` (check assigned IP)
-
----
-
-### **10. Testing pfSense Access**
-
-1. In a browser, go to:
-    
-    ```
-    https://10.0.4.3
-    
-    ```
-    
-2. Accept certificate warning.
-3. Log in (default: `admin` / `pfsense`) and change the admin password.
-
----
-
-### **11. Setting Up Port Forwarding for Wazuh Access**
-
-1. In pfSense:
-    - **Firewall → NAT → Port Forward → Add**
-        - Protocol: TCP
-        - Destination Port: HTTPS (443)
-        - Redirect IP: `10.0.4.2` (Wazuh server)
-        - Redirect Port: HTTPS
-        - Description: `Wazuh Dashboard`
-    - Save and Apply Changes.
-2. **Allow Private Networks**:
-    - Interfaces → WAN
-    - Uncheck **Block private networks** and **Block bogon networks**.
-    - Save and Apply.
-
----
-
-### **12. Accessing Wazuh from Outside**
-
-1. In a browser on another machine, go to:
-    
-    ```
-    https://192.168.100.103
-    
-    ```
-    
-    *(WAN interface of AllSafe edge device)*
-    
-2. Accept certificate warning.
-3. Log in to the Wazuh Web UI.
-
----
-
-### **13. Verification Before Moving On**
-
-Before the next lecture, ensure:
-
-- Wazuh server is **installed and running**.
-- You can **ping internal and external addresses**.
-- pfSense web configurator is accessible.
-- Wazuh dashboard is reachable from your host machine.
-
----
-
-### **14. Next Steps**
-
-In the following lectures, we will:
-
-- Set up port forwarding for Wazuh agent traffic.
-- Install the Wazuh agent on `wrk-r-lin`.
-- Forward telemetry to the Wazuh server.
-- Take a **crash course on Wazuh**:
-    - Building dashboards
-    - Setting up detections
-    - Analyzing telemetry
-- Deploy **Sysmon** and forward its event data to Wazuh.
-
+<p>Owner: Mike Sterrett</p>
+<h3 id="1-objective"><strong>1. Objective</strong></h3>
+<p>In this lecture, we will:</p>
+<ul>
+<li>Create a new server VM.</li>
+<li>Install <strong>Wazuh</strong> on it.</li>
+<li>Configure it to work within the <strong>AllSafe LAN</strong>.</li>
+<li>Prepare it for future lectures where we’ll use Wazuh to monitor
+endpoints.</li>
+</ul>
+<hr />
+<h3 id="2-lab-overview"><strong>2. Lab Overview</strong></h3>
+<p>Our lab diagram now includes a <strong>new LAN</strong> called
+<strong>AllSafe</strong>.</p>
+<p>The Wazuh server will be installed in this LAN and connected via our
+pfSense Edge device.</p>
+<p><img src="Setup%20the%20Wazuh%20Server/image.png"
+alt="image.png" /></p>
+<hr />
+<h3 id="3-creating-the-wazuh-server-vm"><strong>3. Creating the Wazuh
+Server VM</strong></h3>
+<p><strong>Steps:</strong></p>
+<ol type="1">
+<li><strong>Select Host in Proxmox</strong>
+<ul>
+<li>In the example, <code>PVE4</code> is used (in a four-host
+cluster).</li>
+<li>You can choose any available host in your environment.</li>
+</ul></li>
+<li><strong>Create a New VM</strong>
+<ul>
+<li>Give it a name (e.g., <code>wazuh-demo</code>).</li>
+<li>Select the ISO: <strong>Ubuntu 24.04 LTS</strong> (other Linux
+distributions will work as well).</li>
+<li>Check the <strong>QEMU agent</strong> option (optional but
+useful).</li>
+</ul></li>
+<li><strong>Assign Resources</strong> (based on Wazuh’s recommendations
+for 100–125 agents):
+<ul>
+<li><strong>Disk</strong>: 100 GB</li>
+<li><strong>CPUs</strong>: 4</li>
+<li><strong>RAM</strong>: 8 GB (8192 MB)</li>
+</ul></li>
+<li><strong>Disable the Proxmox Firewall</strong> for this VM (optional
+for lab use).</li>
+<li><strong>Finish VM Creation</strong> and <strong>Start</strong>
+it.</li>
+</ol>
+<hr />
+<h3 id="4-installing-ubuntu"><strong>4. Installing Ubuntu</strong></h3>
+<ol type="1">
+<li>Launch the VM console.</li>
+<li>Select <strong>Try or Install Ubuntu</strong>.</li>
+<li>Go through the setup wizard:
+<ul>
+<li>Language, time zone, and keyboard layout.</li>
+<li><strong>Normal Installation</strong> (for browser and
+utilities).</li>
+<li>Erase disk and install Ubuntu.</li>
+<li>Create a user account and password.</li>
+</ul></li>
+<li>Wait for the installation to complete, then <strong>restart</strong>
+the VM.</li>
+<li><strong>Remove the installation ISO</strong>:
+<ul>
+<li>Hardware → CD/DVD Drive → <strong>Do Not Use Media</strong>.</li>
+</ul></li>
+<li>Log in to Ubuntu.</li>
+</ol>
+<hr />
+<h3 id="5-installing-wazuh"><strong>5. Installing Wazuh</strong></h3>
+<ol type="1">
+<li><p>Open a browser and navigate to the <strong>Wazuh Quickstart
+Installation</strong> documentation.</p></li>
+<li><p>Review system requirements — our VM meets them.</p></li>
+<li><p>Copy the installation command from the documentation.</p></li>
+<li><p>Open a terminal, paste the command, and run it.</p>
+<p><em>(You will be prompted for your password.)</em></p></li>
+<li><p>Wait for the installation to complete — this takes several
+minutes.</p></li>
+</ol>
+<hr />
+<h3 id="6-saving-admin-credentials"><strong>6. Saving Admin
+Credentials</strong></h3>
+<ul>
+<li>After installation, Wazuh provides an <strong>admin
+password</strong>.</li>
+<li><strong>Save this password securely</strong> — it is difficult to
+recover if lost.</li>
+</ul>
+<hr />
+<h3 id="7-first-login-to-wazuh-web-ui"><strong>7. First Login to Wazuh
+Web UI</strong></h3>
+<ol type="1">
+<li><p>In a browser, go to:</p>
+<pre><code>https://localhost
+</code></pre></li>
+<li><p>Accept the <strong>self-signed certificate</strong>
+warning.</p></li>
+<li><p>Log in with:</p>
+<ul>
+<li>Username: <code>admin</code></li>
+<li>Password: (the one provided during install)</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="8-creating-a-secondary-admin-account"><strong>8. Creating a
+Secondary Admin Account</strong></h3>
+<ol type="1">
+<li><p>Navigate to:</p>
+<p><strong>Management → Security → Internal Users</strong>.</p></li>
+<li><p>Create a new user account with a memorable password.</p></li>
+<li><p>Assign <strong>admin privileges</strong> to this account.</p>
+<p><em>(This ensures you can still log in if the original password is
+lost.)</em></p></li>
+</ol>
+<hr />
+<h3 id="9-assigning-a-static-ip-allsafe-lan"><strong>9. Assigning a
+Static IP (AllSafe LAN)</strong></h3>
+<ol type="1">
+<li>Open <strong>Network Settings</strong> in Ubuntu.</li>
+<li>Edit the active wired connection.</li>
+<li>Under <strong>IPv4 Settings</strong>:
+<ul>
+<li>Change to <strong>Manual</strong>.</li>
+<li>Address: <code>10.0.4.2</code></li>
+<li>Netmask: <code>/24</code></li>
+<li>Gateway: <code>10.0.4.3</code> (LAN interface on AllSafe
+pfSense)</li>
+<li>DNS: <code>192.168.10.1</code> (router interface)</li>
+</ul></li>
+<li>Save and reconnect.</li>
+<li>Verify connectivity:
+<ul>
+<li><code>ping google.com</code> (external test)</li>
+<li><code>ip a</code> (check assigned IP)</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="10-testing-pfsense-access"><strong>10. Testing pfSense
+Access</strong></h3>
+<ol type="1">
+<li><p>In a browser, go to:</p>
+<pre><code>https://10.0.4.3
+</code></pre></li>
+<li><p>Accept certificate warning.</p></li>
+<li><p>Log in (default: <code>admin</code> / <code>pfsense</code>) and
+change the admin password.</p></li>
+</ol>
+<hr />
+<h3 id="11-setting-up-port-forwarding-for-wazuh-access"><strong>11.
+Setting Up Port Forwarding for Wazuh Access</strong></h3>
+<ol type="1">
+<li>In pfSense:
+<ul>
+<li><strong>Firewall → NAT → Port Forward → Add</strong>
+<ul>
+<li>Protocol: TCP</li>
+<li>Destination Port: HTTPS (443)</li>
+<li>Redirect IP: <code>10.0.4.2</code> (Wazuh server)</li>
+<li>Redirect Port: HTTPS</li>
+<li>Description: <code>Wazuh Dashboard</code></li>
+</ul></li>
+<li>Save and Apply Changes.</li>
+</ul></li>
+<li><strong>Allow Private Networks</strong>:
+<ul>
+<li>Interfaces → WAN</li>
+<li>Uncheck <strong>Block private networks</strong> and <strong>Block
+bogon networks</strong>.</li>
+<li>Save and Apply.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="12-accessing-wazuh-from-outside"><strong>12. Accessing Wazuh
+from Outside</strong></h3>
+<ol type="1">
+<li><p>In a browser on another machine, go to:</p>
+<pre><code>https://192.168.100.103
+</code></pre>
+<p><em>(WAN interface of AllSafe edge device)</em></p></li>
+<li><p>Accept certificate warning.</p></li>
+<li><p>Log in to the Wazuh Web UI.</p></li>
+</ol>
+<hr />
+<h3 id="13-verification-before-moving-on"><strong>13. Verification
+Before Moving On</strong></h3>
+<p>Before the next lecture, ensure:</p>
+<ul>
+<li>Wazuh server is <strong>installed and running</strong>.</li>
+<li>You can <strong>ping internal and external addresses</strong>.</li>
+<li>pfSense web configurator is accessible.</li>
+<li>Wazuh dashboard is reachable from your host machine.</li>
+</ul>
+<hr />
+<h3 id="14-next-steps"><strong>14. Next Steps</strong></h3>
+<p>In the following lectures, we will:</p>
+<ul>
+<li>Set up port forwarding for Wazuh agent traffic.</li>
+<li>Install the Wazuh agent on <code>wrk-r-lin</code>.</li>
+<li>Forward telemetry to the Wazuh server.</li>
+<li>Take a <strong>crash course on Wazuh</strong>:
+<ul>
+<li>Building dashboards</li>
+<li>Setting up detections</li>
+<li>Analyzing telemetry</li>
+</ul></li>
+<li>Deploy <strong>Sysmon</strong> and forward its event data to
+Wazuh.</li>
+</ul>
 </section>
 </div>

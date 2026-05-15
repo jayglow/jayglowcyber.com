@@ -3,7 +3,6 @@ layout: default
 title: "Setting Up Edge Appliances"
 permalink: /solo-purple-teaming/setting-up-edge-appliances/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,180 +12,243 @@ permalink: /solo-purple-teaming/setting-up-edge-appliances/
 <h1>Setting Up Edge Appliances</h1>
 </section>
 <section class="spt-content">
-
-Owner: Mike Sterrett
-
-# 🔧 Setting Up pfSense LAN Edge Devices in Proxmox
-
-## 🎯 Objective
-
-This walkthrough guides you through setting up two pfSense edge routers—one for the **Attack LAN** and one for the **Target LAN (Ecoin)**—using **Proxmox** VMs. Each pfSense VM will serve as a LAN gateway with **static IPs**, proper interface assignments, and Internet connectivity verification.
-
-![image.png](Setting%20Up%20Edge%20Appliances/image.png)
-
----
-
-## 🖥️ Lab Requirements
-
-- Proxmox environment (PVE)
-- pfSense ISO installer (from pfsense.org)
-- Two pfSense VMs with:
-    - **2 GB RAM**
-    - **32 GB disk**
-    - **2 network adapters** (WAN & LAN via `vmbr0`)
-- Internet access through your home gateway (e.g., `192.168.100.1`)
-
----
-
-## 📦 Step 1: Download and Upload pfSense ISO
-
-1. Visit: https://www.pfsense.org/download/
-2. Select the **Netgate Installer**.
-3. Upload the ISO to your **Proxmox local storage** via the Proxmox web interface.
-
----
-
-## 🧱 Step 2: Create the First pfSense VM
-
-1. In Proxmox, **right-click** your PVE node and select **Create VM**.
-2. Name the VM (e.g., `pfSense-edge-template`) and click **Next**.
-3. Under OS:
-    - Select the **uploaded pfSense ISO**.
-4. Under System:
-    - Leave defaults.
-5. Under Hard Disk:
-    - Size: **32 GB** (you can reduce to 25 GB if needed)
-6. Under CPU:
-    - **1 socket, 1 core**
-7. Under Memory:
-    - **2048 MB** (can go as low as 1024 MB if resource constrained)
-8. Under Network:
-    - **Model**: VirtIO (paravirtualized)
-    - **Bridge**: `vmbr0`
-    - **Firewall**: Unchecked
-9. Click **Finish**.
-
----
-
-## ➕ Step 3: Add Second Network Adapter
-
-1. Select the new VM.
-2. Go to **Hardware → Add → Network Device**.
-3. Set:
-    - **Model**: VirtIO
-    - **Bridge**: `vmbr0`
-    - **Firewall**: Unchecked
-4. Click **Add**.
-
----
-
-## 💽 Step 4: Install pfSense
-
-1. Start the VM and open **Console**.
-2. Follow these steps:
-    - Accept the **EULA**.
-    - Choose **Install pfSense**.
-    - Use default **keymap**.
-    - Proceed with **Auto (UFS)** installation (ZFS optional).
-    - Select the 32 GB disk.
-    - Confirm installation.
-    - Choose **Install CE (Community Edition)**.
-    - Keep all defaults
-    - Reboot after installation.
-
----
-
-## 📊 Step 5: Assign Interfaces
-
-When prompted:
-
-- **WAN**: `vtNet0`
-- **LAN**: `vtNet1`
-- Confirm with `Y`.
-
----
-
-## 🧪 Step 6: Convert to Template and Clone VMs
-
-1. **Shutdown** the VM (`Option 6 → Y`).
-2. Convert it to a **template**:
-    - Right-click VM → Convert to Template
-    - Rename to `pfSense-template` under **Options**
-3. Clone it twice:
-    - Clone 1 → Name: `attack-edge` (full clone)
-    - Clone 2 → Name: `ecoin-edge` (full clone)
-4. After cloning:
-    - **Eject ISO disk** from each clone under **Hardware**
-
----
-
-## 🌐 Step 7: Configure `attack-edge` IPs
-
-### Boot `attack-edge`, then:
-
-1. Press `2` to set interface IPs.
-
-### WAN (vtNet0):
-
-- Use **Static IP**: `192.168.100.101`
-- Subnet: `24`
-- Upstream gateway: `192.168.100.1`
-- No DHCP / No IPv6 / No HTTP
-
-### LAN (vtNet1):
-
-- Static IP: `10.0.3.1`
-- Subnet: `24`
-- No DHCP / No IPv6 / No HTTP
-1. Press `7` to ping: `google.com`
-    - You should see replies.
-
----
-
-## 🌐 Step 8: Configure `ecoin-edge` IPs
-
-### Boot `ecoin-edge`, then:
-
-1. Press `2` to set interface IPs.
-
-### WAN (vtNet0):
-
-- Static IP: `192.168.100.102`
-- Subnet: `24`
-- Gateway: `192.168.100.1`
-- No DHCP / No IPv6 / No HTTP
-
-### LAN (vtNet1):
-
-- Static IP: `10.0.2.3`
-- Subnet: `24`
-- No DHCP / No IPv6 / No HTTP
-1. Press `7` to ping: `google.com`
-    - You should get successful replies.
-
----
-
-## ✅ Final Checklist Before Proceeding
-
-| Task | Completed? |
-| --- | --- |
-| pfSense ISO downloaded and uploaded to Proxmox | ☐ |
-| Base pfSense VM created and configured | ☐ |
-| Converted to template | ☐ |
-| Cloned `attack-edge` and `ecoin-edge` VMs | ☐ |
-| Static IPs configured on WAN and LAN interfaces | ☐ |
-| Verified Internet access with `ping google.com` | ☐ |
-
----
-
-## 🧭 What’s Next?
-
-In the next lecture, you’ll:
-
-- Move your **Kali host** and **Reverse Engineering VM** into the **Attack LAN**
-- Assign **static IPs** within the `10.0.3.0/24` subnet
-
-Make sure your edge devices are **fully configured and functional** before moving on.
-
+<p>Owner: Mike Sterrett</p>
+<h1 id="wrench-setting-up-pfsense-lan-edge-devices-in-proxmox">🔧
+Setting Up pfSense LAN Edge Devices in Proxmox</h1>
+<h2 id="dart-objective">🎯 Objective</h2>
+<p>This walkthrough guides you through setting up two pfSense edge
+routers—one for the <strong>Attack LAN</strong> and one for the
+<strong>Target LAN (Ecoin)</strong>—using <strong>Proxmox</strong> VMs.
+Each pfSense VM will serve as a LAN gateway with <strong>static
+IPs</strong>, proper interface assignments, and Internet connectivity
+verification.</p>
+<p><img src="Setting%20Up%20Edge%20Appliances/image.png"
+alt="image.png" /></p>
+<hr />
+<h2 id="desktop_computer-lab-requirements">🖥️ Lab Requirements</h2>
+<ul>
+<li>Proxmox environment (PVE)</li>
+<li>pfSense ISO installer (from pfsense.org)</li>
+<li>Two pfSense VMs with:
+<ul>
+<li><strong>2 GB RAM</strong></li>
+<li><strong>32 GB disk</strong></li>
+<li><strong>2 network adapters</strong> (WAN &amp; LAN via
+<code>vmbr0</code>)</li>
+</ul></li>
+<li>Internet access through your home gateway (e.g.,
+<code>192.168.100.1</code>)</li>
+</ul>
+<hr />
+<h2 id="package-step-1-download-and-upload-pfsense-iso">📦 Step 1:
+Download and Upload pfSense ISO</h2>
+<ol type="1">
+<li>Visit: <a
+href="https://www.pfsense.org/download/">https://www.pfsense.org/download/</a></li>
+<li>Select the <strong>Netgate Installer</strong>.</li>
+<li>Upload the ISO to your <strong>Proxmox local storage</strong> via
+the Proxmox web interface.</li>
+</ol>
+<hr />
+<h2 id="bricks-step-2-create-the-first-pfsense-vm">🧱 Step 2: Create the
+First pfSense VM</h2>
+<ol type="1">
+<li>In Proxmox, <strong>right-click</strong> your PVE node and select
+<strong>Create VM</strong>.</li>
+<li>Name the VM (e.g., <code>pfSense-edge-template</code>) and click
+<strong>Next</strong>.</li>
+<li>Under OS:
+<ul>
+<li>Select the <strong>uploaded pfSense ISO</strong>.</li>
+</ul></li>
+<li>Under System:
+<ul>
+<li>Leave defaults.</li>
+</ul></li>
+<li>Under Hard Disk:
+<ul>
+<li>Size: <strong>32 GB</strong> (you can reduce to 25 GB if
+needed)</li>
+</ul></li>
+<li>Under CPU:
+<ul>
+<li><strong>1 socket, 1 core</strong></li>
+</ul></li>
+<li>Under Memory:
+<ul>
+<li><strong>2048 MB</strong> (can go as low as 1024 MB if resource
+constrained)</li>
+</ul></li>
+<li>Under Network:
+<ul>
+<li><strong>Model</strong>: VirtIO (paravirtualized)</li>
+<li><strong>Bridge</strong>: <code>vmbr0</code></li>
+<li><strong>Firewall</strong>: Unchecked</li>
+</ul></li>
+<li>Click <strong>Finish</strong>.</li>
+</ol>
+<hr />
+<h2 id="heavy_plus_sign-step-3-add-second-network-adapter">➕ Step 3:
+Add Second Network Adapter</h2>
+<ol type="1">
+<li>Select the new VM.</li>
+<li>Go to <strong>Hardware → Add → Network Device</strong>.</li>
+<li>Set:
+<ul>
+<li><strong>Model</strong>: VirtIO</li>
+<li><strong>Bridge</strong>: <code>vmbr0</code></li>
+<li><strong>Firewall</strong>: Unchecked</li>
+</ul></li>
+<li>Click <strong>Add</strong>.</li>
+</ol>
+<hr />
+<h2 id="minidisc-step-4-install-pfsense">💽 Step 4: Install pfSense</h2>
+<ol type="1">
+<li>Start the VM and open <strong>Console</strong>.</li>
+<li>Follow these steps:
+<ul>
+<li>Accept the <strong>EULA</strong>.</li>
+<li>Choose <strong>Install pfSense</strong>.</li>
+<li>Use default <strong>keymap</strong>.</li>
+<li>Proceed with <strong>Auto (UFS)</strong> installation (ZFS
+optional).</li>
+<li>Select the 32 GB disk.</li>
+<li>Confirm installation.</li>
+<li>Choose <strong>Install CE (Community Edition)</strong>.</li>
+<li>Keep all defaults</li>
+<li>Reboot after installation.</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="bar_chart-step-5-assign-interfaces">📊 Step 5: Assign
+Interfaces</h2>
+<p>When prompted:</p>
+<ul>
+<li><strong>WAN</strong>: <code>vtNet0</code></li>
+<li><strong>LAN</strong>: <code>vtNet1</code></li>
+<li>Confirm with <code>Y</code>.</li>
+</ul>
+<hr />
+<h2 id="test_tube-step-6-convert-to-template-and-clone-vms">🧪 Step 6:
+Convert to Template and Clone VMs</h2>
+<ol type="1">
+<li><strong>Shutdown</strong> the VM (<code>Option 6 → Y</code>).</li>
+<li>Convert it to a <strong>template</strong>:
+<ul>
+<li>Right-click VM → Convert to Template</li>
+<li>Rename to <code>pfSense-template</code> under
+<strong>Options</strong></li>
+</ul></li>
+<li>Clone it twice:
+<ul>
+<li>Clone 1 → Name: <code>attack-edge</code> (full clone)</li>
+<li>Clone 2 → Name: <code>ecoin-edge</code> (full clone)</li>
+</ul></li>
+<li>After cloning:
+<ul>
+<li><strong>Eject ISO disk</strong> from each clone under
+<strong>Hardware</strong></li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="globe_with_meridians-step-7-configure-attack-edge-ips">🌐 Step
+7: Configure <code>attack-edge</code> IPs</h2>
+<h3 id="boot-attack-edge-then">Boot <code>attack-edge</code>, then:</h3>
+<ol type="1">
+<li>Press <code>2</code> to set interface IPs.</li>
+</ol>
+<h3 id="wan-vtnet0">WAN (vtNet0):</h3>
+<ul>
+<li>Use <strong>Static IP</strong>: <code>192.168.100.101</code></li>
+<li>Subnet: <code>24</code></li>
+<li>Upstream gateway: <code>192.168.100.1</code></li>
+<li>No DHCP / No IPv6 / No HTTP</li>
+</ul>
+<h3 id="lan-vtnet1">LAN (vtNet1):</h3>
+<ul>
+<li>Static IP: <code>10.0.3.1</code></li>
+<li>Subnet: <code>24</code></li>
+<li>No DHCP / No IPv6 / No HTTP</li>
+</ul>
+<ol type="1">
+<li>Press <code>7</code> to ping: <code>google.com</code>
+<ul>
+<li>You should see replies.</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="globe_with_meridians-step-8-configure-ecoin-edge-ips">🌐 Step 8:
+Configure <code>ecoin-edge</code> IPs</h2>
+<h3 id="boot-ecoin-edge-then">Boot <code>ecoin-edge</code>, then:</h3>
+<ol type="1">
+<li>Press <code>2</code> to set interface IPs.</li>
+</ol>
+<h3 id="wan-vtnet0-1">WAN (vtNet0):</h3>
+<ul>
+<li>Static IP: <code>192.168.100.102</code></li>
+<li>Subnet: <code>24</code></li>
+<li>Gateway: <code>192.168.100.1</code></li>
+<li>No DHCP / No IPv6 / No HTTP</li>
+</ul>
+<h3 id="lan-vtnet1-1">LAN (vtNet1):</h3>
+<ul>
+<li>Static IP: <code>10.0.2.3</code></li>
+<li>Subnet: <code>24</code></li>
+<li>No DHCP / No IPv6 / No HTTP</li>
+</ul>
+<ol type="1">
+<li>Press <code>7</code> to ping: <code>google.com</code>
+<ul>
+<li>You should get successful replies.</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="white_check_mark-final-checklist-before-proceeding">✅ Final
+Checklist Before Proceeding</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Completed?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pfSense ISO downloaded and uploaded to Proxmox</td>
+<td>☐</td>
+</tr>
+<tr class="even">
+<td>Base pfSense VM created and configured</td>
+<td>☐</td>
+</tr>
+<tr class="odd">
+<td>Converted to template</td>
+<td>☐</td>
+</tr>
+<tr class="even">
+<td>Cloned <code>attack-edge</code> and <code>ecoin-edge</code> VMs</td>
+<td>☐</td>
+</tr>
+<tr class="odd">
+<td>Static IPs configured on WAN and LAN interfaces</td>
+<td>☐</td>
+</tr>
+<tr class="even">
+<td>Verified Internet access with <code>ping google.com</code></td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="compass-whats-next">🧭 What’s Next?</h2>
+<p>In the next lecture, you’ll:</p>
+<ul>
+<li>Move your <strong>Kali host</strong> and <strong>Reverse Engineering
+VM</strong> into the <strong>Attack LAN</strong></li>
+<li>Assign <strong>static IPs</strong> within the
+<code>10.0.3.0/24</code> subnet</li>
+</ul>
+<p>Make sure your edge devices are <strong>fully configured and
+functional</strong> before moving on.</p>
 </section>
 </div>

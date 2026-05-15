@@ -3,7 +3,6 @@ layout: default
 title: "Sysmon ImageLoad Event ID 7"
 permalink: /solo-purple-teaming/sysmon-imageload-event-id-7/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,165 +12,178 @@ permalink: /solo-purple-teaming/sysmon-imageload-event-id-7/
 <h1>Sysmon ImageLoad Event ID 7</h1>
 </section>
 <section class="spt-content">
-
-Owner: Mike Sterrett
-
-### **1. Purpose of the Exploration Phase**
-
-Before enabling **Sysmon Event ID 7**, remember the purpose of the *exploration phase* in the blue team activities:
-
-- **Identify telemetry gaps** – Determine what’s missing from our collected logs.
-- **Identify detection opportunities** – Find where the available telemetry can be leveraged to spot suspicious activity.
-
-> In this phase, you’ll often perform independent research to understand what telemetry exists and how it can be used for detections.
-> 
-> 
-> This course streamlines that process so you can focus on practical implementation.
-> 
-
----
-
-### **2. Researching Command Line Arguments in Telemetry**
-
-- To find ways of capturing command line arguments in Windows, search for:
-    
-    ```
-    capture command line arguments Windows Logging
-    
-    ```
-    
-- AI or search results may reveal multiple solutions:
-    - **Sysmon** (our current choice)
-    - **Group Policy** – enabling command line arguments for process creation events in the Windows Security log (Event ID 4688).
-
----
-
-### **3. Understanding Unsigned Image Loads**
-
-- **Why monitor unsigned image loads?**
-    - Malware or custom payloads are often unsigned, making this a strong detection indicator.
-- To check if a binary is signed:
-    1. On your reverse engineering machine, use Sysinternals `sigcheck`.
-    2. Example:
-        
-        ```
-        sigcheck goodbyeamsi.exe
-        
-        ```
-        
-    3. If unsigned, it will show as **untrusted code**.
-
----
-
-### **4. Researching How to Capture Unsigned Image Loads**
-
-- Search for:
-    
-    ```
-    capture unsigned image load events windows
-    
-    ```
-    
-- Sysmon **Event ID 7** logs image loads by processes and includes a **Signed** field:
-    - `True` → Binary is signed
-    - `False` → Binary is unsigned
-
----
-
-### **5. Checking for Existing Event ID 7 Telemetry**
-
-- In **Wazuh**:
-    1. Navigate to **Explore → Discover**.
-    2. Filter for `Event ID: 7`.
-    3. If no results in the last 12 hours → proceed to enable it in Sysmon.
-
----
-
-### **6. Updating Sysmon Configuration**
-
-1. On the **Assume Breach Host**:
-    - Open the Sysmon configuration.
-    - Locate **Event ID 7** rules.
-    - Change the `<Include>` rule to capture **all events where `Signed = false`**.
-2. Save the configuration.
-3. In **PowerShell (Admin)**:
-    
-    ```powershell
-    cd Downloads
-    sysmon -c sysmonconfig.xml
-    
-    ```
-    
-    - Ensure configuration is **validated and updated**.
-
----
-
-### **7. Verifying in Event Viewer**
-
-- Open **Event Viewer** → **Applications and Services Logs** → **Microsoft → Windows → Sysmon → Operational**.
-- Filter for `Event ID: 7`.
-- Confirm unsigned image load events appear.
-
----
-
-### **8. Verifying in Wazuh**
-
-- Switch **Index Pattern** to:
-    
-    ```
-    int_wazuh-archives-*
-    
-    ```
-    
-- Search for `Event ID: 7`.
-- Confirm new entries are populating in the last few minutes.
-
----
-
-### **9. Testing with the Initial Access Payload**
-
-1. On the **Assume Breach Host**:
-    - Rerun `goodbyeamsi.exe`.
-2. In **Mythic**:
-    - Verify a new callback is established.
-3. In **Wazuh**:
-    - Search for `Event ID: 7` alerts related to `goodbyeamsi.exe`.
-    - Switch to **wazuh-archives-**index to see all raw events.
-
----
-
-### **10. Filtering for the Payload’s Image Loads**
-
-1. Filter by:
-    
-    ```
-    data.win.eventdata.ImageLoaded : *amsi*
-    
-    ```
-    
-    - This shows all image loads related to `goodbyeamsi.exe` and its DLLs.
-2. Expand event details.
-3. Check:
-    
-    ```
-    data.win.eventdata.Signed : False
-    
-    ```
-    
-    - Confirms the binary is **unsigned**.
-
----
-
-### **11. Completion Check**
-
-✅ Before moving on:
-
-- You can see unsigned image load events in **Wazuh Manager**.
-- You have verified the detection works with your initial access payload.
-
----
-
-**Next Step:** In the following lecture, you will enable **Sysmon Event ID 11** (File Create events) to expand telemetry coverage.
-
+<p>Owner: Mike Sterrett</p>
+<h3 id="1-purpose-of-the-exploration-phase"><strong>1. Purpose of the
+Exploration Phase</strong></h3>
+<p>Before enabling <strong>Sysmon Event ID 7</strong>, remember the
+purpose of the <em>exploration phase</em> in the blue team
+activities:</p>
+<ul>
+<li><strong>Identify telemetry gaps</strong> – Determine what’s missing
+from our collected logs.</li>
+<li><strong>Identify detection opportunities</strong> – Find where the
+available telemetry can be leveraged to spot suspicious activity.</li>
+</ul>
+<blockquote>
+<p>In this phase, you’ll often perform independent research to
+understand what telemetry exists and how it can be used for
+detections.</p>
+<p>This course streamlines that process so you can focus on practical
+implementation.</p>
+</blockquote>
+<hr />
+<h3 id="2-researching-command-line-arguments-in-telemetry"><strong>2.
+Researching Command Line Arguments in Telemetry</strong></h3>
+<ul>
+<li><p>To find ways of capturing command line arguments in Windows,
+search for:</p>
+<pre><code>capture command line arguments Windows Logging
+</code></pre></li>
+<li><p>AI or search results may reveal multiple solutions:</p>
+<ul>
+<li><strong>Sysmon</strong> (our current choice)</li>
+<li><strong>Group Policy</strong> – enabling command line arguments for
+process creation events in the Windows Security log (Event ID
+4688).</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="3-understanding-unsigned-image-loads"><strong>3. Understanding
+Unsigned Image Loads</strong></h3>
+<ul>
+<li><strong>Why monitor unsigned image loads?</strong>
+<ul>
+<li>Malware or custom payloads are often unsigned, making this a strong
+detection indicator.</li>
+</ul></li>
+<li>To check if a binary is signed:
+<ol type="1">
+<li><p>On your reverse engineering machine, use Sysinternals
+<code>sigcheck</code>.</p></li>
+<li><p>Example:</p>
+<pre><code>sigcheck goodbyeamsi.exe
+</code></pre></li>
+<li><p>If unsigned, it will show as <strong>untrusted
+code</strong>.</p></li>
+</ol></li>
+</ul>
+<hr />
+<h3 id="4-researching-how-to-capture-unsigned-image-loads"><strong>4.
+Researching How to Capture Unsigned Image Loads</strong></h3>
+<ul>
+<li><p>Search for:</p>
+<pre><code>capture unsigned image load events windows
+</code></pre></li>
+<li><p>Sysmon <strong>Event ID 7</strong> logs image loads by processes
+and includes a <strong>Signed</strong> field:</p>
+<ul>
+<li><code>True</code> → Binary is signed</li>
+<li><code>False</code> → Binary is unsigned</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="5-checking-for-existing-event-id-7-telemetry"><strong>5.
+Checking for Existing Event ID 7 Telemetry</strong></h3>
+<ul>
+<li>In <strong>Wazuh</strong>:
+<ol type="1">
+<li>Navigate to <strong>Explore → Discover</strong>.</li>
+<li>Filter for <code>Event ID: 7</code>.</li>
+<li>If no results in the last 12 hours → proceed to enable it in
+Sysmon.</li>
+</ol></li>
+</ul>
+<hr />
+<h3 id="6-updating-sysmon-configuration"><strong>6. Updating Sysmon
+Configuration</strong></h3>
+<ol type="1">
+<li><p>On the <strong>Assume Breach Host</strong>:</p>
+<ul>
+<li>Open the Sysmon configuration.</li>
+<li>Locate <strong>Event ID 7</strong> rules.</li>
+<li>Change the <code>&lt;Include&gt;</code> rule to capture <strong>all
+events where <code>Signed = false</code></strong>.</li>
+</ul></li>
+<li><p>Save the configuration.</p></li>
+<li><p>In <strong>PowerShell (Admin)</strong>:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> Downloads</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sysmon <span class="op">-</span>c sysmonconfig<span class="op">.</span><span class="fu">xml</span></span></code></pre></div>
+<ul>
+<li>Ensure configuration is <strong>validated and updated</strong>.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="7-verifying-in-event-viewer"><strong>7. Verifying in Event
+Viewer</strong></h3>
+<ul>
+<li>Open <strong>Event Viewer</strong> → <strong>Applications and
+Services Logs</strong> → <strong>Microsoft → Windows → Sysmon →
+Operational</strong>.</li>
+<li>Filter for <code>Event ID: 7</code>.</li>
+<li>Confirm unsigned image load events appear.</li>
+</ul>
+<hr />
+<h3 id="8-verifying-in-wazuh"><strong>8. Verifying in
+Wazuh</strong></h3>
+<ul>
+<li><p>Switch <strong>Index Pattern</strong> to:</p>
+<pre><code>int_wazuh-archives-*
+</code></pre></li>
+<li><p>Search for <code>Event ID: 7</code>.</p></li>
+<li><p>Confirm new entries are populating in the last few
+minutes.</p></li>
+</ul>
+<hr />
+<h3 id="9-testing-with-the-initial-access-payload"><strong>9. Testing
+with the Initial Access Payload</strong></h3>
+<ol type="1">
+<li>On the <strong>Assume Breach Host</strong>:
+<ul>
+<li>Rerun <code>goodbyeamsi.exe</code>.</li>
+</ul></li>
+<li>In <strong>Mythic</strong>:
+<ul>
+<li>Verify a new callback is established.</li>
+</ul></li>
+<li>In <strong>Wazuh</strong>:
+<ul>
+<li>Search for <code>Event ID: 7</code> alerts related to
+<code>goodbyeamsi.exe</code>.</li>
+<li>Switch to **wazuh-archives-**index to see all raw events.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="10-filtering-for-the-payloads-image-loads"><strong>10. Filtering
+for the Payload’s Image Loads</strong></h3>
+<ol type="1">
+<li><p>Filter by:</p>
+<pre><code>data.win.eventdata.ImageLoaded : *amsi*
+</code></pre>
+<ul>
+<li>This shows all image loads related to <code>goodbyeamsi.exe</code>
+and its DLLs.</li>
+</ul></li>
+<li><p>Expand event details.</p></li>
+<li><p>Check:</p>
+<pre><code>data.win.eventdata.Signed : False
+</code></pre>
+<ul>
+<li>Confirms the binary is <strong>unsigned</strong>.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="11-completion-check"><strong>11. Completion Check</strong></h3>
+<p>✅ Before moving on:</p>
+<ul>
+<li>You can see unsigned image load events in <strong>Wazuh
+Manager</strong>.</li>
+<li>You have verified the detection works with your initial access
+payload.</li>
+</ul>
+<hr />
+<p><strong>Next Step:</strong> In the following lecture, you will enable
+<strong>Sysmon Event ID 11</strong> (File Create events) to expand
+telemetry coverage.</p>
 </section>
 </div>

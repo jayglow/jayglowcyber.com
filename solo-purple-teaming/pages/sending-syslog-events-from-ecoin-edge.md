@@ -3,7 +3,6 @@ layout: default
 title: "Sending Syslog Events From ECOIN Edge"
 permalink: /solo-purple-teaming/sending-syslog-events-from-ecoin-edge/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,170 +12,173 @@ permalink: /solo-purple-teaming/sending-syslog-events-from-ecoin-edge/
 <h1>Sending Syslog Events From ECOIN Edge</h1>
 </section>
 <section class="spt-content">
-
-Owner: Mike Sterrett
-
-### **1. Recap of the Lab Setup**
-
-- **AllSafe LAN**: Where the **Wazuh server** resides.
-- **Ecoin Edge Device**: The focus for this configuration, forwarding firewall events using **Syslog** to the Wazuh server.
-- **Purpose of Syslog in Purple Teaming**:
-    - Standardized protocol for sending log data from devices to a central location.
-    - Includes source and severity for easy anomaly detection.
-    - Allows real-time testing of offensive techniques and refining detection strategies.
-
-![image.png](Sending%20Syslog%20Events%20From%20ECOIN%20Edge/image.png)
-
----
-
-### **2. Steps Overview**
-
-We will:
-
-1. **Set port forwarding** on AllSafe Edge for Syslog (UDP 514) → Wazuh server.
-2. **Configure Syslog forwarding** on Ecoin Edge (pfSense) to send firewall events to the Wazuh server.
-3. **Configure Wazuh manager** to accept incoming Syslog events.
-
----
-
-### **3. Step 1 – Port Forwarding on AllSafe Edge**
-
-1. Log into **AllSafe Edge**.
-2. Go to **Firewall → NAT** and click **Add New Rule**.
-3. **Interface**: WAN
-    
-    **Protocol**: UDP
-    
-    **Destination Port**: Syslog (514)
-    
-    **Redirect Target IP**: `10.0.4.2` (Wazuh Manager)
-    
-    **Redirect Target Port**: Syslog (514)
-    
-4. Add a description for clarity.
-5. Save and **Apply Changes**.
-
----
-
-### **4. Step 2 – Syslog Forwarding on Ecoin Edge (pfSense)**
-
-### **A. Install syslog-ng**
-
-1. Log into **Ecoin Edge**.
-2. Go to **System → Package Manager → Available Packages**.
-3. Search for `syslog-ng`.
-4. Install **syslog-ng** (v1.16 at time of setup).
-5. Confirm installation.
-
-### **B. Enable syslog-ng**
-
-1. Go to **Services → syslog-ng**.
-2. Check **Enable syslog-ng**.
-3. Select interfaces to monitor: **WAN** and **Loopback** (use Ctrl-click to select multiple).
-4. Protocol: **UDP**.
-5. Port: `5140` (default here; will route later).
-6. Save.
-
-### **C. Create a Destination**
-
-1. In **syslog-ng**, go to **Advanced → Add**.
-2. Name: `Wazuh`.
-3. Type: Destination.
-4. Parameters:
-    
-    ```
-    udp("192.168.100.103" port(514) localip("10.0.2.3"))
-    
-    ```
-    
-    - `192.168.100.103`: WAN IP of AllSafe Edge.
-    - `10.0.2.3`: LAN IP of pfSense Ecoin Edge.
-5. Save.
-
-### **D. Create a Log Forwarder**
-
-1. Add a new log route: Name it `Wazuh Route`.
-2. **Source**: Default.
-3. **Destination**: Wazuh.
-4. Save.
-
-### **E. Enable Remote Logging**
-
-1. Go to **Status → System Logs → Settings**.
-2. Enable **BSD RFC 3164** format.
-3. Check **Enable sending log messages to remote syslog**.
-4. **Source Address**: LAN interface.
-5. **Destination IP**: `192.168.100.103` (AllSafe Edge WAN).
-6. **Port**: 514.
-7. Select log categories (initially send everything).
-8. Save.
-
----
-
-### **5. Step 3 – Configure Wazuh Manager to Accept Syslog**
-
-1. In Wazuh UI, go to **Server Management → Settings → Edit Configuration**.
-2. Add a `<remote>` block:
-    
-    ```xml
-    <remote>
-      <connection>syslog</connection>
-      <port>514</port>
-      <protocol>udp</protocol>
-      <allowed-ips>192.168.100.0/24</allowed-ips>
-    </remote>
-    
-    ```
-    
-    - Allows all devices in `192.168.100.0/24` to send Syslog.
-3. Save changes.
-4. Restart the Wazuh Manager.
-
----
-
-### **6. Step 4 – Verification**
-
-### **A. From the Wazuh Server**
-
-1. SSH into the Wazuh server.
-2. Run:
-    
-    ```bash
-    tcpdump -i any port 514
-    
-    ```
-    
-3. Confirm you see incoming Syslog events from Ecoin Edge.
-
-### **B. From Wazuh UI**
-
-1. Go to **Discover → Index: Wazuh Archives**.
-2. Search for `pfSense`.
-3. Confirm Syslog entries from Ecoin Edge are present.
-
-![image.png](Sending%20Syslog%20Events%20From%20ECOIN%20Edge/image%201.png)
-
----
-
-### **7. Step 5 – Optimize Log Forwarding**
-
-- Initially, all logs were forwarded.
-- For efficiency, forward **only firewall events**:
-    1. In pfSense: **Status → System Logs → Settings**.
-    2. Under remote forwarding, select **Firewall Events** only.
-    3. Save.
-
----
-
-### **8. Final Checklist**
-
-✅ AllSafe Edge forwards UDP 514 to Wazuh.
-
-✅ Ecoin Edge sends firewall Syslog events via syslog-ng.
-
-✅ Wazuh Manager receives and parses logs.
-
-✅ Verified via `tcpdump` and Wazuh UI search.
-
+<p>Owner: Mike Sterrett</p>
+<h3 id="1-recap-of-the-lab-setup"><strong>1. Recap of the Lab
+Setup</strong></h3>
+<ul>
+<li><strong>AllSafe LAN</strong>: Where the <strong>Wazuh
+server</strong> resides.</li>
+<li><strong>Ecoin Edge Device</strong>: The focus for this
+configuration, forwarding firewall events using <strong>Syslog</strong>
+to the Wazuh server.</li>
+<li><strong>Purpose of Syslog in Purple Teaming</strong>:
+<ul>
+<li>Standardized protocol for sending log data from devices to a central
+location.</li>
+<li>Includes source and severity for easy anomaly detection.</li>
+<li>Allows real-time testing of offensive techniques and refining
+detection strategies.</li>
+</ul></li>
+</ul>
+<p><img src="Sending%20Syslog%20Events%20From%20ECOIN%20Edge/image.png"
+alt="image.png" /></p>
+<hr />
+<h3 id="2-steps-overview"><strong>2. Steps Overview</strong></h3>
+<p>We will:</p>
+<ol type="1">
+<li><strong>Set port forwarding</strong> on AllSafe Edge for Syslog (UDP
+514) → Wazuh server.</li>
+<li><strong>Configure Syslog forwarding</strong> on Ecoin Edge (pfSense)
+to send firewall events to the Wazuh server.</li>
+<li><strong>Configure Wazuh manager</strong> to accept incoming Syslog
+events.</li>
+</ol>
+<hr />
+<h3 id="3-step-1--port-forwarding-on-allsafe-edge"><strong>3. Step 1 –
+Port Forwarding on AllSafe Edge</strong></h3>
+<ol type="1">
+<li><p>Log into <strong>AllSafe Edge</strong>.</p></li>
+<li><p>Go to <strong>Firewall → NAT</strong> and click <strong>Add New
+Rule</strong>.</p></li>
+<li><p><strong>Interface</strong>: WAN</p>
+<p><strong>Protocol</strong>: UDP</p>
+<p><strong>Destination Port</strong>: Syslog (514)</p>
+<p><strong>Redirect Target IP</strong>: <code>10.0.4.2</code> (Wazuh
+Manager)</p>
+<p><strong>Redirect Target Port</strong>: Syslog (514)</p></li>
+<li><p>Add a description for clarity.</p></li>
+<li><p>Save and <strong>Apply Changes</strong>.</p></li>
+</ol>
+<hr />
+<h3 id="4-step-2--syslog-forwarding-on-ecoin-edge-pfsense"><strong>4.
+Step 2 – Syslog Forwarding on Ecoin Edge (pfSense)</strong></h3>
+<h3 id="a-install-syslog-ng"><strong>A. Install syslog-ng</strong></h3>
+<ol type="1">
+<li>Log into <strong>Ecoin Edge</strong>.</li>
+<li>Go to <strong>System → Package Manager → Available
+Packages</strong>.</li>
+<li>Search for <code>syslog-ng</code>.</li>
+<li>Install <strong>syslog-ng</strong> (v1.16 at time of setup).</li>
+<li>Confirm installation.</li>
+</ol>
+<h3 id="b-enable-syslog-ng"><strong>B. Enable syslog-ng</strong></h3>
+<ol type="1">
+<li>Go to <strong>Services → syslog-ng</strong>.</li>
+<li>Check <strong>Enable syslog-ng</strong>.</li>
+<li>Select interfaces to monitor: <strong>WAN</strong> and
+<strong>Loopback</strong> (use Ctrl-click to select multiple).</li>
+<li>Protocol: <strong>UDP</strong>.</li>
+<li>Port: <code>5140</code> (default here; will route later).</li>
+<li>Save.</li>
+</ol>
+<h3 id="c-create-a-destination"><strong>C. Create a
+Destination</strong></h3>
+<ol type="1">
+<li><p>In <strong>syslog-ng</strong>, go to <strong>Advanced →
+Add</strong>.</p></li>
+<li><p>Name: <code>Wazuh</code>.</p></li>
+<li><p>Type: Destination.</p></li>
+<li><p>Parameters:</p>
+<pre><code>udp(&quot;192.168.100.103&quot; port(514) localip(&quot;10.0.2.3&quot;))
+</code></pre>
+<ul>
+<li><code>192.168.100.103</code>: WAN IP of AllSafe Edge.</li>
+<li><code>10.0.2.3</code>: LAN IP of pfSense Ecoin Edge.</li>
+</ul></li>
+<li><p>Save.</p></li>
+</ol>
+<h3 id="d-create-a-log-forwarder"><strong>D. Create a Log
+Forwarder</strong></h3>
+<ol type="1">
+<li>Add a new log route: Name it <code>Wazuh Route</code>.</li>
+<li><strong>Source</strong>: Default.</li>
+<li><strong>Destination</strong>: Wazuh.</li>
+<li>Save.</li>
+</ol>
+<h3 id="e-enable-remote-logging"><strong>E. Enable Remote
+Logging</strong></h3>
+<ol type="1">
+<li>Go to <strong>Status → System Logs → Settings</strong>.</li>
+<li>Enable <strong>BSD RFC 3164</strong> format.</li>
+<li>Check <strong>Enable sending log messages to remote
+syslog</strong>.</li>
+<li><strong>Source Address</strong>: LAN interface.</li>
+<li><strong>Destination IP</strong>: <code>192.168.100.103</code>
+(AllSafe Edge WAN).</li>
+<li><strong>Port</strong>: 514.</li>
+<li>Select log categories (initially send everything).</li>
+<li>Save.</li>
+</ol>
+<hr />
+<h3 id="5-step-3--configure-wazuh-manager-to-accept-syslog"><strong>5.
+Step 3 – Configure Wazuh Manager to Accept Syslog</strong></h3>
+<ol type="1">
+<li><p>In Wazuh UI, go to <strong>Server Management → Settings → Edit
+Configuration</strong>.</p></li>
+<li><p>Add a <code>&lt;remote&gt;</code> block:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">remote</span>&gt;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">connection</span>&gt;syslog&lt;/<span class="kw">connection</span>&gt;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">port</span>&gt;514&lt;/<span class="kw">port</span>&gt;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">protocol</span>&gt;udp&lt;/<span class="kw">protocol</span>&gt;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">allowed-ips</span>&gt;192.168.100.0/24&lt;/<span class="kw">allowed-ips</span>&gt;</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">remote</span>&gt;</span></code></pre></div>
+<ul>
+<li>Allows all devices in <code>192.168.100.0/24</code> to send
+Syslog.</li>
+</ul></li>
+<li><p>Save changes.</p></li>
+<li><p>Restart the Wazuh Manager.</p></li>
+</ol>
+<hr />
+<h3 id="6-step-4--verification"><strong>6. Step 4 –
+Verification</strong></h3>
+<h3 id="a-from-the-wazuh-server"><strong>A. From the Wazuh
+Server</strong></h3>
+<ol type="1">
+<li><p>SSH into the Wazuh server.</p></li>
+<li><p>Run:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tcpdump</span> <span class="at">-i</span> any port 514</span></code></pre></div></li>
+<li><p>Confirm you see incoming Syslog events from Ecoin Edge.</p></li>
+</ol>
+<h3 id="b-from-wazuh-ui"><strong>B. From Wazuh UI</strong></h3>
+<ol type="1">
+<li>Go to <strong>Discover → Index: Wazuh Archives</strong>.</li>
+<li>Search for <code>pfSense</code>.</li>
+<li>Confirm Syslog entries from Ecoin Edge are present.</li>
+</ol>
+<p><img
+src="Sending%20Syslog%20Events%20From%20ECOIN%20Edge/image%201.png"
+alt="image.png" /></p>
+<hr />
+<h3 id="7-step-5--optimize-log-forwarding"><strong>7. Step 5 – Optimize
+Log Forwarding</strong></h3>
+<ul>
+<li>Initially, all logs were forwarded.</li>
+<li>For efficiency, forward <strong>only firewall events</strong>:
+<ol type="1">
+<li>In pfSense: <strong>Status → System Logs → Settings</strong>.</li>
+<li>Under remote forwarding, select <strong>Firewall Events</strong>
+only.</li>
+<li>Save.</li>
+</ol></li>
+</ul>
+<hr />
+<h3 id="8-final-checklist"><strong>8. Final Checklist</strong></h3>
+<p>✅ AllSafe Edge forwards UDP 514 to Wazuh.</p>
+<p>✅ Ecoin Edge sends firewall Syslog events via syslog-ng.</p>
+<p>✅ Wazuh Manager receives and parses logs.</p>
+<p>✅ Verified via <code>tcpdump</code> and Wazuh UI search.</p>
 </section>
 </div>

@@ -3,7 +3,6 @@ layout: default
 title: "Privilege Escalation"
 permalink: /solo-purple-teaming/privilege-escalation/
 ---
-
 <link rel="stylesheet" href="/assets/css/solo-purple-teaming.css">
 
 <div class="spt-page">
@@ -13,170 +12,188 @@ permalink: /solo-purple-teaming/privilege-escalation/
 <h1>Privilege Escalation</h1>
 </section>
 <section class="spt-content">
-
-Owner: Mike Sterrett
-
-### **1. Understanding Privilege Escalation**
-
-- **Definition**: Gaining higher permissions than initially granted (e.g., from standard user to Administrator or SYSTEM).
-- **Scenario**: We start with **medium integrity level** as `rlynn` (Rachel Lynn) and aim to escalate.
-- **Purpose for Solo Purple Teaming**:
-    - Test detection of privilege escalation.
-    - Bridge from initial access to more impactful actions.
-    - Enable lateral movement and persistence.
-
----
-
-### **2. Types of Privilege Escalation**
-
-- **Vertical Escalation**:
-    - From standard user → Administrator.
-    - Primary goal: unlock broader control.
-- **Horizontal Escalation**:
-    - Same privilege level, different accounts.
-    - Useful for evasion or alternate data access.
-
----
-
-### **3. Common Privilege Escalation Techniques**
-
-We focus on **misconfigured services** for this lab, but others include:
-
-- **Unquoted service paths**
-- **DLL hijacking/sideloading**
-- **Insecure token handling** (e.g., `SeImpersonatePrivilege`)
-- **UAC bypass**
-- **Credential harvesting** (`LSASS`, SAM, DPAPI secrets)
-
----
-
-### **4. Lab Goal**
-
-We’ll:
-
-1. Install the **Mythic service_wrapper agent**.
-2. Attempt privilege escalation via a **vulnerable service**.
-3. Discover Defender detection.
-4. Write our **own custom service wrapper** to evade detection.
-
----
-
-### **5. Installing Service Wrapper in Mythic**
-
-1. SSH into Kali host and run these commands:
-    
-    ```bash
-    cd /opt/mythic/mythic
-    sudo ./mythic_cli install github https://github.com/MythicAgents/service_wrapper
-    
-    ```
-    
-2. Update if prompted.
-3. Disconnect from internet to avoid payload signature submissions.
-
----
-
-### **6. Generating the Payload**
-
-1. **In Mythic UI** → Payloads → Generate new payload.
-2. Agent: **Apollo**, Type: **Shellcode** (binary format).
-3. Commands: Move all over → Next.
-4. C2 Profile: **HTTP**.
-5. Callback Host: **WAN IP** (e.g., `192.168.100.101`).
-6. Output name: `apollo.bin`.
-
----
-
-### **7. Creating the Service Wrapper Payload**
-
-1. Payload Type: **Windows**, Framework: `.NET 4.0`, Arch: `x64`.
-2. Select the shellcode payload.
-3. Name: `apollo_service_wrapped.exe`.
-4. Download and stage the payload on the Kali host.
-
----
-
-### **8. Detection by Defender**
-
-- Attempting to run `apollo_service_wrapped.exe` triggers **Windows Defender detection**.
-- **Reason**: Service wrapper uses suspicious API calls (`VirtualProtect`, `VirtualUnlock`) linked to shellcode injection.
-- **Next Step**: Build a custom wrapper to avoid detection.
-
----
-
-### **9. Writing a Custom Service Wrapper**
-
-**On Reverse Engineering VM:**
-
-1. Open Visual Studio → New Project → Windows Service (.NET Framework).
-2. Name: `ecoin_sync`.
-3. **In `Service1.cs`**:
-    - Add a background thread in `OnStart`.
-    - Create `DoWork()` method to:
-        - Launch `powershell.exe`.
-        - Run `Apollo.exe` from Downloads.
-        - Hide window, redirect output.
-        - Keep service alive with loop.
-4. **OnStop()**:
-    - Abort the worker thread if running.
-5. Build solution:
-    - Platform: `x64`, Configuration: `Release`.
-6. Stage to Downloads folder on Kali:
-    
-    ```bash
-    scp ecoin_sync.exe user@staging_server:/downloads
-    
-    ```
-    
-
----
-
-### **10. Deploying the Custom Wrapper**
-
-1. In Mythic, confirm **PowerShell command** is available.
-2. Use PowerShell `Invoke-WebRequest` to download `Apollo.exe` and `ecoin_sync.exe` to the target’s `Downloads` or `Desktop`.
-3. Rename existing service binary to preserve it.
-4. Replace with malicious `ecoin_sync.exe`.
-
----
-
-### **11. Starting the Service**
-
-1. Query service status:
-    
-    ```bash
-    shell sc query ecoin_sync
-    
-    ```
-    
-2. Start service:
-    
-    ```bash
-    shell sc start ecoin_sync
-    
-    ```
-    
-3. **Result**: New Mythic callback appears as `SVC_ecoin_sync` with **high integrity** privileges.
-
----
-
-### **12. Verification**
-
-- Check **metadata** in Mythic for `Elevation Level = High`.
-- We now have **Administrator-level access**.
-
----
-
-### **Key Takeaways**
-
-- Privilege escalation is critical for expanding attacker capabilities.
-- Defender detections often focus on injection-related API calls.
-- Custom tools can bypass default detections.
-- Always test both offensive execution and defensive telemetry.
-
----
-
-**Next Lecture Preview**: We’ll set up telemetry collection with Wazuh and begin building detections for privilege escalation activity.
-
+<p>Owner: Mike Sterrett</p>
+<h3 id="1-understanding-privilege-escalation"><strong>1. Understanding
+Privilege Escalation</strong></h3>
+<ul>
+<li><strong>Definition</strong>: Gaining higher permissions than
+initially granted (e.g., from standard user to Administrator or
+SYSTEM).</li>
+<li><strong>Scenario</strong>: We start with <strong>medium integrity
+level</strong> as <code>rlynn</code> (Rachel Lynn) and aim to
+escalate.</li>
+<li><strong>Purpose for Solo Purple Teaming</strong>:
+<ul>
+<li>Test detection of privilege escalation.</li>
+<li>Bridge from initial access to more impactful actions.</li>
+<li>Enable lateral movement and persistence.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="2-types-of-privilege-escalation"><strong>2. Types of Privilege
+Escalation</strong></h3>
+<ul>
+<li><strong>Vertical Escalation</strong>:
+<ul>
+<li>From standard user → Administrator.</li>
+<li>Primary goal: unlock broader control.</li>
+</ul></li>
+<li><strong>Horizontal Escalation</strong>:
+<ul>
+<li>Same privilege level, different accounts.</li>
+<li>Useful for evasion or alternate data access.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="3-common-privilege-escalation-techniques"><strong>3. Common
+Privilege Escalation Techniques</strong></h3>
+<p>We focus on <strong>misconfigured services</strong> for this lab, but
+others include:</p>
+<ul>
+<li><strong>Unquoted service paths</strong></li>
+<li><strong>DLL hijacking/sideloading</strong></li>
+<li><strong>Insecure token handling</strong> (e.g.,
+<code>SeImpersonatePrivilege</code>)</li>
+<li><strong>UAC bypass</strong></li>
+<li><strong>Credential harvesting</strong> (<code>LSASS</code>, SAM,
+DPAPI secrets)</li>
+</ul>
+<hr />
+<h3 id="4-lab-goal"><strong>4. Lab Goal</strong></h3>
+<p>We’ll:</p>
+<ol type="1">
+<li>Install the <strong>Mythic service_wrapper agent</strong>.</li>
+<li>Attempt privilege escalation via a <strong>vulnerable
+service</strong>.</li>
+<li>Discover Defender detection.</li>
+<li>Write our <strong>own custom service wrapper</strong> to evade
+detection.</li>
+</ol>
+<hr />
+<h3 id="5-installing-service-wrapper-in-mythic"><strong>5. Installing
+Service Wrapper in Mythic</strong></h3>
+<ol type="1">
+<li><p>SSH into Kali host and run these commands:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /opt/mythic/mythic</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic_cli install github https://github.com/MythicAgents/service_wrapper</span></code></pre></div></li>
+<li><p>Update if prompted.</p></li>
+<li><p>Disconnect from internet to avoid payload signature
+submissions.</p></li>
+</ol>
+<hr />
+<h3 id="6-generating-the-payload"><strong>6. Generating the
+Payload</strong></h3>
+<ol type="1">
+<li><strong>In Mythic UI</strong> → Payloads → Generate new
+payload.</li>
+<li>Agent: <strong>Apollo</strong>, Type: <strong>Shellcode</strong>
+(binary format).</li>
+<li>Commands: Move all over → Next.</li>
+<li>C2 Profile: <strong>HTTP</strong>.</li>
+<li>Callback Host: <strong>WAN IP</strong> (e.g.,
+<code>192.168.100.101</code>).</li>
+<li>Output name: <code>apollo.bin</code>.</li>
+</ol>
+<hr />
+<h3 id="7-creating-the-service-wrapper-payload"><strong>7. Creating the
+Service Wrapper Payload</strong></h3>
+<ol type="1">
+<li>Payload Type: <strong>Windows</strong>, Framework:
+<code>.NET 4.0</code>, Arch: <code>x64</code>.</li>
+<li>Select the shellcode payload.</li>
+<li>Name: <code>apollo_service_wrapped.exe</code>.</li>
+<li>Download and stage the payload on the Kali host.</li>
+</ol>
+<hr />
+<h3 id="8-detection-by-defender"><strong>8. Detection by
+Defender</strong></h3>
+<ul>
+<li>Attempting to run <code>apollo_service_wrapped.exe</code> triggers
+<strong>Windows Defender detection</strong>.</li>
+<li><strong>Reason</strong>: Service wrapper uses suspicious API calls
+(<code>VirtualProtect</code>, <code>VirtualUnlock</code>) linked to
+shellcode injection.</li>
+<li><strong>Next Step</strong>: Build a custom wrapper to avoid
+detection.</li>
+</ul>
+<hr />
+<h3 id="9-writing-a-custom-service-wrapper"><strong>9. Writing a Custom
+Service Wrapper</strong></h3>
+<p><strong>On Reverse Engineering VM:</strong></p>
+<ol type="1">
+<li><p>Open Visual Studio → New Project → Windows Service (.NET
+Framework).</p></li>
+<li><p>Name: <code>ecoin_sync</code>.</p></li>
+<li><p><strong>In <code>Service1.cs</code></strong>:</p>
+<ul>
+<li>Add a background thread in <code>OnStart</code>.</li>
+<li>Create <code>DoWork()</code> method to:
+<ul>
+<li>Launch <code>powershell.exe</code>.</li>
+<li>Run <code>Apollo.exe</code> from Downloads.</li>
+<li>Hide window, redirect output.</li>
+<li>Keep service alive with loop.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>OnStop()</strong>:</p>
+<ul>
+<li>Abort the worker thread if running.</li>
+</ul></li>
+<li><p>Build solution:</p>
+<ul>
+<li>Platform: <code>x64</code>, Configuration:
+<code>Release</code>.</li>
+</ul></li>
+<li><p>Stage to Downloads folder on Kali:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> ecoin_sync.exe user@staging_server:/downloads</span></code></pre></div></li>
+</ol>
+<hr />
+<h3 id="10-deploying-the-custom-wrapper"><strong>10. Deploying the
+Custom Wrapper</strong></h3>
+<ol type="1">
+<li>In Mythic, confirm <strong>PowerShell command</strong> is
+available.</li>
+<li>Use PowerShell <code>Invoke-WebRequest</code> to download
+<code>Apollo.exe</code> and <code>ecoin_sync.exe</code> to the target’s
+<code>Downloads</code> or <code>Desktop</code>.</li>
+<li>Rename existing service binary to preserve it.</li>
+<li>Replace with malicious <code>ecoin_sync.exe</code>.</li>
+</ol>
+<hr />
+<h3 id="11-starting-the-service"><strong>11. Starting the
+Service</strong></h3>
+<ol type="1">
+<li><p>Query service status:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">shell</span> sc query ecoin_sync</span></code></pre></div></li>
+<li><p>Start service:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">shell</span> sc start ecoin_sync</span></code></pre></div></li>
+<li><p><strong>Result</strong>: New Mythic callback appears as
+<code>SVC_ecoin_sync</code> with <strong>high integrity</strong>
+privileges.</p></li>
+</ol>
+<hr />
+<h3 id="12-verification"><strong>12. Verification</strong></h3>
+<ul>
+<li>Check <strong>metadata</strong> in Mythic for
+<code>Elevation Level = High</code>.</li>
+<li>We now have <strong>Administrator-level access</strong>.</li>
+</ul>
+<hr />
+<h3 id="key-takeaways"><strong>Key Takeaways</strong></h3>
+<ul>
+<li>Privilege escalation is critical for expanding attacker
+capabilities.</li>
+<li>Defender detections often focus on injection-related API calls.</li>
+<li>Custom tools can bypass default detections.</li>
+<li>Always test both offensive execution and defensive telemetry.</li>
+</ul>
+<hr />
+<p><strong>Next Lecture Preview</strong>: We’ll set up telemetry
+collection with Wazuh and begin building detections for privilege
+escalation activity.</p>
 </section>
 </div>
