@@ -17,7 +17,7 @@ permalink: /solo-purple-teaming/testing-apollo-on-assumed-breach-host/
 Recap</strong></h3>
 <p>Before generating the payload, understand your lab network
 layout:</p>
-<p><img src="/_assets/testing-apollo-on-assumed-breach-host/image.png"
+<p><img src="/assets/images/solo-purple-teaming/testing-apollo-on-assumed-breach-host/image.png"
 alt="image.png" /></p>
 <ul>
 <li><strong>Attack LAN</strong>
@@ -62,7 +62,7 @@ Defender bypass.</li>
 <h3 id="3-check-firewall--port-forwarding-rules"><strong>3. Check
 Firewall &amp; Port Forwarding Rules</strong></h3>
 <p><img
-src="/_assets/testing-apollo-on-assumed-breach-host/image%201.png"
+src="/assets/images/solo-purple-teaming/testing-apollo-on-assumed-breach-host/image%201.png"
 alt="image.png" /></p>
 <p>On the <strong>Attack LAN pfSense</strong>:</p>
 <ul>

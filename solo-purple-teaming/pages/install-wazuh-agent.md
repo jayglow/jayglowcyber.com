@@ -41,7 +41,7 @@ Wazuh server.</li>
 </ol></li>
 </ul></li>
 </ul>
-<p><img src="/_assets/install-wazuh-agent/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/install-wazuh-agent/image.png" alt="image.png" /></p>
 <hr />
 <h2 id="2-accessing-the-wazuh-dashboard">2. <strong>Accessing the Wazuh
 Dashboard</strong></h2>
@@ -50,7 +50,7 @@ Dashboard</strong></h2>
 <li>Locate and click <strong>"Deploy new agent"</strong> in the top-left
 corner.</li>
 </ol>
-<p><img src="/_assets/install-wazuh-agent/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/install-wazuh-agent/image%201.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="3-configuring-the-agent">3. <strong>Configuring the
@@ -69,13 +69,13 @@ device:</p>
 </ul></li>
 <li><p>Leave all other settings at their defaults.</p></li>
 </ol>
-<p><img src="/_assets/install-wazuh-agent/image%202.png"
+<p><img src="/assets/images/solo-purple-teaming/install-wazuh-agent/image%202.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Copy the <strong>PowerShell installation command</strong>
 provided.</li>
 </ol>
-<p><img src="/_assets/install-wazuh-agent/image%203.png"
+<p><img src="/assets/images/solo-purple-teaming/install-wazuh-agent/image%203.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="4-installing-the-agent-on-the-assumed-breach-host">4.
@@ -88,7 +88,7 @@ alt="image.png" /></p>
 <li>Paste the copied PowerShell command and press
 <strong>Enter</strong>.</li>
 </ol>
-<p><img src="/_assets/install-wazuh-agent/image%204.png"
+<p><img src="/assets/images/solo-purple-teaming/install-wazuh-agent/image%204.png"
 alt="image.png" /></p>
 <ul>
 <li><p><strong>Note</strong>: Your lab must have <strong>Internet
@@ -117,7 +117,7 @@ Check-In</strong></h2>
 Agent Management → Summary
 </li>
 </ol>
-<p><img src="/_assets/install-wazuh-agent/image%205.png"
+<p><img src="/assets/images/solo-purple-teaming/install-wazuh-agent/image%205.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Verify that the <strong>Ecoin wrk-rlin</strong> host appears as
@@ -129,7 +129,7 @@ alt="image.png" /></p>
 </ol>
 <p>If you see the agent reporting in, your installation and port
 forwarding setup are working correctly.</p>
-<p><img src="/_assets/install-wazuh-agent/image%206.png"
+<p><img src="/assets/images/solo-purple-teaming/install-wazuh-agent/image%206.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="7-lab-completion-check">7. <strong>Lab Completion

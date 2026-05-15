@@ -39,7 +39,7 @@ skills.</li>
 cloud—can dictate compatibility and stealth of certain frameworks.</li>
 </ul>
 <h1 id="mythic-c2-framework">Mythic C2 Framework</h1>
-<p><img src="/_assets/supplement-choosing-c2-framework/image.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-choosing-c2-framework/image.png"
 alt="image.png" /></p>
 <p><strong>Mythic</strong> is a multiplayer command and control platform
 for red teaming. Designed for
@@ -59,7 +59,7 @@ fly.</p>
 <li><a href="https://github.com/its-a-feature/Mythic">Mythic
 GitHub</a></li>
 </ul>
-<p><img src="/_assets/supplement-choosing-c2-framework/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-choosing-c2-framework/image%201.png"
 alt="image.png" /></p>
 <p>Apollo is a Windows agent written in C# using the 4.0 .NET Framework.
 Key Features</p>

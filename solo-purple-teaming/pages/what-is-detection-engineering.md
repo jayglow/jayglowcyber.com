@@ -25,7 +25,7 @@ resilient</strong>.</p>
 <hr />
 <h3 id="2-what-is-detection-engineering"><strong>2. What is Detection
 Engineering?</strong></h3>
-<p><img src="/_assets/what-is-detection-engineering/image.png"
+<p><img src="/assets/images/solo-purple-teaming/what-is-detection-engineering/image.png"
 alt="image.png" /></p>
 <p>Detection engineering:</p>
 <ul>

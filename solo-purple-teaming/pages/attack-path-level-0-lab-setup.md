@@ -26,7 +26,7 @@ complete understanding of offensive tactics and defensive detection.</p>
 <li>What comes next in the setup process</li>
 </ul>
 <hr />
-<p><img src="/_assets/attack-path-level-0-lab-setup/image.png"
+<p><img src="/assets/images/solo-purple-teaming/attack-path-level-0-lab-setup/image.png"
 alt="image.png" /></p>
 <h2 id="1-purpose-of-the-lab"><strong>1. Purpose of the
 Lab</strong></h2>

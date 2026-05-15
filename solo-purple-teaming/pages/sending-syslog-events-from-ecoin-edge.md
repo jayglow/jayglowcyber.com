@@ -29,7 +29,7 @@ location.</li>
 detection strategies.</li>
 </ul></li>
 </ul>
-<p><img src="/_assets/sending-syslog-events-from-ecoin-edge/image.png"
+<p><img src="/assets/images/solo-purple-teaming/sending-syslog-events-from-ecoin-edge/image.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="2-steps-overview"><strong>2. Steps Overview</strong></h3>
@@ -158,7 +158,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
 <li>Confirm Syslog entries from Ecoin Edge are present.</li>
 </ol>
 <p><img
-src="/_assets/sending-syslog-events-from-ecoin-edge/image%201.png"
+src="/assets/images/solo-purple-teaming/sending-syslog-events-from-ecoin-edge/image%201.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="7-step-5--optimize-log-forwarding"><strong>7. Step 5 – Optimize

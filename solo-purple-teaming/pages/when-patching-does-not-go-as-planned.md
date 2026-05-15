@@ -128,7 +128,7 @@ AttachDebuggerTest.exe
 <li><p>Open <strong>System Informer</strong> (or Process
 Hacker).</p></li>
 </ol>
-<p><img src="/_assets/when-patching-does-not-go-as-planned/image.png"
+<p><img src="/assets/images/solo-purple-teaming/when-patching-does-not-go-as-planned/image.png"
 alt="image.png" /></p>
 <p>As seen above: <code>amsi.dll</code> is <strong>not loaded</strong>
 initially.</p>
@@ -136,7 +136,7 @@ initially.</p>
 <li>Run the script. AMSI will now be loaded.</li>
 </ol>
 <p><img
-src="/_assets/when-patching-does-not-go-as-planned/image%201.png"
+src="/assets/images/solo-purple-teaming/when-patching-does-not-go-as-planned/image%201.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>The patch executes, attempting to overwrite
@@ -148,7 +148,7 @@ alt="image.png" /></p>
 <p>"Defender just blocked our patch."</p>
 </blockquote>
 <p><img
-src="/_assets/when-patching-does-not-go-as-planned/image%202.png"
+src="/assets/images/solo-purple-teaming/when-patching-does-not-go-as-planned/image%202.png"
 alt="image.png" /></p>
 <p>After running the patch:</p>
 <ul>
@@ -157,7 +157,7 @@ History</strong>.</li>
 <li>Notice how the patching behavior was detected.</li>
 </ul>
 <p><img
-src="/_assets/when-patching-does-not-go-as-planned/image%203.png"
+src="/assets/images/solo-purple-teaming/when-patching-does-not-go-as-planned/image%203.png"
 alt="image.png" /></p>
 <blockquote>
 <p>This demonstrates that while the technique works in theory, it has

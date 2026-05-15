@@ -28,7 +28,7 @@ call <strong>solo purple teaming</strong>.</p>
 <h1 id="phases-of-solo-purple-teaming">Phases of Solo Purple
 Teaming</h1>
 <p><img
-src="/_assets/walkthrough-what-is-solo-purple-teaming/image.png"
+src="/assets/images/solo-purple-teaming/walkthrough-what-is-solo-purple-teaming/image.png"
 alt="image.png" /></p>
 <h2 id="layout"><strong>Layout</strong></h2>
 <ul>

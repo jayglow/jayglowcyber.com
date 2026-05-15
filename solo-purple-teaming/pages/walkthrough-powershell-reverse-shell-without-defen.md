@@ -175,36 +175,36 @@ id="make-sure-to-turn-off-realtime-protection-cloud-submissions-and-automatic-sa
 Sure to Turn Off Realtime Protection, Cloud Submissions, and Automatic
 Sample Submission</h2>
 <p><img
-src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image.png"
+src="/assets/images/solo-purple-teaming/walkthrough-powershell-reverse-shell-without-defen/image.png"
 alt="image.png" /></p>
 <h2 id="setup-your-listener-using-netcat">Setup Your Listener Using
 Netcat</h2>
 <div class="sourceCode" id="cb11"><pre
 class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nc <span class="op">-</span>nvlp <span class="dv">4242</span></span></code></pre></div>
 <p><img
-src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%201.png"
+src="/assets/images/solo-purple-teaming/walkthrough-powershell-reverse-shell-without-defen/image%201.png"
 alt="image.png" /></p>
 <h2 id="run-your-payload-using-powershell">Run Your Payload Using
 PowerShell</h2>
 <p><img
-src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%202.png"
+src="/assets/images/solo-purple-teaming/walkthrough-powershell-reverse-shell-without-defen/image%202.png"
 alt="image.png" /></p>
 <h2 id="check-for-reverse-connection-on-attacker-kali-host">Check For
 Reverse Connection on Attacker Kali Host</h2>
 <p><img
-src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%203.png"
+src="/assets/images/solo-purple-teaming/walkthrough-powershell-reverse-shell-without-defen/image%203.png"
 alt="image.png" /></p>
 <h2 id="test-command-execution">Test Command Execution</h2>
 <p><img
-src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%204.png"
+src="/assets/images/solo-purple-teaming/walkthrough-powershell-reverse-shell-without-defen/image%204.png"
 alt="image.png" /></p>
 <h2 id="enable-realtime-protection-and-repeat-the-process">Enable
 Realtime Protection and Repeat the Process</h2>
 <p><img
-src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%205.png"
+src="/assets/images/solo-purple-teaming/walkthrough-powershell-reverse-shell-without-defen/image%205.png"
 alt="image.png" /></p>
 <p><img
-src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%206.png"
+src="/assets/images/solo-purple-teaming/walkthrough-powershell-reverse-shell-without-defen/image%206.png"
 alt="image.png" /></p>
 <h3
 id="what-do-you-think-causes-the-this-script-contains-malicious-content-and-has-been-blocked-by-your-antivirus-software-message">What

@@ -23,7 +23,7 @@ case smart screen.exe, and injects a CLR loader that reflective loads
 the assembly identified by the passed argument and executes. Named pipes
 are used for IPC and since Apollo uses pipe security, the transport is
 brokered through SMB involving the System process.</p>
-<p><img src="/_assets/building-detections-for-iwr-and-runmru/image.png"
+<p><img src="/assets/images/solo-purple-teaming/building-detections-for-iwr-and-runmru/image.png"
 alt="image.png" /></p>
 <h2 id="improving-invoke-webrequest-detection">Improving
 Invoke-WebRequest Detection</h2>

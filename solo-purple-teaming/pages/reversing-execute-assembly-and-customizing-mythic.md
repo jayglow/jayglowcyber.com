@@ -14,10 +14,10 @@ permalink: /solo-purple-teaming/reversing-execute-assembly-and-customizing-mythi
 <section class="spt-content">
 <h2 id="current-ioc-diagram">Current IOC Diagram</h2>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image.png"
 alt="image.png" /></p>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%201.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%201.png"
 alt="image.png" /></p>
 <p>We have determined that when we run our malicious PowerShell command
 via the run dialog, Explorer.exe spawns a PowerShell process that
@@ -38,7 +38,7 @@ id="all-c2-profiles-and-payload-types-are-installed-in-installservices">All
 C2 Profiles and Payload Types are installed in
 <mythic install directory>/InstallServices.</h3>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%202.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%202.png"
 alt="image.png" /></p>
 <h3
 id="looking-inside-apollo-we-see-the-dockerfile-and-the-mainpy-file-along-with-another-directory-named-apollo">Looking
@@ -46,7 +46,7 @@ inside apollo, we see the Dockerfile and the <a
 href="http://main.py">main.py</a> file along with another directory
 named apollo</h3>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%203.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%203.png"
 alt="image.png" /></p>
 <p>The <code>Mythic/InstalledServices/[agent name]</code> folder is
 mapped to <code>/Mythic</code> in the docker container. Editing the
@@ -61,14 +61,14 @@ lectures, along with another folder named <code>mythic</code>.
 The <code>mythic</code> directory contains all the code required for the
 Mythic framework.</h3>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%204.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%204.png"
 alt="image.png" /></p>
 <h3
 id="inside-the-mythic-folder-is-the-agent_functions-and-browser_scripts-directories">Inside
 the mythic folder is the agent_functions and browser_scripts
 directories</h3>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%205.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%205.png"
 alt="image.png" /></p>
 <h3
 id="the-agent_functions-directory-holds-all-of-the-python-scripts-for-the-various-commands-that-apollo-implements-including-execute_assemblypy">The
@@ -76,12 +76,12 @@ agent_functions directory holds all of the python scripts for the
 various commands that Apollo implements including
 execute_assembly.py</h3>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%206.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%206.png"
 alt="image.png" /></p>
 <p>Inside execute_assembly.py, we can add additional command parameters
 which are defined in the <strong>init</strong> function:</p>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%207.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%207.png"
 alt="image.png" /></p>
 <p>Add another CommandParameter for PipeName. The name we set for this
 CommandParemter is very important since it is referenced later in the
@@ -119,13 +119,13 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a hr
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pipe_name <span class="op">==</span> <span class="st">""</span> <span class="kw">or</span> pipe_name <span class="kw">is</span> <span class="va">None</span>:</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    taskData.args.set_arg(<span class="st">"pipe_name"</span>, <span class="bu">str</span>(uuid4()))</span></code></pre></div>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%208.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%208.png"
 alt="image.png" /></p>
 <h2 id="coding-challenge">Coding Challenge</h2>
 <p>Write the code to update display in mythic to show the pipe name
 parameter if set.</p>
 <p><img
-src="/_assets/reversing-execute-assembly-and-customizing-mythic/image%209.png"
+src="/assets/images/solo-purple-teaming/reversing-execute-assembly-and-customizing-mythic/image%209.png"
 alt="image.png" /></p>
 <h2 id="full-code-for-customized-execute_assemblypy">Full Code for
 Customized execute_assembly.py</h2>

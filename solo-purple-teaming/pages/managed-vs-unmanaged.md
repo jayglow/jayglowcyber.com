@@ -112,7 +112,7 @@ project</li>
 <li>Name it something like <code>GoodbyeAMSI</code></li>
 <li>Choose <strong>.NET Framework 4.7.2</strong></li>
 </ol>
-<p><img src="/_assets/managed-vs-unmanaged/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/managed-vs-unmanaged/image.png" alt="image.png" /></p>
 <p>Once the project is set up:</p>
 <ol type="1">
 <li>Remove the default <code>using</code> statements we don’t need</li>
@@ -127,7 +127,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb1-1"><a href="
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        Console<span class="op">.</span><span class="fu">WriteLine</span><span class="op">();</span> <span class="co">// add a few new lines for spacing</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        Console<span class="op">.</span><span class="fu">WriteLine</span><span class="op">();</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
-<p><img src="/_assets/managed-vs-unmanaged/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/managed-vs-unmanaged/image%201.png"
 alt="image.png" /></p>
 <p>When we run this program, it will list all the assemblies currently
 loaded in the application domain. Since we haven’t included any extra
@@ -136,7 +136,7 @@ dependencies, you’ll likely only see:</p>
 <li><code>mscorlib</code></li>
 <li>Your own <code>GoodbyeAMSI</code> assembly</li>
 </ul>
-<p><img src="/_assets/managed-vs-unmanaged/image%202.png"
+<p><img src="/assets/images/solo-purple-teaming/managed-vs-unmanaged/image%202.png"
 alt="image.png" /></p>
 <p>This demonstrates how .NET reflects its own internal structure — and
 that’s exactly what we’ll <strong>leverage next</strong>.</p>

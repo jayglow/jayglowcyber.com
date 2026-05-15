@@ -48,7 +48,7 @@ time.</li>
 allowing threats to persist.</li>
 </ul>
 </blockquote>
-<p><img src="/_assets/balancing-accuracy-vs-coverage/image.png"
+<p><img src="/assets/images/solo-purple-teaming/balancing-accuracy-vs-coverage/image.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="3-key-metrics-for-evaluating-detections"><strong>3. Key Metrics

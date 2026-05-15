@@ -13,7 +13,7 @@ permalink: /solo-purple-teaming/supplement-what-is-amsi/
 </section>
 <section class="spt-content">
 <h1 id="supplement-what-is-amsi">Supplement: What is AMSI?</h1>
-<p><img src="/_assets/supplement-what-is-amsi/image.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-what-is-amsi/image.png"
 alt="image.png" /></p>
 <p><strong>Before bypassing AMSI, we need to understand what it is—and
 whether the operational risk of patching it is justified.</strong></p>
@@ -57,7 +57,7 @@ PowerShell Sunspaces</h2>
 href="/solo-purple-teaming/6dyrlibzgaaaabjru5erkjggg/"></a></p>
 <p><a
 href="/solo-purple-teaming/6dyrlibzgaaaabjru5erkjggg/"></a></p>
-<p><img src="/_assets/supplement-what-is-amsi/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-what-is-amsi/image%201.png"
 alt="image.png" /></p>
 <p>Before diving into AMSI, it’s important to
 understand <strong>PowerShell runspaces</strong>:</p>
@@ -115,7 +115,7 @@ context in memory).</li>
 layers to reduce detectability.</li>
 </ul></li>
 </ul>
-<p><img src="/_assets/supplement-what-is-amsi/image%202.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-what-is-amsi/image%202.png"
 alt="image.png" /></p>
 <ul>
 <li><strong>Apollo is a C#/.NET binary</strong>, which means it’s

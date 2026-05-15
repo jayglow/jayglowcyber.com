@@ -16,7 +16,7 @@ permalink: /solo-purple-teaming/mythic-tasking/
 Basics</strong></h2>
 <h3 id="1-understanding-tasking-in-mythic"><strong>1. Understanding
 Tasking in Mythic</strong></h3>
-<p><img src="/_assets/mythic-tasking/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/mythic-tasking/image.png" alt="image.png" /></p>
 <p>In Mythic, <em>tasking</em> is the process of sending commands to
 agents deployed inside the target environment.</p>
 <ul>
@@ -30,7 +30,7 @@ systems.</p></li>
 </ul>
 <p>The Mythic UI includes features that make tasking more efficient and
 safer:</p>
-<p><img src="/_assets/mythic-tasking/image%201.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/mythic-tasking/image%201.png" alt="image.png" /></p>
 <ul>
 <li><strong>Autocomplete</strong> and <strong>tool tips</strong> for
 accurate commands</li>

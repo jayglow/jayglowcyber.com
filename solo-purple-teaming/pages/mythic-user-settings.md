@@ -27,7 +27,7 @@ Mythic</strong></h3>
 <li>In this example, the instructor is logging in with a
 <strong>non-admin</strong> account to demonstrate user management.</li>
 </ul>
-<p><img src="/_assets/mythic-user-settings/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/mythic-user-settings/image.png" alt="image.png" /></p>
 <hr />
 <h3 id="2-retrieving-and-resetting-the-mythic-admin-password"><strong>2.
 Retrieving and Resetting the Mythic Admin Password</strong></h3>
@@ -44,7 +44,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 <li><p>Use the Mythic CLI to retrieve the current admin credentials:</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli config get mythic_admin</span></code></pre></div>
-<p><img src="/_assets/mythic-user-settings/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/mythic-user-settings/image%201.png"
 alt="image.png" /></p>
 <ul>
 <li>This will display:
@@ -56,7 +56,7 @@ alt="image.png" /></p>
 <li><p>To change the password, run:</p>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli config set mythic_admin_password mythicpassword</span></code></pre></div>
-<p><img src="/_assets/mythic-user-settings/image%202.png"
+<p><img src="/assets/images/solo-purple-teaming/mythic-user-settings/image%202.png"
 alt="image.png" /></p>
 <ul>
 <li>Replace <code>mythicpassword</code> with your desired password.</li>
@@ -75,7 +75,7 @@ Settings in the UI</strong></h3>
 <li>In the <strong>top right corner</strong> of the Mythic interface,
 click the <strong>person icon with a gear</strong>.</li>
 </ol>
-<p><img src="/_assets/mythic-user-settings/image%203.png"
+<p><img src="/assets/images/solo-purple-teaming/mythic-user-settings/image%203.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Click your username.
@@ -92,7 +92,7 @@ alt="image.png" /></p>
 <li>The <code>mythic_admin</code> account</li>
 <li>Your currently logged-in user</li>
 </ul>
-<p><img src="/_assets/mythic-user-settings/image%204.png"
+<p><img src="/assets/images/solo-purple-teaming/mythic-user-settings/image%204.png"
 alt="image.png" /></p></li>
 <li><p>From here, you can:</p>
 <ul>

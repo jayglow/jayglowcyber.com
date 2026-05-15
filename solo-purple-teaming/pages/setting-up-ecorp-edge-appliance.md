@@ -18,7 +18,7 @@ to our lab environment for <strong>Attack Level Zero</strong>.</p>
 <p>This will allow traffic to route from the E Corp network → through
 the E Coin network → into our simulated Internet → and finally, out to
 the real Internet.</p>
-<p><img src="/_assets/setting-up-ecorp-edge-appliance/image.png"
+<p><img src="/assets/images/solo-purple-teaming/setting-up-ecorp-edge-appliance/image.png"
 alt="image.png" /></p>
 <h2 id="lab-design"><strong>Lab Design</strong></h2>
 <ul>

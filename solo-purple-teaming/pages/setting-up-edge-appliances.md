@@ -21,7 +21,7 @@ routers—one for the <strong>Attack LAN</strong> and one for the
 Each pfSense VM will serve as a LAN gateway with <strong>static
 IPs</strong>, proper interface assignments, and Internet connectivity
 verification.</p>
-<p><img src="/_assets/setting-up-edge-appliances/image.png"
+<p><img src="/assets/images/solo-purple-teaming/setting-up-edge-appliances/image.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="desktop_computer-lab-requirements">🖥️ Lab Requirements</h2>

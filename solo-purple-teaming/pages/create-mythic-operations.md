@@ -54,7 +54,7 @@ the Mythic interface.</li>
 Operations</strong>.</li>
 </ul></li>
 </ol>
-<p><img src="/_assets/create-mythic-operations/image.png"
+<p><img src="/assets/images/solo-purple-teaming/create-mythic-operations/image.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="3-reviewing-existing-operations"><strong>3. Reviewing Existing

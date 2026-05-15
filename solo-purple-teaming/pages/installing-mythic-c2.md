@@ -42,7 +42,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <p>You don’t need to make this directory. Cloning the repo will make it,
 but I like organizing things this way.</p>
 </blockquote>
-<p><img src="/_assets/installing-mythic-c2/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image.png" alt="image.png" /></p>
 <hr />
 <h2 id="small_blue_diamond-step-2-clone-the-mythic-github-repository">🔹
 Step 2: Clone the Mythic GitHub Repository</h2>
@@ -57,7 +57,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Mythic</span></code></pre></div></li>
 </ol>
-<p><img src="/_assets/installing-mythic-c2/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%201.png"
 alt="image.png" /></p>
 <ol type="1">
 <li><p>List the contents to verify the <code>Makefile</code> is
@@ -65,7 +65,7 @@ present:</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div></li>
 </ol>
-<p><img src="/_assets/installing-mythic-c2/image%202.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%202.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="small_blue_diamond-step-3-install-docker-if-needed">🔹 Step 3:
@@ -78,7 +78,7 @@ Install Docker (If Needed)</h2>
 <li><p>Run the install script provided in the repo:</p>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./install_docker_kali.sh</span></code></pre></div>
-<p><img src="/_assets/installing-mythic-c2/image%203.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%203.png"
 alt="image.png" /></p></li>
 </ol>
 <blockquote>
@@ -104,7 +104,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="
 <blockquote>
 <p>"You should now see the mythic CLI binary in the directory."</p>
 </blockquote>
-<p><img src="/_assets/installing-mythic-c2/image%204.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%204.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="small_blue_diamond-step-5-start-mythic">🔹 Step 5: Start
@@ -124,7 +124,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="
 start them up. Wait until all Docker containers are downloaded and
 initialized.</p>
 </blockquote>
-<p><img src="/_assets/installing-mythic-c2/image%205.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%205.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="small_blue_diamond-step-6-access-the-mythic-web-ui">🔹 Step 6:
@@ -140,12 +140,12 @@ https://localhost:7443
 <li><p>If prompted, click <strong>Advanced</strong> and <strong>Accept
 the Risk</strong> (for the self-signed cert).</p></li>
 </ol>
-<p><img src="/_assets/installing-mythic-c2/image%206.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%206.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>You’ll arrive at the Mythic login page.</li>
 </ol>
-<p><img src="/_assets/installing-mythic-c2/image%207.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%207.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="small_blue_diamond-step-7-get-the-mythic-admin-password">🔹 Step
@@ -162,7 +162,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href=
 <p>The password is randomly generated. You’ll see something like
 MYTHIC_ADMIN_PASSWORD=XXXXXXXXXX.</p>
 <p>Copy this password.</p>
-<p><img src="/_assets/installing-mythic-c2/image%208.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%208.png"
 alt="image.png" /></p>
 </blockquote>
 <hr />
@@ -184,7 +184,7 @@ copied.</p>
 <p>Now we’re logged into Mythic. You can explore the UI, check out the
 documentation, and prepare for the next step.</p>
 </blockquote>
-<p><img src="/_assets/installing-mythic-c2/image%209.png"
+<p><img src="/assets/images/solo-purple-teaming/installing-mythic-c2/image%209.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="white_check_mark-final-reminder-before-the-next-lecture">✅

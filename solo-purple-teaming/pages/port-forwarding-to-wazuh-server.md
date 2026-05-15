@@ -20,7 +20,7 @@ Manager</strong>.</p>
 <hr />
 <h3 id="1-lab-network-context"><strong>1. Lab Network
 Context</strong></h3>
-<p><img src="/_assets/port-forwarding-to-wazuh-server/image.png"
+<p><img src="/assets/images/solo-purple-teaming/port-forwarding-to-wazuh-server/image.png"
 alt="image.png" /></p>
 <ul>
 <li><strong>Agent Host</strong>: <code>wrk-r-lin</code> →
@@ -79,7 +79,7 @@ Wazuh</strong></h3>
 <hr />
 <h3 id="4-creating-nat-rules"><strong>4. Creating NAT
 Rules</strong></h3>
-<p><img src="/_assets/port-forwarding-to-wazuh-server/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/port-forwarding-to-wazuh-server/image%201.png"
 alt="image.png" /></p>
 <h3 id="rule-1--port-1514"><strong>Rule 1 – Port 1514</strong></h3>
 <ol type="1">
@@ -93,7 +93,7 @@ server).</li>
 <li><strong>Verify</strong>: Confirm <code>1514</code> is mapped to
 <code>10.0.4.2:1514</code>.</li>
 </ol>
-<p><img src="/_assets/port-forwarding-to-wazuh-server/image%202.png"
+<p><img src="/assets/images/solo-purple-teaming/port-forwarding-to-wazuh-server/image%202.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="rule-2--port-1515"><strong>Rule 2 – Port 1515</strong></h3>
@@ -107,7 +107,7 @@ alt="image.png" /></p>
 <li><strong>Verify</strong>: Confirm <code>1515</code> is mapped to
 <code>10.0.4.2:1515</code>.</li>
 </ol>
-<p><img src="/_assets/port-forwarding-to-wazuh-server/image%203.png"
+<p><img src="/assets/images/solo-purple-teaming/port-forwarding-to-wazuh-server/image%203.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="rule-3--port-55000"><strong>Rule 3 – Port 55000</strong></h3>
@@ -121,7 +121,7 @@ alt="image.png" /></p>
 <li><strong>Verify</strong>: Confirm <code>55000</code> is mapped to
 <code>10.0.4.2:55000</code>.</li>
 </ol>
-<p><img src="/_assets/port-forwarding-to-wazuh-server/image%204.png"
+<p><img src="/assets/images/solo-purple-teaming/port-forwarding-to-wazuh-server/image%204.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="5-final-verification"><strong>5. Final
@@ -132,7 +132,7 @@ three port forwarding rules pointing to the Wazuh server
 (<code>10.0.4.2</code>) with the correct ports.</li>
 <li>Ensure each rule is enabled and applied.</li>
 </ul>
-<p><img src="/_assets/port-forwarding-to-wazuh-server/image%205.png"
+<p><img src="/assets/images/solo-purple-teaming/port-forwarding-to-wazuh-server/image%205.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="6-next-steps"><strong>6. Next Steps</strong></h3>

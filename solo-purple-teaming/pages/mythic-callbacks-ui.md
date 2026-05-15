@@ -34,7 +34,7 @@ process).</li>
 <hr />
 <h3 id="2-callback-lifecycle"><strong>2. Callback
 Lifecycle</strong></h3>
-<p><img src="/_assets/mythic-callbacks-ui/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/mythic-callbacks-ui/image.png" alt="image.png" /></p>
 <p>Callbacks go through a natural life cycle:</p>
 <ol type="1">
 <li><strong>Payload execution</strong> – The agent initiates its first
@@ -87,7 +87,7 @@ Callbacks</strong></h3>
 <hr />
 <h3 id="6-exploring-the-callbacks-page"><strong>6. Exploring the
 Callbacks Page</strong></h3>
-<p><img src="/_assets/mythic-callbacks-ui/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/mythic-callbacks-ui/image%201.png"
 alt="image.png" /></p>
 <ol type="1">
 <li><strong>Navigate to the Callbacks page</strong> in Mythic.</li>

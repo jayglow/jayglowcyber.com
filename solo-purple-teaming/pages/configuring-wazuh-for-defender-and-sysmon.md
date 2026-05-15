@@ -24,7 +24,7 @@ forwarding on the AllSafe edge device.</li>
 </ul></li>
 </ul>
 <p><img
-src="/_assets/configuring-wazuh-for-defender-and-sysmon/image.png"
+src="/assets/images/solo-purple-teaming/configuring-wazuh-for-defender-and-sysmon/image.png"
 alt="image.png" /></p>
 <p>Goal: Configure Wazuh agent to forward <strong>Sysmon</strong> and
 <strong>Windows Defender</strong> logs to the Wazuh server.</p>

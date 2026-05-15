@@ -18,7 +18,7 @@ permalink: /solo-purple-teaming/joining-assumed-breach-host-to-ecoin-domain/
 newly created domain account. You’ll also troubleshoot common domain
 join issues.</p>
 <p><img
-src="/_assets/joining-assumed-breach-host-to-ecoin-domain/image.png"
+src="/assets/images/solo-purple-teaming/joining-assumed-breach-host-to-ecoin-domain/image.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="step-1--review-the-network-setup"><strong>Step 1 – Review the

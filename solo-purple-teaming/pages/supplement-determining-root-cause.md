@@ -39,7 +39,7 @@ Deviation from the Baseline</h1>
 <p>When we ran our reverse shell PowerShell payload with realtime
 protection enabled, we noticed a deviation - that is a different
 outcome, from the baseline we established in the previous lecture.</p>
-<p><img src="/_assets/supplement-determining-root-cause/image.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image.png"
 alt="image.png" /></p>
 <p>Determining the root cause of this error is relatively
 straightforward. Applying a common system administration
@@ -64,17 +64,17 @@ being generated due to a specific code pattern or behavior, but also
 enhances our overall understanding of how defensive mechanisms are
 implemented at the system level.</p>
 <p>Open a PowerShell instance</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%201.png"
 alt="image.png" /></p>
 <p>Open x64dbg</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%202.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%202.png"
 alt="image.png" /></p>
 <p>Attach to the PowerShell process</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%203.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%203.png"
 alt="image.png" /></p>
 <p>When we attach a debugger to a PowerShell process, Windows Defender
 blocks the activity.</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%204.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%204.png"
 alt="image.png" /></p>
 <h1 id="use-psrunspaces-to-work-around-windows-defender">Use PSRunspaces
 to Work Around Windows Defender</h1>
@@ -108,11 +108,11 @@ functions.</li>
 <h3
 id="open-visual-studio-code-and-create-a-console-appnet-framework">Open
 Visual Studio Code and Create a Console App(.NET Framework)</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%205.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%205.png"
 alt="image.png" /></p>
 <p>Browse to and add a reference to C:\Program Files (x86)\Reference
 Assemblies\Microsoft\WindowsPowerShel\3.0\System.Management.Automation.dll</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%206.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%206.png"
 alt="image.png" /></p>
 <p>Write a program to create a PSRunspace and run the command
 “whoami”</p>
@@ -146,12 +146,12 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb1-1"><a href="
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Compile for x64 and run:</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%207.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%207.png"
 alt="image.png" /></p>
 <p>Attach to the process with x64dbg</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%208.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%208.png"
 alt="image.png" /></p>
-<p><img src="/_assets/supplement-determining-root-cause/image%209.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%209.png"
 alt="image.png" /></p>
 <h2 id="reverse-engineering-powershell">Reverse Engineering
 PowerShell</h2>
@@ -162,10 +162,10 @@ href="https://github.com/PowerShell/PowerShell">https://github.com/PowerShell/Po
 id="1-open-in-the-solution-file-with-visualstudio-and-search-the-project-for-scriptcontainedmaliciouscontent">1.
 Open in the solution file with VisualStudio and search the project for
 <code>ScriptContainedMaliciousContent</code></h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2010.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2010.png"
 alt="image.png" /></p>
 <p>You will see 4 results:</p>
-<p><img src="/_assets/supplement-determining-root-cause/image%2011.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2011.png"
 alt="image.png" /></p>
 <h3
 id="3-click-on-the-first-instance-in-compiledscriptblockcs-and-analyze-the-code-to-determine-what-is-going-on">3.
@@ -333,47 +333,47 @@ result. It's the bridge between PowerShell and the Windows Defender
 antimalware engine.</p>
 <h3 id="6-relaunch-attachdebuggertest-in-x64dbg">6. Relaunch
 AttachDebuggerTest in x64dbg</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2012.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2012.png"
 alt="image.png" /></p>
 <h3
 id="7-make-sure-x64dbg-is-in-a-running-state-and-then-press-enter-in-the-terminal-to-run-the-powershell-script-in-the-psrunspace">7.
 Make sure x64dbg is in a running state and then press enter in the
 terminal to run the PowerShell script in the PSRunspace</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2013.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2013.png"
 alt="image.png" /></p>
 <h3
 id="8-run-the-application-to-run-the-whoami-via-the-psrunspace-within-attachdebuggertest">8.
 Run the application to run the “whoami” via the PSRunspace within
 AttachDebuggerTest</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2014.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2014.png"
 alt="image.png" /></p>
 <h3
 id="9-via-the-symbols-tab-find-amsiscanbuffer-and-set-a-breakpoint">9.
 Via the Symbols tab, find AmsiScanBuffer and set a breakpoint</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2015.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2015.png"
 alt="image.png" /></p>
 <h3
 id="10-modify-attachdebuggertest-to-run-invoke-mimikatz-and-rebuild-solution">10.
 Modify AttachDebuggerTest to run “Invoke-Mimikatz” and rebuild
 solution</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2016.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2016.png"
 alt="image.png" /></p>
 <h3 id="11-relaunch-attachdebuggertest-in-x64dbg">11. Relaunch
 AttachDebuggerTest in x64dbg</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2012.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2012.png"
 alt="image.png" /></p>
 <h3
 id="11-step-through-the-program-until-you-hit-the-breakpoint-for-amsiscancontent-and-verify-invoke-mimikatz-is-being-passed-as-a-parameter">11.
 Step through the program until you hit the breakpoint for
 AmsiScanContent and verify “Invoke-Mimikatz” is being passed as a
 parameter</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2017.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2017.png"
 alt="image.png" /></p>
 <h3
 id="12-step-through-the-program-until-it-terminates-and-verify-the-parse-error-for-malicious-content-blocked-occurs">12.
 Step through the program until it terminates and verify the parse error
 for malicious content blocked occurs</h3>
-<p><img src="/_assets/supplement-determining-root-cause/image%2018.png"
+<p><img src="/assets/images/solo-purple-teaming/supplement-determining-root-cause/image%2018.png"
 alt="image.png" /></p>
 </section>
 </div>

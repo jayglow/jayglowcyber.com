@@ -18,7 +18,7 @@ strategic model developed by <strong>David Bianco</strong> to help
 security professionals understand which indicators of compromise (IOCs)
 are most valuable for defenders and most difficult for attackers to
 change.</p>
-<p><img src="/_assets/pyramid-of-pain/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/pyramid-of-pain/image.png" alt="image.png" /></p>
 <p>The pyramid organizes IOCs from <strong>easiest to hardest for
 adversaries to alter</strong>, and from <strong>least to most valuable
 for defenders</strong>.</p>

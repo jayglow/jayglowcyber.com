@@ -13,7 +13,7 @@ permalink: /solo-purple-teaming/building-the-e-corp-domain-controller/
 </section>
 <section class="spt-content">
 <h3 id="overview"><strong>Overview</strong></h3>
-<p><img src="/_assets/building-the-e-corp-domain-controller/image.png"
+<p><img src="/assets/images/solo-purple-teaming/building-the-e-corp-domain-controller/image.png"
 alt="image.png" /></p>
 <p>In this lab, we will build the <strong>ECorp Domain
 Controller</strong> (Ecorp-DC-1) and configure it with:</p>

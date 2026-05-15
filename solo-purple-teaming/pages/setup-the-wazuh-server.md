@@ -27,7 +27,7 @@ endpoints.</li>
 <strong>AllSafe</strong>.</p>
 <p>The Wazuh server will be installed in this LAN and connected via our
 pfSense Edge device.</p>
-<p><img src="/_assets/setup-the-wazuh-server/image.png"
+<p><img src="/assets/images/solo-purple-teaming/setup-the-wazuh-server/image.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="3-creating-the-wazuh-server-vm"><strong>3. Creating the Wazuh

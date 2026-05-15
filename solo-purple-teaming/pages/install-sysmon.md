@@ -13,7 +13,7 @@ permalink: /solo-purple-teaming/install-sysmon/
 </section>
 <section class="spt-content">
 <h3 id="1-lab-recap"><strong>1. Lab Recap</strong></h3>
-<p><img src="/_assets/install-sysmon/image.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/install-sysmon/image.png" alt="image.png" /></p>
 <p>Before we start installing Sysmon, here’s where we are in the
 lab:</p>
 <ul>
@@ -38,7 +38,7 @@ page</strong>.</li>
 <li>Download the latest version (at the time of recording:
 <strong>Sysmon v15.15</strong>).</li>
 </ol>
-<p><img src="/_assets/install-sysmon/image%201.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/install-sysmon/image%201.png" alt="image.png" /></p>
 <ol type="1">
 <li>Locate the downloaded file in your <strong>Downloads</strong>
 folder.</li>
@@ -121,7 +121,7 @@ Applications and Services Logs
 <li><p>Double-click <strong>Operational</strong> and confirm you see
 active Sysmon events.</p></li>
 </ol>
-<p><img src="/_assets/install-sysmon/image%202.png" alt="image.png" /></p>
+<p><img src="/assets/images/solo-purple-teaming/install-sysmon/image%202.png" alt="image.png" /></p>
 <hr />
 <h3 id="7-lab-checkpoint"><strong>7. Lab Checkpoint</strong></h3>
 <p>✅ Sysmon is now installed and logging events on the assumed breach

@@ -13,7 +13,7 @@ permalink: /solo-purple-teaming/create-vulnerable-service-binary/
 </section>
 <section class="spt-content">
 <h2 id="1-lab-context"><strong>1. Lab Context</strong></h2>
-<p><img src="/_assets/create-vulnerable-service-binary/image.png"
+<p><img src="/assets/images/solo-purple-teaming/create-vulnerable-service-binary/image.png"
 alt="image.png" /></p>
 <ul>
 <li><strong>Domains</strong>:

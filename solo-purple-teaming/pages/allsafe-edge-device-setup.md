@@ -20,7 +20,7 @@ verify connectivity, and prepare the environment for building the
 <hr />
 <h2 id="1-review-the-network-diagram"><strong>1. Review the Network
 Diagram</strong></h2>
-<p><img src="/_assets/allsafe-edge-device-setup/image.png"
+<p><img src="/assets/images/solo-purple-teaming/allsafe-edge-device-setup/image.png"
 alt="image.png" /></p>
 <p>From the diagram:</p>
 <ul>

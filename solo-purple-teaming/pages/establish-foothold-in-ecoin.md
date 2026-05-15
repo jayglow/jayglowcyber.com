@@ -16,7 +16,7 @@ permalink: /solo-purple-teaming/establish-foothold-in-ecoin/
 Access</strong></h2>
 <p>In this lab, we will simulate gaining an initial foothold on the
 <strong>assumed breach host</strong> within the Ecoin network.</p>
-<p><img src="/_assets/establish-foothold-in-ecoin/image.png"
+<p><img src="/assets/images/solo-purple-teaming/establish-foothold-in-ecoin/image.png"
 alt="image.png" /></p>
 <p><strong>Initial Access</strong> is the stage in the attack lifecycle
 where an adversary first gains entry into a target environment. This can
@@ -46,7 +46,7 @@ Context</strong></h2>
 working through the first five stages:</p>
 <p><strong>Reconnaissance → Weaponization → Delivery → Exploitation →
 Installation</strong></p>
-<p><img src="/_assets/establish-foothold-in-ecoin/image%201.png"
+<p><img src="/assets/images/solo-purple-teaming/establish-foothold-in-ecoin/image%201.png"
 alt="image.png" /></p>
 <p><strong>Your goal</strong> (both as attacker and defender) is to:</p>
 <ul>
