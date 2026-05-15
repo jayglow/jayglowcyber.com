@@ -1,0 +1,13 @@
+
+/* Solo Purple Teaming GitHub Pages conversion */
+.spt-page { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+.spt-hero { border: 1px solid rgba(168,85,247,.35); background: linear-gradient(135deg, rgba(88,28,135,.35), rgba(2,6,23,.4)); border-radius: 24px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 18px 50px rgba(0,0,0,.22); }
+.spt-kicker { color: #a78bfa; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; font-size: .85rem; margin: 0 0 .5rem; }
+.spt-hero h1 { margin-top: 0; }
+.spt-content img { max-width: 100%; height: auto; border-radius: 14px; border: 1px solid rgba(148,163,184,.25); }
+.spt-content table { width: 100%; display: block; overflow-x: auto; border-collapse: collapse; margin: 1.25rem 0; }
+.spt-content th, .spt-content td { border: 1px solid rgba(148,163,184,.28); padding: .65rem .8rem; vertical-align: top; }
+.spt-content th { background: rgba(88,28,135,.28); }
+.spt-content code { white-space: pre-wrap; }
+.spt-note { border-left: 4px solid #a78bfa; padding: .8rem 1rem; background: rgba(88,28,135,.15); border-radius: 12px; margin: 1rem 0 1.5rem; }
+.spt-back { display: inline-block; margin-bottom: 1rem; }
