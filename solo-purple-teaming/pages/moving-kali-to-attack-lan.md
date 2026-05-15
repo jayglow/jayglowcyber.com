@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/moving-kali-to-attack-lan/
 <h1>Moving Kali To Attack LAN</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1 id="introduction">Introduction</h1>
 <p>In this lesson, you will reconfigure your Kali host so it connects to
 the <strong>Attack LAN</strong> with a static IP. This allows your Kali

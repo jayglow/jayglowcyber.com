@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/setting-up-edge-appliances/
 <h1>Setting Up Edge Appliances</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1 id="wrench-setting-up-pfsense-lan-edge-devices-in-proxmox">🔧
 Setting Up pfSense LAN Edge Devices in Proxmox</h1>
 <h2 id="dart-objective">🎯 Objective</h2>
@@ -22,7 +21,7 @@ routers—one for the <strong>Attack LAN</strong> and one for the
 Each pfSense VM will serve as a LAN gateway with <strong>static
 IPs</strong>, proper interface assignments, and Internet connectivity
 verification.</p>
-<p><img src="Setting%20Up%20Edge%20Appliances/image.png"
+<p><img src="/_assets/setting-up-edge-appliances/image.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="desktop_computer-lab-requirements">🖥️ Lab Requirements</h2>

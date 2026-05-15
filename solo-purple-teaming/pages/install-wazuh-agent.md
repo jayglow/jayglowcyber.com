@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/install-wazuh-agent/
 <h1>Install Wazuh Agent</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-reviewing-the-network-setup">1. <strong>Reviewing the Network
 Setup</strong></h3>
 <p>Before installing the Wazuh agent, let’s recap the current lab
@@ -42,7 +41,7 @@ Wazuh server.</li>
 </ol></li>
 </ul></li>
 </ul>
-<p><img src="Install%20Wazuh%20Agent/image.png" alt="image.png" /></p>
+<p><img src="/_assets/install-wazuh-agent/image.png" alt="image.png" /></p>
 <hr />
 <h2 id="2-accessing-the-wazuh-dashboard">2. <strong>Accessing the Wazuh
 Dashboard</strong></h2>
@@ -51,7 +50,7 @@ Dashboard</strong></h2>
 <li>Locate and click <strong>"Deploy new agent"</strong> in the top-left
 corner.</li>
 </ol>
-<p><img src="Install%20Wazuh%20Agent/image%201.png"
+<p><img src="/_assets/install-wazuh-agent/image%201.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="3-configuring-the-agent">3. <strong>Configuring the
@@ -65,18 +64,18 @@ list.</p></li>
 Wazuh server's internal IP.</p></li>
 <li><p>Use the <strong>WAN IP address</strong> of the AllSafe Edge
 device:</p>
-<pre><code>192.168.100.103
-</code></pre></li>
+192.168.100.103
+</li>
 </ul></li>
 <li><p>Leave all other settings at their defaults.</p></li>
 </ol>
-<p><img src="Install%20Wazuh%20Agent/image%202.png"
+<p><img src="/_assets/install-wazuh-agent/image%202.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Copy the <strong>PowerShell installation command</strong>
 provided.</li>
 </ol>
-<p><img src="Install%20Wazuh%20Agent/image%203.png"
+<p><img src="/_assets/install-wazuh-agent/image%203.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="4-installing-the-agent-on-the-assumed-breach-host">4.
@@ -89,14 +88,14 @@ alt="image.png" /></p>
 <li>Paste the copied PowerShell command and press
 <strong>Enter</strong>.</li>
 </ol>
-<p><img src="Install%20Wazuh%20Agent/image%204.png"
+<p><img src="/_assets/install-wazuh-agent/image%204.png"
 alt="image.png" /></p>
 <ul>
 <li><p><strong>Note</strong>: Your lab must have <strong>Internet
 access</strong> at this point, as the installation downloads the MSI
 package from:</p>
-<pre><code>packages.wazuh.com
-</code></pre></li>
+packages.wazuh.com
+</li>
 </ul>
 <hr />
 <h2 id="5-starting-the-wazuh-service">5. <strong>Starting the Wazuh
@@ -104,8 +103,8 @@ Service</strong></h2>
 <ol type="1">
 <li><p>Once installation completes, locate the <strong>service start
 command</strong>:</p>
-<pre><code>net start WazuhSvc
-</code></pre></li>
+net start WazuhSvc
+</li>
 <li><p>Run this command in the same PowerShell window.</p></li>
 <li><p>The service should now be running.</p></li>
 </ol>
@@ -115,10 +114,10 @@ Check-In</strong></h2>
 <ol type="1">
 <li><p>Return to the <strong>Wazuh dashboard</strong>.</p></li>
 <li><p>Navigate to:</p>
-<pre><code>Agent Management → Summary
-</code></pre></li>
+Agent Management → Summary
+</li>
 </ol>
-<p><img src="Install%20Wazuh%20Agent/image%205.png"
+<p><img src="/_assets/install-wazuh-agent/image%205.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Verify that the <strong>Ecoin wrk-rlin</strong> host appears as
@@ -130,7 +129,7 @@ alt="image.png" /></p>
 </ol>
 <p>If you see the agent reporting in, your installation and port
 forwarding setup are working correctly.</p>
-<p><img src="Install%20Wazuh%20Agent/image%206.png"
+<p><img src="/_assets/install-wazuh-agent/image%206.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="7-lab-completion-check">7. <strong>Lab Completion

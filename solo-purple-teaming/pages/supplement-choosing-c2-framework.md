@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/supplement-choosing-c2-framework/
 <section class="spt-content">
 <h1 id="supplement-choosing-c2-framework">Supplement: Choosing C2
 Framework</h1>
-<p>Owner: Josh</p>
 <h1 id="factors-that-can-influence-c2-framework-choice">Factors That Can
 Influence C2 Framework Choice</h1>
 <h3 id="threat-intelligence">Threat Intelligence</h3>
@@ -40,7 +39,7 @@ skills.</li>
 cloud—can dictate compatibility and stealth of certain frameworks.</li>
 </ul>
 <h1 id="mythic-c2-framework">Mythic C2 Framework</h1>
-<p><img src="Supplement%20Choosing%20C2%20Framework/image.png"
+<p><img src="/_assets/supplement-choosing-c2-framework/image.png"
 alt="image.png" /></p>
 <p><strong>Mythic</strong> is a multiplayer command and control platform
 for red teaming. Designed for
@@ -60,7 +59,7 @@ fly.</p>
 <li><a href="https://github.com/its-a-feature/Mythic">Mythic
 GitHub</a></li>
 </ul>
-<p><img src="Supplement%20Choosing%20C2%20Framework/image%201.png"
+<p><img src="/_assets/supplement-choosing-c2-framework/image%201.png"
 alt="image.png" /></p>
 <p>Apollo is a Windows agent written in C# using the 4.0 .NET Framework.
 Key Features</p>

@@ -12,14 +12,13 @@ permalink: /solo-purple-teaming/setting-up-ecorp-edge-appliance/
 <h1>Setting Up ECORP Edge Appliance</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1 id="overview"><strong>Overview</strong></h1>
 <p>In this lecture, we will add the <strong>E Corp edge device</strong>
 to our lab environment for <strong>Attack Level Zero</strong>.</p>
 <p>This will allow traffic to route from the E Corp network → through
 the E Coin network → into our simulated Internet → and finally, out to
 the real Internet.</p>
-<p><img src="Setting%20Up%20ECORP%20Edge%20Appliance/image.png"
+<p><img src="/_assets/setting-up-ecorp-edge-appliance/image.png"
 alt="image.png" /></p>
 <h2 id="lab-design"><strong>Lab Design</strong></h2>
 <ul>
@@ -184,8 +183,8 @@ configured</strong>.</li>
 <h2 id="next-lecture-preview"><strong>Next Lecture Preview</strong></h2>
 <p>We will configure the <strong>E Corp Domain Controller</strong> with
 the IP:</p>
-<pre><code>CopyEdit
+CopyEdit
 10.0.1.2
-</code></pre>
+
 </section>
 </div>

@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/building-advanced-correlation-engine-part-3/
 <h1>Building Advanced Correlation Engine - Part 3</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="objective"><strong>Objective</strong></h2>
 <p>In this lab, we will modify our <strong>Advanced Correlation
 Engine</strong> so that correlation alerts are written to a log file in
@@ -48,7 +47,7 @@ writing</strong></h3>
 <li><p>Use Python’s <code>with open()</code> to create or append to a
 log file:</p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;correlation.json&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> log_file:</span></code></pre></div></li>
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"correlation.json"</span>, <span class="st">"a"</span>) <span class="im">as</span> log_file:</span></code></pre></div></li>
 <li><p>We are placing the log in the current directory for now
 (shortcut), though <code>/var/log</code> would be the ideal
 location.</p></li>
@@ -61,15 +60,15 @@ object</strong></h3>
 <li><p>Use <code>json.dump()</code> to write a dictionary of values:</p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>json.dump({</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;timestamp&quot;</span>: ts.isoformat(),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;processGuid&quot;</span>: guid,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ruleA&quot;</span>: rule_a,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ruleB&quot;</span>: rule_b,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;hostName&quot;</span>: host_name,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;image&quot;</span>: image,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;message&quot;</span>: <span class="ss">f&quot;Correlated possible C2 activity on host </span><span class="sc">{</span>host_name<span class="sc">}</span><span class="ss"> from image </span><span class="sc">{</span>image<span class="sc">}</span><span class="ss"> with process GUID </span><span class="sc">{</span>guid<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"timestamp"</span>: ts.isoformat(),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"processGuid"</span>: guid,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ruleA"</span>: rule_a,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ruleB"</span>: rule_b,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hostName"</span>: host_name,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"image"</span>: image,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"message"</span>: <span class="ss">f"Correlated possible C2 activity on host </span><span class="sc">{</span>host_name<span class="sc">}</span><span class="ss"> from image </span><span class="sc">{</span>image<span class="sc">}</span><span class="ss"> with process GUID </span><span class="sc">{</span>guid<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}, log_file)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>log_file.write(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div></li>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>log_file.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div></li>
 <li><p><strong>Why these fields?</strong></p>
 <ul>
 <li><code>timestamp</code> – When the alert occurred.</li>

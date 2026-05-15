@@ -15,7 +15,6 @@ permalink: /solo-purple-teaming/red-team-layout-writing-a-service-enumeration-to
 <h1
 id="red-team-layout---writing-a-service-enumeration-tool---part-2">Red
 Team Layout - Writing A Service Enumeration Tool - Part 2</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-introduction"><strong>1. Introduction</strong></h3>
 <p>In this phase, we’re expanding our custom <strong>Service
 Scan</strong> utility to retrieve the <strong>Security Descriptor
@@ -232,7 +231,7 @@ Utility</strong></h3>
 <ul>
 <li>Iterates through all services.</li>
 <li>Prints the SDDL for those accessible.</li>
-<li>Matches output from <code>sc sdshow &lt;service&gt;</code>.</li>
+<li>Matches output from <code>sc sdshow <service></code>.</li>
 </ul></li>
 </ul>
 <hr />

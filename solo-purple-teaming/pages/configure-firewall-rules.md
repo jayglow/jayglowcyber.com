@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/configure-firewall-rules/
 <h1>Configure Firewall Rules</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1 id="introduction">Introduction</h1>
 <p>In this exercise, you’ll configure <strong>port forwarding
 rules</strong> on the <strong>Attack LAN pfSense edge device</strong> so
@@ -72,8 +71,8 @@ Device IPs</strong></h2>
 pfSense Web Configurator</strong></h2>
 <ol type="1">
 <li><p>From your Kali Linux VM, open a browser and navigate to:</p>
-<pre><code>https://10.0.3.1
-</code></pre></li>
+https://10.0.3.1
+</li>
 <li><p>If this is your first login, <strong>change the default
 password</strong>.</p></li>
 <li><p>If you ever lose access, you can reset the password from the
@@ -90,8 +89,8 @@ Forwarding</strong></h2>
 interface to accept private IPs.</p>
 <ol type="1">
 <li><p>In pfSense, go to:</p>
-<pre><code>Firewall → Rules → WAN
-</code></pre></li>
+Firewall → Rules → WAN
+</li>
 <li><p>Click the <strong>gear icon</strong> on the WAN interface
 rule.</p></li>
 <li><p>Scroll down and <strong>uncheck</strong>:</p>
@@ -106,8 +105,8 @@ Changes</strong>.</p></li>
 Create the SSH Port Forward Rule (Port 22 → Kali)</strong></h2>
 <ol type="1">
 <li><p>Go to:</p>
-<pre><code>Firewall → NAT → Port Forward
-</code></pre></li>
+Firewall → NAT → Port Forward
+</li>
 <li><p>Click <strong>Add</strong>.</p></li>
 <li><p>Configure:</p>
 <ul>
@@ -148,8 +147,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="
 Create the Mythic Web UI Rule (Port 7443 → Kali)</strong></h2>
 <ol type="1">
 <li><p>In <strong>pfSense</strong>:</p>
-<pre><code>Firewall → NAT → Port Forward → Add
-</code></pre></li>
+Firewall → NAT → Port Forward → Add
+</li>
 <li><p>Configure:</p>
 <ul>
 <li><strong>Interface:</strong> WAN</li>
@@ -169,8 +168,8 @@ Access</strong></h2>
 <ol type="1">
 <li><p>Ensure Mythic is running on Kali.</p></li>
 <li><p>From an <strong>external host</strong>, go to:</p>
-<pre><code>https://192.168.100.101:7443
-</code></pre></li>
+https://192.168.100.101:7443
+</li>
 <li><p>You should see the Mythic login page.</p></li>
 </ol>
 <hr />

@@ -14,6 +14,5 @@ permalink: /solo-purple-teaming/walkthrough-bypassing-amsi-using-x64dbg/
 <section class="spt-content">
 <h1 id="walkthrough-bypassing-amsi-using-x64dbg">Walkthrough: Bypassing
 AMSI Using x64dbg</h1>
-<p>Owner: Josh</p>
 </section>
 </div>

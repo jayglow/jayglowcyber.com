@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/final-thoughts/
 <h1>Final Thoughts</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Josh</p>
 <h1
 id="congratulations-on-completing-the-solo-purple-teaming-course"><strong>Congratulations
 on completing the Solo Purple Teaming course!</strong></h1>
@@ -26,7 +25,7 @@ environment to continue building upon. Use it to refine your techniques,
 expand your knowledge, and push the boundaries of your skill set.</p>
 <p>This is just the beginning of your journey. Keep building. Keep
 learning. The sky is the limit.</p>
-<p><img src="Final%20Thoughts/image.png" alt="image.png" /></p>
+<p><img src="/_assets/final-thoughts/image.png" alt="image.png" /></p>
 <p>Whether you work on the defensive side as a blue teamer or on the
 offensive side as a red teamer, Solo Purple Teaming has direct value in
 your day-to-day responsibilities.</p>
@@ -41,7 +40,7 @@ limits of defensive capabilities.</p>
 <p>By integrating both perspectives, you become a more well-rounded
 cybersecurity professional—one who can anticipate, adapt, and outthink
 advanced threats.</p>
-<p><img src="Final%20Thoughts/image%201.png" alt="image.png" /></p>
+<p><img src="/_assets/final-thoughts/image%201.png" alt="image.png" /></p>
 <p><strong>The future of a more advanced course may depend on the
 success of this one—so stay tuned. If you found value in this course,
 consider sharing it with your friends and colleagues who might benefit

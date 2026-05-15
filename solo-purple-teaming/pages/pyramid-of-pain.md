@@ -12,14 +12,13 @@ permalink: /solo-purple-teaming/pyramid-of-pain/
 <h1>Pyramid of Pain</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="overview"><strong>Overview</strong></h3>
 <p>In this session, we explore the <strong>Pyramid of Pain</strong> — a
 strategic model developed by <strong>David Bianco</strong> to help
 security professionals understand which indicators of compromise (IOCs)
 are most valuable for defenders and most difficult for attackers to
 change.</p>
-<p><img src="Pyramid%20of%20Pain/image.png" alt="image.png" /></p>
+<p><img src="/_assets/pyramid-of-pain/image.png" alt="image.png" /></p>
 <p>The pyramid organizes IOCs from <strong>easiest to hardest for
 adversaries to alter</strong>, and from <strong>least to most valuable
 for defenders</strong>.</p>

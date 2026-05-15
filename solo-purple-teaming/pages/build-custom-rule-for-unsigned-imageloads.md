@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/build-custom-rule-for-unsigned-imageloads/
 <h1>Build Custom Rule for Unsigned ImageLoads</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-objective"><strong>1. Objective</strong></h3>
 <p>In this lecture, we’ll create a <strong>custom Wazuh rule</strong> to
 detect unsigned binaries loaded from risky locations like
@@ -107,14 +106,14 @@ double quotes, remove trailing commas).</li>
 </ol>
 <p><strong>Example Rule Structure</strong></p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">group</span><span class="ot"> name=</span><span class="st">&quot;solo_purple_teaming_c2,windows,sysmon&quot;</span>&gt;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">rule</span><span class="ot"> id=</span><span class="st">&quot;100100&quot;</span><span class="ot"> level=</span><span class="st">&quot;12&quot;</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">if_sid</span>&gt;616009&lt;/<span class="kw">if_sid</span>&gt;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">field</span><span class="ot"> name=</span><span class="st">&quot;ImageLoaded&quot;</span><span class="ot"> type=</span><span class="st">&quot;pcre2&quot;</span>&gt;^[c-zC-Z]:\\Users\\|^[c-zC-Z]:\\Windows\\Temp\\&lt;/<span class="kw">field</span>&gt;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">field</span><span class="ot"> name=</span><span class="st">&quot;Signed&quot;</span>&gt;false&lt;/<span class="kw">field</span>&gt;</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">description</span>&gt;Unsigned image loaded from user or temp directory&lt;/<span class="kw">description</span>&gt;</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">rule</span>&gt;</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">group</span>&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">group</span><span class="ot"> name=</span><span class="st">"solo_purple_teaming_c2,windows,sysmon"</span>></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">rule</span><span class="ot"> id=</span><span class="st">"100100"</span><span class="ot"> level=</span><span class="st">"12"</span>></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">if_sid</span>>616009</<span class="kw">if_sid</span>></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">field</span><span class="ot"> name=</span><span class="st">"ImageLoaded"</span><span class="ot"> type=</span><span class="st">"pcre2"</span>>^[c-zC-Z]:\\Users\\|^[c-zC-Z]:\\Windows\\Temp\\</<span class="kw">field</span>></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">field</span><span class="ot"> name=</span><span class="st">"Signed"</span>>false</<span class="kw">field</span>></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">description</span>>Unsigned image loaded from user or temp directory</<span class="kw">description</span>></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  </<span class="kw">rule</span>></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></<span class="kw">group</span>></span></code></pre></div>
 <ol type="1">
 <li>Save the rule file.</li>
 </ol>
@@ -136,8 +135,8 @@ Wazuh.</p></li>
 <li><p>Change the time filter to the <strong>last 5
 minutes</strong>.</p></li>
 <li><p>In the <strong>alerts index</strong>, filter by:</p>
-<pre><code>rule.id:100100
-</code></pre></li>
+rule.id:100100
+</li>
 <li><p>Confirm you see the event triggered by the unsigned
 binary.</p></li>
 </ol>

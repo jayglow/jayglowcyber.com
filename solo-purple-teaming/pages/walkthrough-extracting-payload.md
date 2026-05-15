@@ -14,9 +14,8 @@ permalink: /solo-purple-teaming/walkthrough-extracting-payload/
 <section class="spt-content">
 <h1 id="walkthrough-extracting-payload">Walkthrough: Extracting
 Payload</h1>
-<p>Owner: Josh</p>
 <h1 id="ioc-diagram">IOC Diagram</h1>
-<p><img src="Walkthrough%20Extracting%20Payload/image.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image.png"
 alt="image.png" /></p>
 <p>We have determined that when we run our malicious PowerShell command
 via the run dialog, Explorer.exe spawns a PowerShell process that
@@ -50,43 +49,43 @@ id="if-we-review-the-code-within-the-constructor-of-the-asyncnamedpipersever-use
 we review the code within the constructor of the AsyncNamedPiperSever,
 used for IPC by execute_assembly, we can see an instance of the
 PipeSecurity:</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%201.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%201.png"
 alt="image.png" /></p>
 <h2
 id="to-prove-our-theory-open-wireshark-on-the-assumed-breach-host-and-select-the-loopback-interface-to-start-capturing-traffic">To
 prove our theory, open Wireshark on the assumed breach host and select
 the loopback interface to start capturing traffic</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%202.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%202.png"
 alt="image.png" /></p>
 <h2 id="filter-smb--smb2">Filter SMB || SMB2</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%203.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%203.png"
 alt="image.png" /></p>
 <h2 id="use-execute_assembly">Use execute_assembly:</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%204.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%204.png"
 alt="image.png" /></p>
 <h2
 id="audit-the-captured-traffic-and-look-for-data-being-written-to-the-pipe">Audit
 the captured traffic and look for data being written to the pipe:</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%205.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%205.png"
 alt="image.png" /></p>
 <h2 id="follow-tcp-stream">Follow TCP Stream:</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%206.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%206.png"
 alt="image.png" /></p>
 <h2 id="find-chunk-1-of-7-and-copy-the-base64-data">Find chunk 1 of 7
 and copy the base64 data:</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%207.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%207.png"
 alt="image.png" /></p>
 <h2
 id="paste-the-base64-data-into-cyberchef-and-use-from-base64-to-get-a-byte-data-output-in-decimal">Paste
 the base64 data into CyberChef and use From Base64 to get a byte data
 output in decimal</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%208.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%208.png"
 alt="image.png" /></p>
 <h2
 id="copy-the-decimal-data-into-another-cyberchef-input-and-use-the-from-decimal-recipe-notice-the-mz-magic-bytes-and-the-dos-stub">Copy
 the decimal data into another CyberChef input and use the From Decimal
 Recipe. Notice the MZ magic bytes and the DOS stub:</h2>
-<p><img src="Walkthrough%20Extracting%20Payload/image%209.png"
+<p><img src="/_assets/walkthrough-extracting-payload/image%209.png"
 alt="image.png" /></p>
 <h2 id="repeat-steps-for-all-7-chunks-of-data">Repeat steps for all 7
 chunks of data</h2>

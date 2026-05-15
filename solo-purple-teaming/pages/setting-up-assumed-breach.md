@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/setting-up-assumed-breach/
 <h1>Setting Up Assumed Breach</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1 id="introduction">Introduction</h1>
 <p>In this lecture, we’ll set up the <strong>Assumed Breach
 Host</strong> for our lab environment. This host will be used to
@@ -94,8 +93,8 @@ Adjusting pfSense Edge Device Firewall Settings</strong></h2>
 private network traffic.</p>
 <ol type="1">
 <li><p>Open a browser and go to the ecoin edge device LAN interface:</p>
-<pre><code>https://10.0.2.3
-</code></pre></li>
+https://10.0.2.3
+</li>
 <li><p><strong>Accept the security warning</strong> (click
 <em>Advanced</em> → <em>Proceed</em>).</p></li>
 <li><p><strong>Log in</strong> to the pfSense web UI.</p></li>

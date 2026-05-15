@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/mythic-callbacks-ui/
 <h1>Mythic Callbacks UI</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-introduction-to-callbacks"><strong>1. Introduction to
 Callbacks</strong></h2>
 <p>Before starting enumeration on a target host, it’s important to
@@ -35,7 +34,7 @@ process).</li>
 <hr />
 <h3 id="2-callback-lifecycle"><strong>2. Callback
 Lifecycle</strong></h3>
-<p><img src="Mythic%20Callbacks%20UI/image.png" alt="image.png" /></p>
+<p><img src="/_assets/mythic-callbacks-ui/image.png" alt="image.png" /></p>
 <p>Callbacks go through a natural life cycle:</p>
 <ol type="1">
 <li><strong>Payload execution</strong> – The agent initiates its first
@@ -88,7 +87,7 @@ Callbacks</strong></h3>
 <hr />
 <h3 id="6-exploring-the-callbacks-page"><strong>6. Exploring the
 Callbacks Page</strong></h3>
-<p><img src="Mythic%20Callbacks%20UI/image%201.png"
+<p><img src="/_assets/mythic-callbacks-ui/image%201.png"
 alt="image.png" /></p>
 <ol type="1">
 <li><strong>Navigate to the Callbacks page</strong> in Mythic.</li>

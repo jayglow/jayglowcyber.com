@@ -12,9 +12,8 @@ permalink: /solo-purple-teaming/install-sysmon/
 <h1>Install Sysmon</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-lab-recap"><strong>1. Lab Recap</strong></h3>
-<p><img src="Install%20Sysmon/image.png" alt="image.png" /></p>
+<p><img src="/_assets/install-sysmon/image.png" alt="image.png" /></p>
 <p>Before we start installing Sysmon, here’s where we are in the
 lab:</p>
 <ul>
@@ -39,7 +38,7 @@ page</strong>.</li>
 <li>Download the latest version (at the time of recording:
 <strong>Sysmon v15.15</strong>).</li>
 </ol>
-<p><img src="Install%20Sysmon/image%201.png" alt="image.png" /></p>
+<p><img src="/_assets/install-sysmon/image%201.png" alt="image.png" /></p>
 <ol type="1">
 <li>Locate the downloaded file in your <strong>Downloads</strong>
 folder.</li>
@@ -74,9 +73,9 @@ Notepad</strong>.</p></li>
 <li><p><strong>Add a process creation rule</strong> to log PowerShell
 executions:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">ProcessCreate</span><span class="ot"> onmatch=</span><span class="st">&quot;include&quot;</span>&gt;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">Image</span><span class="ot"> condition=</span><span class="st">&quot;is&quot;</span>&gt;powershell.exe&lt;/<span class="kw">Image</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">ProcessCreate</span>&gt;</span></code></pre></div></li>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">ProcessCreate</span><span class="ot"> onmatch=</span><span class="st">"include"</span>></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">Image</span><span class="ot"> condition=</span><span class="st">"is"</span>>powershell.exe</<span class="kw">Image</span>></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></<span class="kw">ProcessCreate</span>></span></code></pre></div></li>
 <li><p>Save the file.</p></li>
 </ol>
 <hr />
@@ -113,16 +112,16 @@ Logging</strong></h3>
 <li><p>Still in the admin session, open <strong>Event
 Viewer</strong>.</p></li>
 <li><p>Navigate to:</p>
-<pre><code>Applications and Services Logs
+Applications and Services Logs
     └── Microsoft
         └── Windows
             └── Sysmon
                 └── Operational
-</code></pre></li>
+</li>
 <li><p>Double-click <strong>Operational</strong> and confirm you see
 active Sysmon events.</p></li>
 </ol>
-<p><img src="Install%20Sysmon/image%202.png" alt="image.png" /></p>
+<p><img src="/_assets/install-sysmon/image%202.png" alt="image.png" /></p>
 <hr />
 <h3 id="7-lab-checkpoint"><strong>7. Lab Checkpoint</strong></h3>
 <p>✅ Sysmon is now installed and logging events on the assumed breach

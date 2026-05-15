@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/blue-team-explore-hunting-for-initial-access-exe
 <section class="spt-content">
 <h1 id="blue-team-explore---hunting-for-initial-access-execution">Blue
 Team Explore - Hunting For Initial Access Execution</h1>
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-recap-of-previous-lecture"><strong>1. Recap of Previous
 Lecture</strong></h2>
 <ul>
@@ -75,8 +74,8 @@ Understanding the Run Dialog and Registry Storage</strong></h3>
 <li><p><strong>Run Dialog</strong> shows command history
 (auto-populated).</p></li>
 <li><p>Stores up to <strong>25 commands</strong> in:</p>
-<pre><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
-</code></pre>
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+
 <ul>
 <li>Keys: <code>a</code> (first command), <code>b</code> (second),
 etc.</li>
@@ -104,8 +103,8 @@ Wazuh</strong></h3>
 <li><p>Change <strong>index pattern</strong> to
 <code>wazuh-archives</code>.</p></li>
 <li><p>Search for:</p>
-<pre><code>data.win.event.image:*powershell.exe AND data.win.system.eventID:3
-</code></pre></li>
+data.win.event.image:*powershell.exe AND data.win.system.eventID:3
+</li>
 <li><p>Add <strong>Destination IP</strong> column to verify connections
 to <strong>attack infrastructure</strong>.</p></li>
 <li><p>Optionally, add <strong>Destination Port</strong> column (expect

@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/level-zero-attack-path-review/
 <h1>Level Zero Attack Path Review</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-understanding-the-scenario"><strong>1. Understanding the
 Scenario</strong></h2>
 <p>Before diving into the technical execution, it’s critical to define

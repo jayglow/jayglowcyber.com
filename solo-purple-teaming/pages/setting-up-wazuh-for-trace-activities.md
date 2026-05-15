@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/setting-up-wazuh-for-trace-activities/
 <h1>Setting Up Wazuh for Trace Activities</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-why-wazuh-is-used-in-this-course">1. <strong>Why Wazuh Is Used
 in This Course</strong></h3>
 <ul>
@@ -75,7 +74,7 @@ monitoring.</li>
 </ul></li>
 <li><strong>Goal for this step</strong>:
 <ul>
-<li>Create a saved search to view alerts with <strong>rule.level &gt;
+<li>Create a saved search to view alerts with <strong>rule.level >
 12</strong>.</li>
 </ul></li>
 </ul>
@@ -89,8 +88,8 @@ Search</strong></h3>
 <li><p><strong>Select index pattern</strong>:
 <code>wazuh-alerts-*</code>.</p></li>
 <li><p>In the search bar (DQL), enter:</p>
-<pre><code>rule.level &gt; 12
-</code></pre></li>
+rule.level > 12
+</li>
 <li><p><strong>Add useful columns</strong>:</p>
 <ul>
 <li>Agent name</li>
@@ -140,10 +139,10 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 rule</strong>.</p></li>
 <li><p>Change:</p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">level</span>&gt;15&lt;/<span class="kw">level</span>&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">level</span>>15</<span class="kw">level</span>></span></code></pre></div>
 <p>to:</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">level</span>&gt;12&lt;/<span class="kw">level</span>&gt;</span></code></pre></div></li>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">level</span>>12</<span class="kw">level</span>></span></code></pre></div></li>
 <li><p>Save and exit: <code>Esc :wq</code>.</p></li>
 </ul></li>
 <li><p><strong>Restart Wazuh Manager</strong>:</p>

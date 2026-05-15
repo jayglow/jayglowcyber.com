@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/enumeration/
 <h1>Enumeration</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="overview"><strong>Overview</strong></h2>
 <p>In this phase, we move into the <strong>second stage</strong> of
 Attack Path Level Zero — <strong>Enumeration</strong>.</p>
@@ -47,8 +46,8 @@ callback.
 <ul>
 <li><p>Task Name: <code>shell</code></p></li>
 <li><p>Command:</p>
-<pre><code>whoami /priv
-</code></pre></li>
+whoami /priv
+</li>
 <li><p>This tells us:</p>
 <ul>
 <li>The logged-in user</li>
@@ -67,8 +66,8 @@ Local Administrators</strong></h2>
 <ul>
 <li><p>Task Name: <code>shell</code></p></li>
 <li><p>Command:</p>
-<pre><code>net localgroup administrators
-</code></pre></li>
+net localgroup administrators
+</li>
 <li><p>Review the results for unusual accounts.</p>
 <ul>
 <li>Here, we see <strong><code>svc_ecoin_sync</code></strong> — a
@@ -86,8 +85,8 @@ a service.</p>
 <ul>
 <li><p>Task Name: <code>shell</code></p></li>
 <li><p>Command:</p>
-<pre><code>wmic service get name,displayname,startname
-</code></pre></li>
+wmic service get name,displayname,startname
+</li>
 <li><p>Look for services running as
 <strong><code>svc_ecoin_sync</code></strong>.</p></li>
 <li><p>We find:</p>
@@ -108,13 +107,13 @@ the Service</strong></h2>
 <ul>
 <li><p>Task Name: <code>shell</code></p></li>
 <li><p>Command:</p>
-<pre><code>sc qc &quot;ecoin sync&quot;
-</code></pre></li>
+sc qc "ecoin sync"
+</li>
 <li><p>Review:</p>
 <ul>
 <li><p><strong>Binary Path:</strong></p>
-<pre><code>C:\Users\rlyn\Desktop\ecoin_sync.exe
-</code></pre></li>
+C:\Users\rlyn\Desktop\ecoin_sync.exe
+</li>
 <li><p>This binary is located in the current user’s desktop
 directory.</p></li>
 </ul></li>
@@ -130,8 +129,8 @@ service.</p>
 <ul>
 <li><p>Task Name: <code>shell</code></p></li>
 <li><p>Command:</p>
-<pre><code>sc sdshow &quot;ecoin sync&quot;
-</code></pre></li>
+sc sdshow "ecoin sync"
+</li>
 <li><p>Look for <strong>Access Control Entries (ACEs)</strong> that
 grant permissions to the current user.</p></li>
 </ul></li>
@@ -139,8 +138,8 @@ grant permissions to the current user.</p></li>
 <ul>
 <li><p>Task Name: <code>shell</code></p></li>
 <li><p>Command:</p>
-<pre><code>wmic useraccount where name=&quot;%username%&quot; get name,sid
-</code></pre></li>
+wmic useraccount where name="%username%" get name,sid
+</li>
 <li><p>Compare the SID with entries from the <code>sc sdshow</code>
 output.</p>
 <ul>

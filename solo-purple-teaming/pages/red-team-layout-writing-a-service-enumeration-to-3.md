@@ -15,7 +15,6 @@ permalink: /solo-purple-teaming/red-team-layout-writing-a-service-enumeration-to
 <h1
 id="red-team-layout---writing-a-service-enumeration-tool---part-3">Red
 Team Layout - Writing A Service Enumeration Tool - Part 3</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-lecture-objective"><strong>1. Lecture Objective</strong></h3>
 <p>In this session, we continue developing our <strong>Service Scan
 Utility</strong>.</p>
@@ -145,7 +144,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb9-1"><a href="
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    Console<span class="op">.</span><span class="fu">WriteLine</span><span class="op">(</span>serviceName<span class="op">);</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    Console<span class="op">.</span><span class="fu">WriteLine</span><span class="op">(</span>sddl<span class="op">);</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    Console<span class="op">.</span><span class="fu">WriteLine</span><span class="op">(</span><span class="st">&quot;Current user can start this service.&quot;</span><span class="op">);</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    Console<span class="op">.</span><span class="fu">WriteLine</span><span class="op">(</span><span class="st">"Current user can start this service."</span><span class="op">);</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
 </ul>
 <hr />

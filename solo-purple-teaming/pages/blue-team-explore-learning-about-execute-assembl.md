@@ -16,7 +16,6 @@ permalink: /solo-purple-teaming/blue-team-explore-learning-about-execute-assembl
 id="blue-team-explore---learning-about-execute_assembly-process-injection-and-ipc">Blue
 Team Explore - Learning About execute_assembly, Process Injection, and
 IPC</h1>
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-introduction-to-execute-assembly-in-apollo"><strong>1.
 Introduction to Execute Assembly in Apollo</strong></h2>
 <ul>

@@ -13,7 +13,6 @@ permalink: /solo-purple-teaming/suplement-initial-lab-setup/
 </section>
 <section class="spt-content">
 <h1 id="suplement-initial-lab-setup">Suplement: Initial Lab Setup</h1>
-<p>Owner: Josh</p>
 <p>Because this is an advanced course, we will not walk through setting
 up the initial lab environment. Please feel free to reach out to us on
 discord for help or message one of the instructors to get a discount

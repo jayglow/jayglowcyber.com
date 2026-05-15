@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/bypassing-signature-based-detections/
 <h1>Bypassing Signature-Based Detections</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1 id="dart-objective">🎯 Objective</h1>
 <p>Learn how to modify and test a payload using
 <strong>ThreatCheck</strong> to evade <strong>signature-based
@@ -42,13 +41,13 @@ Setup and Precautions</strong></h2>
 </ul></li>
 <li><p><strong>Create an exclusion folder</strong>:</p>
 <ul>
-<li>Go to <strong>Windows Security &gt; Virus &amp; threat protection
-&gt; Manage settings &gt; Exclusions</strong>.</li>
+<li>Go to <strong>Windows Security > Virus &amp; threat protection
+> Manage settings > Exclusions</strong>.</li>
 <li>Click <strong>"Add or remove exclusions"</strong> → Add a
 <strong>folder</strong> named <code>research</code>.</li>
 <li>This will be your safe zone for payloads.</li>
 </ul>
-<p><img src="Bypassing%20Signature-Based%20Detections/image.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image.png"
 alt="image.png" /></p></li>
 </ol>
 <hr />
@@ -60,13 +59,13 @@ alt="image.png" /></p></li>
 <p>GitHub:
 <code>https://github.com/rasta-mouse/ThreatCheck</code></p></li>
 </ul>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%201.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%201.png"
 alt="image.png" /></p>
 <ul>
 <li><p><strong>Apollo Agent</strong></p>
 <p>GitHub: Search for <code>MythicAgents/apollo</code></p></li>
 </ul>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%202.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%202.png"
 alt="image.png" /></p>
 <blockquote>
 <p>Recommendation: Review all code before running it. Take a snapshot of
@@ -82,11 +81,11 @@ your <code>research</code> folder.</li>
 <li>Open the <code>.sln</code> (solution) file in <strong>Visual
 Studio</strong>.</li>
 </ol>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%203.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%203.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Go to
-<code>Tools &gt; NuGet Package Manager &gt; Manage NuGet Packages for Solution</code>
+<code>Tools > NuGet Package Manager > Manage NuGet Packages for Solution</code>
 and install:
 <ul>
 <li><code>CommandLineParser</code></li>
@@ -94,45 +93,45 @@ and install:
 <li><strong>Set configuration</strong> to <code>Release | x64</code> and
 build the project.</li>
 </ol>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%204.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%204.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="b-build-apollo-agent">B. Build Apollo Agent</h3>
 <ol type="1">
 <li><p>Extract <code>Apollo-master.zip</code>.</p></li>
 <li><p>Navigate to:</p>
-<pre><code>Apollo-master &gt; Payload_Type &gt; Apollo &gt; Apollo
-</code></pre></li>
+Apollo-master > Payload_Type > Apollo > Apollo
+</li>
 </ol>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%205.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%205.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Open the Apollo solution in Visual Studio.</li>
 <li>Set configuration to <code>Release | x64</code>.</li>
 </ol>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%206.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%206.png"
 alt="image.png" /></p>
 <ol type="1">
 <li><p>Fix any missing namespaces:</p>
 <ul>
 <li>If there's an error like missing <code>Task</code>,</li>
 </ul>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%207.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%207.png"
 alt="image.png" /></p>
 <ul>
 <li><p>navigate to:</p>
-<pre><code>Apollo &gt; Management &gt; Task.cs
-</code></pre>
+Apollo > Management > Task.cs
+
 <p>and correct the namespace.</p></li>
 </ul>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%208.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%208.png"
 alt="image.png" /></p></li>
 <li><p>Rebuild the solution. It should build all 22 projects.</p></li>
 <li><p>Locate the output:</p></li>
 </ol>
-<pre><code>Apollo &gt; bin &gt; x64 &gt; Release &gt; net451 &gt; Apollo.exe
-</code></pre>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%209.png"
+Apollo > bin > x64 > Release > net451 > Apollo.exe
+
+<p><img src="/_assets/bypassing-signature-based-detections/image%209.png"
 alt="image.png" /></p>
 <hr />
 <h2
@@ -151,7 +150,7 @@ the <code>ThreatCheck</code> build:
 </ul></li>
 <li>Paste them into the <code>testing</code> folder.</li>
 </ol>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%2010.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%2010.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="test_tube-part-6-run-threatcheck">🧪 <strong>Part 6: Run
@@ -170,7 +169,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="
 <li>Output will show <strong>detected strings</strong> like
 <code>mythic</code>.</li>
 </ul>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%2011.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%2011.png"
 alt="image.png" /></p></li>
 </ol>
 <hr />
@@ -188,7 +187,7 @@ Modify Payload to Evade Detection</strong></h2>
 occurrences).</li>
 </ul></li>
 </ol>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%2012.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%2012.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Rebuild the Apollo solution.</li>
@@ -198,8 +197,8 @@ alt="image.png" /></p>
 Re-Test Modified Payload</strong></h2>
 <ol type="1">
 <li><p>Copy the <strong>new Apollo.exe</strong> from:</p>
-<pre><code>bin &gt; x64 &gt; Release &gt; net451
-</code></pre>
+bin > x64 > Release > net451
+
 <p>into your <code>testing</code> folder, replacing the old
 one.</p></li>
 <li><p>Run ThreatCheck again:</p>
@@ -208,7 +207,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="
 <li><p><strong>Success!</strong> If no threats are found, the payload
 has <strong>bypassed Defender</strong>.</p></li>
 </ol>
-<p><img src="Bypassing%20Signature-Based%20Detections/image%2013.png"
+<p><img src="/_assets/bypassing-signature-based-detections/image%2013.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Optional: Paste it onto the desktop to verify it's not flagged.</li>

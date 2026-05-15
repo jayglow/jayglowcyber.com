@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/create-mythic-operations/
 <h1>Create Mythic Operations</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2
 id="creating-a-mythic-operation-for-attack-path-level-zero"><strong>Creating
 a Mythic Operation for Attack Path Level Zero</strong></h2>
@@ -55,7 +54,7 @@ the Mythic interface.</li>
 Operations</strong>.</li>
 </ul></li>
 </ol>
-<p><img src="Create%20Mythic%20Operations/image.png"
+<p><img src="/_assets/create-mythic-operations/image.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="3-reviewing-existing-operations"><strong>3. Reviewing Existing

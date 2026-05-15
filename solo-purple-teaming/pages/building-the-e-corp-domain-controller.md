@@ -12,9 +12,8 @@ permalink: /solo-purple-teaming/building-the-e-corp-domain-controller/
 <h1>Building the E Corp Domain Controller</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="overview"><strong>Overview</strong></h3>
-<p><img src="Building%20the%20E%20Corp%20Domain%20Controller/image.png"
+<p><img src="/_assets/building-the-e-corp-domain-controller/image.png"
 alt="image.png" /></p>
 <p>In this lab, we will build the <strong>ECorp Domain
 Controller</strong> (Ecorp-DC-1) and configure it with:</p>

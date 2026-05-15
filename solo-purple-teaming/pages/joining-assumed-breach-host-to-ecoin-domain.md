@@ -12,14 +12,13 @@ permalink: /solo-purple-teaming/joining-assumed-breach-host-to-ecoin-domain/
 <h1>Joining Assumed Breach Host to ECOIN Domain</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="introduction"><strong>Introduction</strong></h3>
 <p>In this exercise, you’ll join the assumed breach host
 (<code>wrk-rlin</code>) to the <strong>Ecoin</strong> domain using a
 newly created domain account. You’ll also troubleshoot common domain
 join issues.</p>
 <p><img
-src="Joining%20Assumed%20Breach%20Host%20to%20ECOIN%20Domain/image.png"
+src="/_assets/joining-assumed-breach-host-to-ecoin-domain/image.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="step-1--review-the-network-setup"><strong>Step 1 – Review the

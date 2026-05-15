@@ -15,7 +15,6 @@ permalink: /solo-purple-teaming/using-run-box-to-bypass-unsigned-imageloads-from
 <h1
 id="using-run-box-to-bypass-unsigned-imageloads-from-downloads">Using
 Run Box to Bypass UnSigned ImageLoads From Downloads</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-introduction-to-the-technique"><strong>1. Introduction to the
 Technique</strong></h3>
 <ul>
@@ -83,8 +82,8 @@ payload with Apollo reflective loading).</li>
 One-Liner</strong></h3>
 <ul>
 <li><p>Start with:</p>
-<pre><code>powershell -c &quot;&amp; { ... }&quot;
-</code></pre></li>
+powershell -c "& { ... }"
+</li>
 <li><p>Reduce size to fit into the run dialogue:</p>
 <ul>
 <li>Replace double quotes with single quotes where possible.</li>
@@ -123,8 +122,8 @@ Hiding</strong></h3>
 <li><p>Add <code>w hidden</code> to run PowerShell without a visible
 window.</p></li>
 <li><p>Example:</p>
-<pre><code>powershell -w hidden -c &quot;&amp; { ... }&quot;
-</code></pre></li>
+powershell -w hidden -c "& { ... }"
+</li>
 </ul>
 <hr />
 <h3 id="8-run-box-length-limit"><strong>8. Run Box Length

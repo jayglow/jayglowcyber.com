@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/sysmon-imageload-event-id-7/
 <h1>Sysmon ImageLoad Event ID 7</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-purpose-of-the-exploration-phase"><strong>1. Purpose of the
 Exploration Phase</strong></h3>
 <p>Before enabling <strong>Sysmon Event ID 7</strong>, remember the
@@ -37,8 +36,8 @@ Researching Command Line Arguments in Telemetry</strong></h3>
 <ul>
 <li><p>To find ways of capturing command line arguments in Windows,
 search for:</p>
-<pre><code>capture command line arguments Windows Logging
-</code></pre></li>
+capture command line arguments Windows Logging
+</li>
 <li><p>AI or search results may reveal multiple solutions:</p>
 <ul>
 <li><strong>Sysmon</strong> (our current choice)</li>
@@ -61,8 +60,8 @@ detection indicator.</li>
 <li><p>On your reverse engineering machine, use Sysinternals
 <code>sigcheck</code>.</p></li>
 <li><p>Example:</p>
-<pre><code>sigcheck goodbyeamsi.exe
-</code></pre></li>
+sigcheck goodbyeamsi.exe
+</li>
 <li><p>If unsigned, it will show as <strong>untrusted
 code</strong>.</p></li>
 </ol></li>
@@ -72,8 +71,8 @@ code</strong>.</p></li>
 Researching How to Capture Unsigned Image Loads</strong></h3>
 <ul>
 <li><p>Search for:</p>
-<pre><code>capture unsigned image load events windows
-</code></pre></li>
+capture unsigned image load events windows
+</li>
 <li><p>Sysmon <strong>Event ID 7</strong> logs image loads by processes
 and includes a <strong>Signed</strong> field:</p>
 <ul>
@@ -101,7 +100,7 @@ Configuration</strong></h3>
 <ul>
 <li>Open the Sysmon configuration.</li>
 <li>Locate <strong>Event ID 7</strong> rules.</li>
-<li>Change the <code>&lt;Include&gt;</code> rule to capture <strong>all
+<li>Change the <code><Include></code> rule to capture <strong>all
 events where <code>Signed = false</code></strong>.</li>
 </ul></li>
 <li><p>Save the configuration.</p></li>
@@ -128,8 +127,8 @@ Operational</strong>.</li>
 Wazuh</strong></h3>
 <ul>
 <li><p>Switch <strong>Index Pattern</strong> to:</p>
-<pre><code>int_wazuh-archives-*
-</code></pre></li>
+int_wazuh-archives-*
+</li>
 <li><p>Search for <code>Event ID: 7</code>.</p></li>
 <li><p>Confirm new entries are populating in the last few
 minutes.</p></li>
@@ -158,16 +157,16 @@ with the Initial Access Payload</strong></h3>
 for the Payload’s Image Loads</strong></h3>
 <ol type="1">
 <li><p>Filter by:</p>
-<pre><code>data.win.eventdata.ImageLoaded : *amsi*
-</code></pre>
+data.win.eventdata.ImageLoaded : *amsi*
+
 <ul>
 <li>This shows all image loads related to <code>goodbyeamsi.exe</code>
 and its DLLs.</li>
 </ul></li>
 <li><p>Expand event details.</p></li>
 <li><p>Check:</p>
-<pre><code>data.win.eventdata.Signed : False
-</code></pre>
+data.win.eventdata.Signed : False
+
 <ul>
 <li>Confirms the binary is <strong>unsigned</strong>.</li>
 </ul></li>

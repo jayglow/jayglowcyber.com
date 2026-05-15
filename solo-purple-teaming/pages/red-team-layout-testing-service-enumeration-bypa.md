@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/red-team-layout-testing-service-enumeration-bypa
 <section class="spt-content">
 <h1 id="red-team-layout---testing-service-enumeration-bypass">Red Team
 Layout - Testing Service Enumeration Bypass</h1>
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-objective"><strong>1. Objective</strong></h2>
 <p>In this lab, you’ll learn how to:</p>
 <ul>
@@ -78,8 +77,8 @@ Register the Service Scan Assembly</strong></h3>
 <ol type="1">
 <li><p>In Mythic, select your callback.</p></li>
 <li><p>Run:</p>
-<pre><code>register_assembly
-</code></pre>
+register_assembly
+
 <p>This opens a file selector.</p></li>
 <li><p>Browse to and select <code>service_scan_demo.exe</code>.</p></li>
 <li><p>Task the agent to load it into memory.</p></li>
@@ -89,11 +88,11 @@ Register the Service Scan Assembly</strong></h3>
 Assembly</strong></h3>
 <ol type="1">
 <li><p>Check usage:</p>
-<pre><code>help execute_assembly
-</code></pre></li>
+help execute_assembly
+</li>
 <li><p>Run:</p>
-<pre><code>execute_assembly service_scan_demo.exe
-</code></pre></li>
+execute_assembly service_scan_demo.exe
+</li>
 <li><p><strong>Problem:</strong> No results returned—likely due to
 <strong>Windows Defender detection</strong>.</p></li>
 </ol>
@@ -110,15 +109,15 @@ alerts.</li>
 Test Alternate Injection Techniques</strong></h3>
 <ol type="1">
 <li><p>Get available methods:</p>
-<pre><code>get_injection_techniques
-</code></pre></li>
+get_injection_techniques
+</li>
 <li><p>Try:</p>
-<pre><code>set_injection_technique early_bird_queuuserapc
+set_injection_technique early_bird_queuuserapc
 execute_assembly service_scan_demo.exe
-</code></pre></li>
+</li>
 <li><p>If still detected, switch to:</p>
-<pre><code>set_injection_technique syscall_x64.ntcreatethreadex
-</code></pre></li>
+set_injection_technique syscall_x64.ntcreatethreadex
+</li>
 <li><p>Run <code>execute_assembly</code> again.</p></li>
 </ol>
 <p><strong>Result:</strong> Still detected—so injection method alone is
@@ -130,11 +129,11 @@ Spawn-To Process</strong></h3>
 <li><p>Default spawn target: <code>rundll32.exe</code> (<em>commonly
 detected by Defender</em>).</p></li>
 <li><p>Change it:</p>
-<pre><code>spawn_to_x64
-</code></pre>
+spawn_to_x64
+
 <p>Use the file picker to choose:</p>
-<pre><code>C:\Windows\System32\smartscreen.exe
-</code></pre></li>
+C:\Windows\System32\smartscreen.exe
+</li>
 <li><p>Task the agent.</p></li>
 </ol>
 <hr />
@@ -142,8 +141,8 @@ detected by Defender</em>).</p></li>
 New Spawn-To</strong></h3>
 <ol type="1">
 <li><p>Run:</p>
-<pre><code>execute_assembly service_scan_demo.exe
-</code></pre></li>
+execute_assembly service_scan_demo.exe
+</li>
 <li><p><strong>Expected Outcome:</strong></p>
 <ul>
 <li>No Defender alert.</li>

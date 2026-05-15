@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/building-advanced-correlation-engine-part-1/
 <h1>Building Advanced Correlation Engine - Part 1</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3
 id="1-understanding-the-problem-correlation-by-coincidence"><strong>1.
 Understanding the Problem: Correlation by Coincidence</strong></h3>
@@ -112,7 +111,7 @@ objects.</li>
 </ul>
 <p><strong>Constants</strong>:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ALERTS_FILE <span class="op">=</span> <span class="st">&quot;/var/ossec/logs/alerts/alerts.json&quot;</span></span>
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ALERTS_FILE <span class="op">=</span> <span class="st">"/var/ossec/logs/alerts/alerts.json"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>RULE_A <span class="op">=</span> <span class="dv">100100</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>RULE_B <span class="op">=</span> <span class="dv">100101</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>TIME_WINDOW <span class="op">=</span> <span class="dv">2</span>  <span class="co"># seconds</span></span></code></pre></div>
@@ -164,8 +163,8 @@ recent events → print correlated alert.</li>
 Script</strong></h3>
 <p>In <code>__main__</code> block:</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Monitoring </span><span class="sc">{</span>ALERTS_FILE<span class="sc">}</span><span class="ss"> for correlations...&quot;</span>)</span>
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Monitoring </span><span class="sc">{</span>ALERTS_FILE<span class="sc">}</span><span class="ss"> for correlations..."</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    correlate_events()</span></code></pre></div>
 <p>Make executable:</p>
 <div class="sourceCode" id="cb5"><pre
@@ -192,8 +191,8 @@ with <code>0.5s</code> sleep missed some matches).</li>
 <li>Re-run simulated attack payload on assumed breached host.</li>
 <li>Confirm correlated alerts appear:</li>
 </ul>
-<pre><code>[ALERT] Correlated possible C2 activity: Rule 100100 &amp; Rule 100101 seen for GUID &lt;process_guid&gt; within 5 seconds at &lt;timestamp&gt;
-</code></pre>
+[ALERT] Correlated possible C2 activity: Rule 100100 & Rule 100101 seen for GUID <process_guid> within 5 seconds at <timestamp>
+
 <ul>
 <li>Remove debug print statements once working.</li>
 </ul>

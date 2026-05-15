@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/build-custom-rule-for-network-connect-to-common-
 <section class="spt-content">
 <h1 id="build-custom-rule-for-network-connect-to-common-c2-port">Build
 Custom Rule for Network Connect to Common C2 Port</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-purpose-of-the-rule">1. <strong>Purpose of the
 Rule</strong></h3>
 <p>In this lab, we’ll create a <strong>base detection rule</strong> for

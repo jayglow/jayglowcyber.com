@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/attack-path-level-0-lab-setup/
 <h1>Attack Path Level 0 Lab Setup</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="overview"><strong>Overview</strong></h3>
 <p>This walkthrough guides you through the initial setup for the
 <em>Attack Path Level Zero</em> lab environment. This lab is designed
@@ -27,7 +26,7 @@ complete understanding of offensive tactics and defensive detection.</p>
 <li>What comes next in the setup process</li>
 </ul>
 <hr />
-<p><img src="Attack%20Path%20Level%200%20Lab%20Setup/image.png"
+<p><img src="/_assets/attack-path-level-0-lab-setup/image.png"
 alt="image.png" /></p>
 <h2 id="1-purpose-of-the-lab"><strong>1. Purpose of the
 Lab</strong></h2>

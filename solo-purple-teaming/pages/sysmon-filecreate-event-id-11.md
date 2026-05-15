@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/sysmon-filecreate-event-id-11/
 <h1>Sysmon FileCreate Event ID 11</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-introduction-to-event-id-11"><strong>1. Introduction to Event
 ID 11</strong></h3>
 <ul>
@@ -93,7 +92,7 @@ directories.</p>
 <li>Locate <strong>Event ID 11</strong> section in your Sysmon
 configuration.</li>
 <li>Change it to <code>include</code> rules.</li>
-<li>Add a <code>&lt;TargetFilename&gt;</code> filter:
+<li>Add a <code><TargetFilename></code> filter:
 <ul>
 <li><strong>Condition:</strong> <code>contains</code></li>
 <li><strong>Value:</strong> <code>Downloads</code></li>
@@ -114,10 +113,10 @@ Configuration</strong></h3>
 <li><p>Save your modified Sysmon config file
 (<code>sysmonconfig.xml</code>).</p></li>
 <li><p>From an <strong>Administrator Command Prompt</strong>, run:</p>
-<pre><code>r
+r
 CopyEdit
 sysmon -c sysmonconfig.xml
-</code></pre></li>
+</li>
 <li><p>Ensure configuration validation and update succeed.</p></li>
 </ol>
 <hr />
@@ -129,7 +128,7 @@ in the Downloads folder.</p>
 <li><strong>Open Event Viewer</strong>
 <ul>
 <li>Path:
-<code>Applications and Services Logs &gt; Microsoft &gt; Windows &gt; Sysmon &gt; Operational</code></li>
+<code>Applications and Services Logs > Microsoft > Windows > Sysmon > Operational</code></li>
 </ul></li>
 <li><strong>Filter logs</strong> for Event ID <code>11</code>.</li>
 <li><strong>Clear the log</strong> to capture only new events.</li>
@@ -157,7 +156,7 @@ indicating the file came from the internet.</li>
 <h3 id="7-verifying-in-wazuh"><strong>7. Verifying in
 Wazuh</strong></h3>
 <ol type="1">
-<li>In Wazuh’s dashboard, go to <strong>Explore &gt;
+<li>In Wazuh’s dashboard, go to <strong>Explore >
 Discover</strong>.</li>
 <li>Change the index pattern to <code>archives</code>.</li>
 <li>Query for:

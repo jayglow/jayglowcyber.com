@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/a-warning-and-a-challenge/
 <h1>A Warning and a Challenge</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-understanding-the-shelf-life-of-evasion-techniques"><strong>1.
 Understanding the Shelf Life of Evasion Techniques</strong></h2>
 <ul>

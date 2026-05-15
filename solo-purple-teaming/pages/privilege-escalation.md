@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/privilege-escalation/
 <h1>Privilege Escalation</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-understanding-privilege-escalation"><strong>1. Understanding
 Privilege Escalation</strong></h3>
 <ul>

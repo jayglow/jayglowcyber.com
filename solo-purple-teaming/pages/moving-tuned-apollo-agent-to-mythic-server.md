@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/moving-tuned-apollo-agent-to-mythic-server/
 <h1>Moving Tuned Apollo Agent to Mythic Server</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="dart-objective">🎯 Objective</h3>
 <p>Move your modified Apollo agent code (tuned to bypass Defender and
 AMSI) from your Windows 11 reverse engineering VM to the Kali box
@@ -40,13 +39,13 @@ directory.</li>
 Agent Code</h2>
 <ol type="1">
 <li><p>Navigate to the modified agent directory:</p>
-<pre><code>C:\...\research\Apollo-Master\Apollo-Master\Payload_Types\Apollo\Apollo\Agent_Code
-</code></pre></li>
+C:\...\research\Apollo-Master\Apollo-Master\Payload_Types\Apollo\Apollo\Agent_Code
+</li>
 <li><p>Copy the <strong>Agent_Code</strong> folder to your top-level
 <code>research</code> folder.</p></li>
 </ol>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image.png"
 alt="image.png" /></p>
 <ol type="1">
 <li><p>Compress the copied folder:</p>
@@ -54,7 +53,7 @@ alt="image.png" /></p>
 <li>Right-click → “Compress to ZIP file”</li>
 </ul>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image%201.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image%201.png"
 alt="image.png" /></p>
 <ul>
 <li>Name it: <code>agent_code.zip</code></li>
@@ -71,7 +70,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> agent_code.zip username@10.0.3.2:~/</span></code></pre></div></li>
 </ol>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image%202.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image%202.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Authenticate if prompted.</li>
@@ -117,7 +116,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb10-1"><a href=
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
 </ol>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image%203.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image%203.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Save and exit (<code>ESC</code> → <code>:wq</code>)</li>
@@ -142,7 +141,7 @@ in to Mythic.</li>
 <li>Delete the old payload from the UI if present.</li>
 </ol>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image%204.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image%204.png"
 alt="image.png" /></p>
 <ol type="1">
 <li>Click <strong>Actions → Generate New Payload</strong></li>
@@ -190,24 +189,24 @@ agent.</p></li>
 <li><p>Test basic commands:</p>
 <ul>
 <li><p>Load the module:</p>
-<pre><code>load whoami
-</code></pre></li>
+load whoami
+</li>
 </ul>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image%205.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image%205.png"
 alt="image.png" /></p>
 <ul>
 <li><p>Run:</p>
-<pre><code>whoami
-</code></pre></li>
+whoami
+</li>
 </ul>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image%206.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image%206.png"
 alt="image.png" /></p>
 <p>Output should confirm you're operating under your Windows user
 context (e.g., <code>reverseengineer</code>).</p>
 <p><img
-src="Moving%20Tuned%20Apollo%20Agent%20to%20Mythic%20Server/image%207.png"
+src="/_assets/moving-tuned-apollo-agent-to-mythic-server/image%207.png"
 alt="image.png" /></p></li>
 </ol>
 <hr />

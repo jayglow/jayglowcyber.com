@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/generate-payload/
 <h1>Generate Payload</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="objective"><strong>Objective</strong></h2>
 <p>In this exercise, we will:</p>
 <ol type="1">
@@ -31,37 +30,37 @@ Configuring the Reflective Loader</strong></h2>
 <li><p>Our project is called <strong>Goodbye AMSI</strong>, used to
 reflectively load the Apollo agent.</p></li>
 <li><p>In previous tests, we reached the Kali host using:</p>
-<pre><code>10.0.3.2:8000
-</code></pre>
+10.0.3.2:8000
+
 <p>Both the reverse engineering box and Kali host were on the
 <strong>Attack LAN</strong>.</p></li>
 <li><p>Now, we must use the <strong>WAN interface</strong> so the
 payload can reach the Mythic server from <strong>inside the Ecoin
 network</strong>.</p></li>
 <li><p>WAN interface address:</p>
-<pre><code>192.168.100.101:8000
-</code></pre></li>
+192.168.100.101:8000
+</li>
 </ul></li>
 <li><p><strong>Edit the Loader</strong></p>
 <ul>
 <li><p>In the reflective loader source code, replace the old IP/port
 with:</p>
-<pre><code>192.168.100.101:8000
-</code></pre></li>
+192.168.100.101:8000
+</li>
 <li><p>Save the file (<strong>Ctrl + S</strong>).</p></li>
 </ul></li>
 <li><p><strong>Build the Solution</strong></p>
 <ul>
 <li><p>Compile the project in <strong>x64 Debug</strong> mode.</p></li>
 <li><p>Output file:</p>
-<pre><code>goodbyeAMSI.exe
-</code></pre></li>
+goodbyeAMSI.exe
+</li>
 </ul></li>
 <li><p><strong>Locate and Transfer the File</strong></p>
 <ul>
 <li><p>Navigate to:</p>
-<pre><code>/source/repos/GoodbyeAMSI/x64/Debug/
-</code></pre></li>
+/source/repos/GoodbyeAMSI/x64/Debug/
+</li>
 <li><p>Transfer the executable to the Kali host:</p>
 <ul>
 <li><p>If SSH isn’t running on Kali, start it:</p>
@@ -97,8 +96,8 @@ button).</p></li>
 device)</li>
 </ul></li>
 <li><p><strong>Description:</strong></p>
-<pre><code>Assumed breach payload – Attack Level Zero
-</code></pre></li>
+Assumed breach payload – Attack Level Zero
+</li>
 </ul></li>
 <li><p><strong>Generate and Download</strong></p>
 <ul>
@@ -130,9 +129,9 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href=
 <div class="sourceCode" id="cb12"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 <p>You should see:</p>
-<pre><code>goodbyeAMSI.exe
+goodbyeAMSI.exe
 apollo.exe
-</code></pre></li>
+</li>
 </ul></li>
 <li><p><strong>Start a Python HTTP Server</strong></p>
 <ul>

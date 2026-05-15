@@ -12,13 +12,12 @@ permalink: /solo-purple-teaming/testing-apollo-on-assumed-breach-host/
 <h1>Testing Apollo on Assumed Breach Host</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1 id="introduction">Introduction</h1>
 <h3 id="1-network-layout-recap"><strong>1. Network Layout
 Recap</strong></h3>
 <p>Before generating the payload, understand your lab network
 layout:</p>
-<p><img src="Testing%20Apollo%20on%20Assumed%20Breach%20Host/image.png"
+<p><img src="/_assets/testing-apollo-on-assumed-breach-host/image.png"
 alt="image.png" /></p>
 <ul>
 <li><strong>Attack LAN</strong>
@@ -63,7 +62,7 @@ Defender bypass.</li>
 <h3 id="3-check-firewall--port-forwarding-rules"><strong>3. Check
 Firewall &amp; Port Forwarding Rules</strong></h3>
 <p><img
-src="Testing%20Apollo%20on%20Assumed%20Breach%20Host/image%201.png"
+src="/_assets/testing-apollo-on-assumed-breach-host/image%201.png"
 alt="image.png" /></p>
 <p>On the <strong>Attack LAN pfSense</strong>:</p>
 <ul>
@@ -129,8 +128,8 @@ Download Payload on the Assumed Breach Host</strong></h3>
 <li><p>Open a browser on the <strong>Assumed Breach
 Host</strong>.</p></li>
 <li><p>Enter:</p>
-<pre><code>http://192.168.100.101:8000
-</code></pre></li>
+http://192.168.100.101:8000
+</li>
 <li><p>You should see the payload list.</p></li>
 <li><p>Download the new <code>Apollo_breach_test</code> executable.</p>
 <ul>

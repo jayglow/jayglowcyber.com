@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/powershell-scriptblock-logging/
 <h1>PowerShell ScriptBlock Logging</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="overview"><strong>Overview</strong></h3>
 <p>In this lab, we will enable <strong>PowerShell Script Block
 Logging</strong> on the assumed breached host and verify that the
@@ -69,12 +68,12 @@ Domain Policy</strong></h3>
 to PowerShell Logging Settings</strong></h3>
 <ol type="1">
 <li><p>In the Group Policy Editor, go to:</p>
-<pre><code>Computer Configuration
+Computer Configuration
    → Policies
       → Administrative Templates
          → Windows Components
             → Windows PowerShell
-</code></pre></li>
+</li>
 <li><p>Here you will see several valuable settings:</p>
 <ul>
 <li>Module Logging</li>
@@ -126,12 +125,12 @@ Logs Locally</strong></h3>
 class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>eventvwr</span></code></pre></div>
 <p>and press <strong>Enter</strong>.</p></li>
 <li><p>Navigate to:</p>
-<pre><code>Applications and Services Logs
+Applications and Services Logs
    → Microsoft
       → Windows
          → PowerShell
             → Operational
-</code></pre></li>
+</li>
 <li><p>Look for <strong>Event ID 4104</strong>.</p></li>
 <li><p>Inspect the log to see:</p>
 <ul>
@@ -153,14 +152,14 @@ logs.</li>
 </ul></li>
 <li><p>Edit the group configuration:</p>
 <ul>
-<li><p>Copy an existing <code>&lt;localfile&gt;</code> tag.</p></li>
+<li><p>Copy an existing <code><localfile></code> tag.</p></li>
 <li><p>Paste below the existing entry.</p></li>
 <li><p>Change the channel to:</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">localfile</span>&gt;</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">location</span>&gt;Microsoft-Windows-PowerShell/Operational&lt;/<span class="kw">location</span>&gt;</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">log_format</span>&gt;eventchannel&lt;/<span class="kw">log_format</span>&gt;</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">localfile</span>&gt;</span></code></pre></div></li>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">localfile</span>></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">location</span>>Microsoft-Windows-PowerShell/Operational</<span class="kw">location</span>></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">log_format</span>>eventchannel</<span class="kw">log_format</span>></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></<span class="kw">localfile</span>></span></code></pre></div></li>
 </ul></li>
 <li><p>Save the configuration.</p></li>
 </ol>
@@ -179,8 +178,8 @@ the new config automatically.</li>
 <li><strong>Discover → Archives</strong>.</li>
 </ul></li>
 <li><p>Search for:</p>
-<pre><code>4104
-</code></pre></li>
+4104
+</li>
 <li><p>If no results appear:</p>
 <ul>
 <li>Return to the assumed breach host.</li>

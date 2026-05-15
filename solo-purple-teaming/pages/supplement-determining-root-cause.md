@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/supplement-determining-root-cause/
 <section class="spt-content">
 <h1 id="supplement-determining-root-cause">Supplement: Determining Root
 Cause</h1>
-<p>Owner: Josh</p>
 <p>Understanding how to determine root cause is a foundational skill
 across numerous cybersecurity disciplines, including—but not limited
 to—Incident Response, Reverse Engineering, Malware Analysis, Threat
@@ -40,7 +39,7 @@ Deviation from the Baseline</h1>
 <p>When we ran our reverse shell PowerShell payload with realtime
 protection enabled, we noticed a deviation - that is a different
 outcome, from the baseline we established in the previous lecture.</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image.png"
+<p><img src="/_assets/supplement-determining-root-cause/image.png"
 alt="image.png" /></p>
 <p>Determining the root cause of this error is relatively
 straightforward. Applying a common system administration
@@ -65,17 +64,17 @@ being generated due to a specific code pattern or behavior, but also
 enhances our overall understanding of how defensive mechanisms are
 implemented at the system level.</p>
 <p>Open a PowerShell instance</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%201.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%201.png"
 alt="image.png" /></p>
 <p>Open x64dbg</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%202.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%202.png"
 alt="image.png" /></p>
 <p>Attach to the PowerShell process</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%203.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%203.png"
 alt="image.png" /></p>
 <p>When we attach a debugger to a PowerShell process, Windows Defender
 blocks the activity.</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%204.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%204.png"
 alt="image.png" /></p>
 <h1 id="use-psrunspaces-to-work-around-windows-defender">Use PSRunspaces
 to Work Around Windows Defender</h1>
@@ -109,11 +108,11 @@ functions.</li>
 <h3
 id="open-visual-studio-code-and-create-a-console-appnet-framework">Open
 Visual Studio Code and Create a Console App(.NET Framework)</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%205.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%205.png"
 alt="image.png" /></p>
 <p>Browse to and add a reference to C:\Program Files (x86)\Reference
 Assemblies\Microsoft\WindowsPowerShel\3.0\System.Management.Automation.dll</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%206.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%206.png"
 alt="image.png" /></p>
 <p>Write a program to create a PSRunspace and run the command
 “whoami”</p>
@@ -133,9 +132,9 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb1-1"><a href="
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            Console<span class="op">.</span><span class="fu">ReadLine</span><span class="op">();</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            PowerShell ps <span class="op">=</span> PowerShell<span class="op">.</span><span class="fu">Create</span><span class="op">();</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="dt">string</span> script <span class="op">=</span> <span class="st">&quot;whoami&quot;</span><span class="op">;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="dt">string</span> script <span class="op">=</span> <span class="st">"whoami"</span><span class="op">;</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            ps<span class="op">.</span><span class="fu">AddScript</span><span class="op">(</span>script<span class="op">);</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            Collection<span class="op">&lt;</span>PSObject<span class="op">&gt;</span> results <span class="op">=</span> ps<span class="op">.</span><span class="fu">Invoke</span><span class="op">();</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            Collection<span class="op"><</span>PSObject<span class="op">></span> results <span class="op">=</span> ps<span class="op">.</span><span class="fu">Invoke</span><span class="op">();</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="kw">foreach</span> <span class="op">(</span>PSObject obj <span class="kw">in</span> results<span class="op">)</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
@@ -147,12 +146,12 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb1-1"><a href="
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Compile for x64 and run:</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%207.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%207.png"
 alt="image.png" /></p>
 <p>Attach to the process with x64dbg</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%208.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%208.png"
 alt="image.png" /></p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%209.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%209.png"
 alt="image.png" /></p>
 <h2 id="reverse-engineering-powershell">Reverse Engineering
 PowerShell</h2>
@@ -163,10 +162,10 @@ href="https://github.com/PowerShell/PowerShell">https://github.com/PowerShell/Po
 id="1-open-in-the-solution-file-with-visualstudio-and-search-the-project-for-scriptcontainedmaliciouscontent">1.
 Open in the solution file with VisualStudio and search the project for
 <code>ScriptContainedMaliciousContent</code></h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2010.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2010.png"
 alt="image.png" /></p>
 <p>You will see 4 results:</p>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2011.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2011.png"
 alt="image.png" /></p>
 <h3
 id="3-click-on-the-first-instance-in-compiledscriptblockcs-and-analyze-the-code-to-determine-what-is-going-on">3.
@@ -180,7 +179,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb2-1"><a href="
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> parseError <span class="op">=</span> <span class="kw">new</span> <span class="fu">ParseError</span><span class="op">(</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        scriptExtent<span class="op">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;ScriptContainedMaliciousContent&quot;</span><span class="op">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ScriptContainedMaliciousContent"</span><span class="op">,</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        ParserStrings<span class="op">.</span><span class="fu">ScriptContainedMaliciousContent</span><span class="op">);</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ParseException</span><span class="op">(</span><span class="kw">new</span><span class="op">[]</span> <span class="op">{</span> parseError <span class="op">});</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
@@ -199,14 +198,14 @@ id="4-jump-to-the-definition-of-scancontent-and-analyze-the-code-to-determine-th
 Jump to the definition of ScanContent and analyze the code to determine
 the function of ScanContent</h3>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode csharp"><code class="sourceCode cs"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></span>
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw"><summary></span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">/// Scans a string buffer for malware using the Antimalware Scan Interface (AMSI).</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// Caller is responsible for calling AmsiCloseSession when a &quot;session&quot; (script)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// Caller is responsible for calling AmsiCloseSession when a "session" (script)</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// is complete, and for calling AmsiUninitialize when the runspace is being torn down.</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;content&quot;</span><span class="kw">&gt;</span><span class="co">The string to be scanned.</span><span class="kw">&lt;/param&gt;</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sourceMetadata&quot;</span><span class="kw">&gt;</span><span class="co">Information about the source (filename, etc.).</span><span class="kw">&lt;/param&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">AMSI_RESULT_DETECTED if malware was detected in the sample.</span><span class="kw">&lt;/returns&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw"></summary></span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw"><param</span><span class="ot"> name=</span><span class="dt">"content"</span><span class="kw">></span><span class="co">The string to be scanned.</span><span class="kw"></param></span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw"><param</span><span class="ot"> name=</span><span class="dt">"sourceMetadata"</span><span class="kw">></span><span class="co">Information about the source (filename, etc.).</span><span class="kw"></param></span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">/// </span><span class="kw"><returns></span><span class="co">AMSI_RESULT_DETECTED if malware was detected in the sample.</span><span class="kw"></returns></span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">internal</span> <span class="kw">static</span> AmsiNativeMethods<span class="op">.</span><span class="fu">AMSI_RESULT</span> <span class="fu">ScanContent</span><span class="op">(</span><span class="dt">string</span> content<span class="op">,</span> <span class="dt">string</span> sourceMetadata<span class="op">)</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">#if</span> UNIX</span>
@@ -228,7 +227,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb5-1"><a href="
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        sourceMetadata <span class="op">=</span> <span class="dt">string</span><span class="op">.</span><span class="fu">Empty</span><span class="op">;</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">const</span> <span class="dt">string</span> EICAR_STRING <span class="op">=</span> <span class="st">&quot;X5O!P%@AP[4</span><span class="sc">\\</span><span class="st">PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*&quot;</span><span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">const</span> <span class="dt">string</span> EICAR_STRING <span class="op">=</span> <span class="st">"X5O!P%@AP[4</span><span class="sc">\\</span><span class="st">PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*"</span><span class="op">;</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="op">(</span>InternalTestHooks<span class="op">.</span><span class="fu">UseDebugAmsiImplementation</span><span class="op">)</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> <span class="op">(</span>content<span class="op">.</span><span class="fu">Contains</span><span class="op">(</span>EICAR_STRING<span class="op">,</span> StringComparison<span class="op">.</span><span class="fu">Ordinal</span><span class="op">))</span></span>
@@ -240,7 +239,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb5-1"><a href="
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// If we had a previous initialization failure, just return the neutral result.</span></span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="op">(</span>s_amsiInitFailed<span class="op">)</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span><span class="st">&quot;ScanContent-InitFail&quot;</span><span class="op">,</span> $<span class="st">&quot;{s_amsiContext}-{s_amsiSession}&quot;</span><span class="op">);</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span><span class="st">"ScanContent-InitFail"</span><span class="op">,</span> $<span class="st">"{s_amsiContext}-{s_amsiSession}"</span><span class="op">);</span></span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">return</span> AmsiNativeMethods<span class="op">.</span><span class="fu">AMSI_RESULT</span><span class="op">.</span><span class="fu">AMSI_RESULT_NOT_DETECTED</span><span class="op">;</span></span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
@@ -248,7 +247,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb5-1"><a href="
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> <span class="op">(</span>s_amsiInitFailed<span class="op">)</span></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>            PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span><span class="st">&quot;ScanContent-InitFail&quot;</span><span class="op">,</span> $<span class="st">&quot;{s_amsiContext}-{s_amsiSession}&quot;</span><span class="op">);</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>            PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span><span class="st">"ScanContent-InitFail"</span><span class="op">,</span> $<span class="st">"{s_amsiContext}-{s_amsiSession}"</span><span class="op">);</span></span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>            <span class="kw">return</span> AmsiNativeMethods<span class="op">.</span><span class="fu">AMSI_RESULT</span><span class="op">.</span><span class="fu">AMSI_RESULT_NOT_DETECTED</span><span class="op">;</span></span>
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
@@ -262,7 +261,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb5-1"><a href="
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            <span class="kw">if</span> <span class="op">(</span>warmUp<span class="op">)</span></span>
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>                <span class="co">// We are warming up the AMSI component in console startup, and that means we initialize AMSI</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>                <span class="co">// and create a AMSI session, but don&#39;t really scan anything.</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>                <span class="co">// and create a AMSI session, but don't really scan anything.</span></span>
 <span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>                <span class="kw">return</span> AmsiNativeMethods<span class="op">.</span><span class="fu">AMSI_RESULT</span><span class="op">.</span><span class="fu">AMSI_RESULT_NOT_DETECTED</span><span class="op">;</span></span>
 <span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
 <span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
@@ -287,8 +286,8 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb5-1"><a href="
 <span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>            <span class="kw">if</span> <span class="op">(!</span>Utils<span class="op">.</span><span class="fu">Succeeded</span><span class="op">(</span>hr<span class="op">))</span></span>
 <span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>                <span class="co">// If we got a failure, just return the neutral result (&quot;AMSI_RESULT_NOT_DETECTED&quot;)</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>                PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span>$<span class="st">&quot;AmsiScanBuffer-{hr}&quot;</span><span class="op">,</span> $<span class="st">&quot;{s_amsiContext}-{s_amsiSession}&quot;</span><span class="op">);</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>                <span class="co">// If we got a failure, just return the neutral result ("AMSI_RESULT_NOT_DETECTED")</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>                PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span>$<span class="st">"AmsiScanBuffer-{hr}"</span><span class="op">,</span> $<span class="st">"{s_amsiContext}-{s_amsiSession}"</span><span class="op">);</span></span>
 <span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>                <span class="kw">return</span> AmsiNativeMethods<span class="op">.</span><span class="fu">AMSI_RESULT</span><span class="op">.</span><span class="fu">AMSI_RESULT_NOT_DETECTED</span><span class="op">;</span></span>
 <span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
 <span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
@@ -296,7 +295,7 @@ class="sourceCode csharp"><code class="sourceCode cs"><span id="cb5-1"><a href="
 <span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>        <span class="kw">catch</span> <span class="op">(</span>DllNotFoundException<span class="op">)</span></span>
 <span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>            PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span><span class="st">&quot;DllNotFoundException&quot;</span><span class="op">,</span> $<span class="st">&quot;{s_amsiContext}-{s_amsiSession}&quot;</span><span class="op">);</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>            PSEtwLog<span class="op">.</span><span class="fu">LogAmsiUtilStateEvent</span><span class="op">(</span><span class="st">"DllNotFoundException"</span><span class="op">,</span> $<span class="st">"{s_amsiContext}-{s_amsiSession}"</span><span class="op">);</span></span>
 <span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>            <span class="kw">return</span> AmsiNativeMethods<span class="op">.</span><span class="fu">AMSI_RESULT</span><span class="op">.</span><span class="fu">AMSI_RESULT_NOT_DETECTED</span><span class="op">;</span></span>
 <span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -312,15 +311,15 @@ the content is safe.</li>
 <h3 id="5-follow-the-definition-of-amsiscanbuffer">5. Follow the
 definition of AmsiScanBuffer</h3>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode csharp"><code class="sourceCode cs"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Return Type: HRESULT-&gt;LONG-&gt;int</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">///amsiContext: HAMSICONTEXT-&gt;HAMSICONTEXT__*</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">///buffer: PVOID-&gt;void*</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">///length: ULONG-&gt;unsigned int</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">///contentName: LPCWSTR-&gt;WCHAR*</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">///amsiSession: HAMSISESSION-&gt;HAMSISESSION__*</span></span>
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Return Type: HRESULT->LONG->int</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">///amsiContext: HAMSICONTEXT->HAMSICONTEXT__*</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">///buffer: PVOID->void*</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">///length: ULONG->unsigned int</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">///contentName: LPCWSTR->WCHAR*</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">///amsiSession: HAMSISESSION->HAMSISESSION__*</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">///result: AMSI_RESULT*</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="fu">DefaultDllImportSearchPaths</span><span class="op">(</span>DllImportSearchPath<span class="op">.</span><span class="fu">System32</span><span class="op">)]</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="fu">DllImport</span><span class="op">(</span><span class="st">&quot;amsi.dll&quot;</span><span class="op">,</span> EntryPoint <span class="op">=</span> <span class="st">&quot;AmsiScanBuffer&quot;</span><span class="op">,</span> CallingConvention <span class="op">=</span> CallingConvention<span class="op">.</span><span class="fu">StdCall</span><span class="op">)]</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="fu">DllImport</span><span class="op">(</span><span class="st">"amsi.dll"</span><span class="op">,</span> EntryPoint <span class="op">=</span> <span class="st">"AmsiScanBuffer"</span><span class="op">,</span> CallingConvention <span class="op">=</span> CallingConvention<span class="op">.</span><span class="fu">StdCall</span><span class="op">)]</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">internal</span> <span class="kw">static</span> <span class="kw">extern</span> <span class="dt">int</span> <span class="fu">AmsiScanBuffer</span><span class="op">(</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>System<span class="op">.</span><span class="fu">IntPtr</span> amsiContext<span class="op">,</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>System<span class="op">.</span><span class="fu">IntPtr</span> buffer<span class="op">,</span></span>
@@ -334,47 +333,47 @@ result. It's the bridge between PowerShell and the Windows Defender
 antimalware engine.</p>
 <h3 id="6-relaunch-attachdebuggertest-in-x64dbg">6. Relaunch
 AttachDebuggerTest in x64dbg</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2012.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2012.png"
 alt="image.png" /></p>
 <h3
 id="7-make-sure-x64dbg-is-in-a-running-state-and-then-press-enter-in-the-terminal-to-run-the-powershell-script-in-the-psrunspace">7.
 Make sure x64dbg is in a running state and then press enter in the
 terminal to run the PowerShell script in the PSRunspace</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2013.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2013.png"
 alt="image.png" /></p>
 <h3
 id="8-run-the-application-to-run-the-whoami-via-the-psrunspace-within-attachdebuggertest">8.
 Run the application to run the “whoami” via the PSRunspace within
 AttachDebuggerTest</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2014.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2014.png"
 alt="image.png" /></p>
 <h3
 id="9-via-the-symbols-tab-find-amsiscanbuffer-and-set-a-breakpoint">9.
 Via the Symbols tab, find AmsiScanBuffer and set a breakpoint</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2015.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2015.png"
 alt="image.png" /></p>
 <h3
 id="10-modify-attachdebuggertest-to-run-invoke-mimikatz-and-rebuild-solution">10.
 Modify AttachDebuggerTest to run “Invoke-Mimikatz” and rebuild
 solution</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2016.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2016.png"
 alt="image.png" /></p>
 <h3 id="11-relaunch-attachdebuggertest-in-x64dbg">11. Relaunch
 AttachDebuggerTest in x64dbg</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2012.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2012.png"
 alt="image.png" /></p>
 <h3
 id="11-step-through-the-program-until-you-hit-the-breakpoint-for-amsiscancontent-and-verify-invoke-mimikatz-is-being-passed-as-a-parameter">11.
 Step through the program until you hit the breakpoint for
 AmsiScanContent and verify “Invoke-Mimikatz” is being passed as a
 parameter</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2017.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2017.png"
 alt="image.png" /></p>
 <h3
 id="12-step-through-the-program-until-it-terminates-and-verify-the-parse-error-for-malicious-content-blocked-occurs">12.
 Step through the program until it terminates and verify the parse error
 for malicious content blocked occurs</h3>
-<p><img src="Supplement%20Determining%20Root%20Cause/image%2018.png"
+<p><img src="/_assets/supplement-determining-root-cause/image%2018.png"
 alt="image.png" /></p>
 </section>
 </div>

@@ -13,7 +13,6 @@ permalink: /solo-purple-teaming/supplement-scenario-1/
 </section>
 <section class="spt-content">
 <h1 id="supplement-scenario-1">Supplement: Scenario 1</h1>
-<p>Owner: Josh</p>
 <h1 id="fictional-scenarios">Fictional Scenarios</h1>
 <p>To make this course more engaging and enjoyable, we've created
 fictional scenarios that bring the concepts to life and give you a
@@ -48,7 +47,7 @@ It is a crucial component to Red Teaming and should be performed to some
 level on all access targets.</li>
 </ul>
 <h1 id="level-0-target-objective">Level 0 Target Objective</h1>
-<p><img src="Supplement%20Scenario%201/image.png" alt="image.png" /></p>
+<p><img src="/_assets/supplement-scenario-1/image.png" alt="image.png" /></p>
 <p>To breach ECOIN and exfiltrate their transactions records</p>
 <ul>
 <li>ECOIN Technologies is a fictional fintech corporation specializing
@@ -58,14 +57,14 @@ governments, large financial institutions, and multinational
 corporations seeking to modernize and consolidate their transaction
 ecosystems.</li>
 </ul>
-<p><img src="Supplement%20Scenario%201/image%201.png"
+<p><img src="/_assets/supplement-scenario-1/image%201.png"
 alt="image.png" /></p>
 <p><strong>ECOIN is a fictional digital currency depicted in the
 television series Mr. Robot. It is used here solely for educational
 purposes and is the intellectual property of NBCUniversal. This course
 is not affiliated with or endorsed by NBCUniversal or any of its
 properties.</strong></p>
-<p><img src="Supplement%20Scenario%201/image%202.png"
+<p><img src="/_assets/supplement-scenario-1/image%202.png"
 alt="image.png" /></p>
 <h2 id="rachel-lin">Rachel Lin</h2>
 <ul>

@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/attack-path-level-1/
 <h1>Attack Path Level 1</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="overview"><strong>Overview</strong></h3>
 <p>Attack Path Level 1 builds directly on the detections and defenses
 you created during Level 0.</p>

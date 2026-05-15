@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/red-team-engage-initial-access/
 <h1>Red Team Engage - Initial Access</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-review-of-level-1-attack-path"><strong>1. Review of Level 1
 Attack Path</strong></h3>
 <p>In Level 1, our attack sequence will follow these stages:</p>
@@ -79,8 +78,8 @@ Payload</strong>.</p></li>
 as needed later.</p></li>
 <li><p><strong>Transport</strong>: Select <strong>HTTP</strong> and set
 the callback address:</p>
-<pre><code>http://192.168.100.101
-</code></pre></li>
+http://192.168.100.101
+</li>
 <li><p>Name the binary: <code>Apollo.exe</code>.</p></li>
 <li><p>Click <strong>Create Payload</strong>.</p></li>
 <li><p>Download the generated payload.</p></li>

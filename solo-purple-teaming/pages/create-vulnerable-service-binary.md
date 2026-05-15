@@ -12,9 +12,8 @@ permalink: /solo-purple-teaming/create-vulnerable-service-binary/
 <h1>Create Vulnerable Service Binary</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-lab-context"><strong>1. Lab Context</strong></h2>
-<p><img src="Create%20Vulnerable%20Service%20Binary/image.png"
+<p><img src="/_assets/create-vulnerable-service-binary/image.png"
 alt="image.png" /></p>
 <ul>
 <li><strong>Domains</strong>:
@@ -95,8 +94,8 @@ class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-
 <li><p>Add <strong>New → Local Group</strong>:
 <code>Administrators</code>.</p></li>
 <li><p>Add the service account:</p>
-<pre><code>Ecoin\svc_ecoin_sync
-</code></pre></li>
+Ecoin\svc_ecoin_sync
+</li>
 <li><p>Apply and close.</p></li>
 </ol></li>
 <li><strong>Force GPO Update</strong> on WRK-RLIN:</li>
@@ -150,7 +149,7 @@ service binaries must be started via Service Control Manager.</li>
 Service</strong></h3>
 <p>In an <strong>elevated Command Prompt</strong>:</p>
 <div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sc</span> create <span class="st">&quot;EcoinSync&quot;</span> binPath= <span class="st">&quot;C:\Users\rlin\Desktop\EcoinSync.exe&quot;</span> start= demand obj= <span class="st">&quot;Ecoin\svc_ecoin_sync&quot;</span> password= <span class="st">&quot;PasswordHere&quot;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sc</span> create <span class="st">"EcoinSync"</span> binPath= <span class="st">"C:\Users\rlin\Desktop\EcoinSync.exe"</span> start= demand obj= <span class="st">"Ecoin\svc_ecoin_sync"</span> password= <span class="st">"PasswordHere"</span></span></code></pre></div>
 <ul>
 <li>Verify:</li>
 </ul>
@@ -175,7 +174,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href=
 <li><strong>Find SID for rlin</strong> in PowerShell:</li>
 </ol>
 <div class="sourceCode" id="cb11"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">(</span><span class="fu">New-Object</span> System<span class="op">.</span><span class="fu">Security</span><span class="op">.</span><span class="fu">Principal</span><span class="op">.</span><span class="fu">NTAccount</span><span class="op">(</span><span class="st">&quot;Ecoin\rlin&quot;</span><span class="op">)).</span><span class="fu">Translate</span><span class="op">([</span>System<span class="op">.</span><span class="fu">Security</span><span class="op">.</span><span class="fu">Principal</span><span class="op">.</span><span class="fu">SecurityIdentifier</span><span class="op">]).</span><span class="fu">Value</span></span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">(</span><span class="fu">New-Object</span> System<span class="op">.</span><span class="fu">Security</span><span class="op">.</span><span class="fu">Principal</span><span class="op">.</span><span class="fu">NTAccount</span><span class="op">(</span><span class="st">"Ecoin\rlin"</span><span class="op">)).</span><span class="fu">Translate</span><span class="op">([</span>System<span class="op">.</span><span class="fu">Security</span><span class="op">.</span><span class="fu">Principal</span><span class="op">.</span><span class="fu">SecurityIdentifier</span><span class="op">]).</span><span class="fu">Value</span></span></code></pre></div>
 <ol type="1">
 <li><p><strong>Build ACE</strong>:</p>
 <ul>
@@ -186,7 +185,7 @@ class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11
 <li><p><strong>Set New SDDL</strong>:</p></li>
 </ol>
 <div class="sourceCode" id="cb12"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sc</span> sdset EcoinSync <span class="st">&quot;SDDL_PART1(A;;RPWP;;;SID_HERE)SDDL_PART2&quot;</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sc</span> sdset EcoinSync <span class="st">"SDDL_PART1(A;;RPWP;;;SID_HERE)SDDL_PART2"</span></span></code></pre></div>
 <hr />
 <h3 id="10-test-delegation"><strong>10. Test Delegation</strong></h3>
 <ul>

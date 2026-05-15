@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/allsafe-edge-device-setup/
 <h1>AllSafe Edge Device Setup</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="objective"><strong>Objective</strong></h3>
 <p>In this lab, you will configure the <strong>AllSafe Edge
 Device</strong> in pfSense with the correct WAN and LAN IP addresses,
@@ -21,7 +20,7 @@ verify connectivity, and prepare the environment for building the
 <hr />
 <h2 id="1-review-the-network-diagram"><strong>1. Review the Network
 Diagram</strong></h2>
-<p><img src="AllSafe%20Edge%20Device%20Setup/image.png"
+<p><img src="/_assets/allsafe-edge-device-setup/image.png"
 alt="image.png" /></p>
 <p>From the diagram:</p>
 <ul>
@@ -55,15 +54,15 @@ address</strong>.</p></li>
 <li><p>Select the <strong>WAN</strong> interface.</p></li>
 <li><p>When prompted for DHCP, type <code>n</code> (No).</p></li>
 <li><p>Enter the WAN IP:</p>
-<pre><code>192.168.100.103
-</code></pre></li>
+192.168.100.103
+</li>
 <li><p>For the subnet bit count, enter:</p>
-<pre><code>24
-</code></pre>
+24
+
 <p>(This corresponds to <code>255.255.255.0</code>.)</p></li>
 <li><p>For the upstream gateway, enter:</p>
-<pre><code>192.168.100.1
-</code></pre>
+192.168.100.1
+
 <p><em>(This is the LAN interface of your home router.)</em></p></li>
 <li><p>When asked about IPv6 configuration, type <code>n</code>
 (No).</p></li>
@@ -81,11 +80,11 @@ Interface</strong></h2>
 <strong>LAN</strong>.</p></li>
 <li><p>Type <code>n</code> for DHCP.</p></li>
 <li><p>Enter the LAN IP:</p>
-<pre><code>10.0.4.3
-</code></pre></li>
+10.0.4.3
+</li>
 <li><p>For the subnet bit count, enter:</p>
-<pre><code>24
-</code></pre></li>
+24
+</li>
 <li><p>Leave the upstream gateway blank and press <strong>Enter</strong>
 (LAN doesn’t require one).</p></li>
 <li><p>Type <code>n</code> for IPv6.</p></li>
@@ -100,14 +99,14 @@ Connectivity</strong></h2>
 <li><p>From the main pfSense console menu, type <code>7</code> to
 <strong>Ping host</strong>.</p></li>
 <li><p>First, test connectivity to your home router:</p>
-<pre><code>192.168.100.1
-</code></pre>
+192.168.100.1
+
 <ul>
 <li>You should receive replies.</li>
 </ul></li>
 <li><p>Next, test Internet connectivity by pinging Google:</p>
-<pre><code>google.com
-</code></pre>
+google.com
+
 <ul>
 <li>A successful reply confirms both WAN and DNS are functioning.</li>
 </ul></li>

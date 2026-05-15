@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/what-is-detection-engineering/
 <section class="spt-content">
 <h1 id="what-is-detection-engineering">What is Detection
 Engineering?</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-overview"><strong>1. Overview</strong></h3>
 <p>In the upcoming series of lectures, we’ll explore <strong>detection
 engineering concepts</strong> that will help you during the <strong>blue
@@ -26,7 +25,7 @@ resilient</strong>.</p>
 <hr />
 <h3 id="2-what-is-detection-engineering"><strong>2. What is Detection
 Engineering?</strong></h3>
-<p><img src="What%20is%20Detection%20Engineering/image.png"
+<p><img src="/_assets/what-is-detection-engineering/image.png"
 alt="image.png" /></p>
 <p>Detection engineering:</p>
 <ul>

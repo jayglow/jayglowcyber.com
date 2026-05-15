@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/installing-apollo/
 <h1>Installing Apollo</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1
 id="hammer_and_wrench-installing-apollo-agent-and-c2-profiles-in-mythic">🛠️
 Installing Apollo Agent and C2 Profiles in Mythic</h1>
@@ -39,14 +38,14 @@ Install)</strong></p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli stop</span></code></pre></div></li>
 </ol>
-<p><img src="Installing%20Apollo/image.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image.png" alt="image.png" /></p>
 <ol type="1">
 <li><p><strong>Install Apollo Agent Using the CLI</strong></p>
 <p>Run the following:</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli install github https://github.com/MythicAgents/apollo</span></code></pre></div></li>
 </ol>
-<p><img src="Installing%20Apollo/image%201.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%201.png" alt="image.png" /></p>
 <p><strong>Wait for Installation to Complete.</strong> This step pulls
 the agent code from GitHub and may take some time.</p>
 <ol type="1">
@@ -54,7 +53,7 @@ the agent code from GitHub and may take some time.</p>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli start</span></code></pre></div></li>
 </ol>
-<p><img src="Installing%20Apollo/image%202.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%202.png" alt="image.png" /></p>
 <hr />
 <h2 id="white_check_mark-step-2-verify-apollo-agent-in-web-ui">✅ Step
 2: Verify Apollo Agent in Web UI</h2>
@@ -64,10 +63,10 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
 <li><p><strong>Log in to Mythic Web UI</strong></p>
 <p>If needed, get your login password using:</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&quot;MythicAdminPassword&quot;</span> mythic-docker/.env</span></code></pre></div></li>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"MythicAdminPassword"</span> mythic-docker/.env</span></code></pre></div></li>
 <li><p><strong>Check Installed Agents</strong></p>
 <p>Go to the “Payload/ C2 Services” section.</p>
-<p><img src="Installing%20Apollo/image%203.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%203.png" alt="image.png" /></p>
 <p>Apollo agent should now be listed as installed.</p></li>
 </ol>
 <hr />
@@ -81,13 +80,13 @@ href="https://github.com/MythicC2Profiles/http](https://github.com/MythicC2Profi
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli stop</span></code></pre></div></li>
 </ol>
-<p><img src="Installing%20Apollo/image%204.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%204.png" alt="image.png" /></p>
 <ol type="1">
 <li><p><strong>Install the HTTP Profile</strong></p>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli install github https://github.com/MythicC2Profiles/http</span></code></pre></div></li>
 </ol>
-<p><img src="Installing%20Apollo/image%205.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%205.png" alt="image.png" /></p>
 <p><strong>Wait for Installation to Finish</strong></p>
 <hr />
 <h2 id="white_check_mark-step-4-install-smb-c2-profile">✅ Step 4:
@@ -100,7 +99,7 @@ href="https://github.com/MythicC2Profiles/smb](https://github.com/MythicC2Profil
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli install github https://github.com/MythicC2Profiles/smb.git</span></code></pre></div></li>
 </ol>
-<p><img src="Installing%20Apollo/image%206.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%206.png" alt="image.png" /></p>
 <p><strong>Wait for Installation to Finish</strong></p>
 <hr />
 <h2 id="white_check_mark-step-5-start-mythic-and-verify-everything">✅
@@ -110,7 +109,7 @@ Step 5: Start Mythic and Verify Everything</h2>
 <div class="sourceCode" id="cb8"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./mythic-cli start</span></code></pre></div></li>
 </ol>
-<p><img src="Installing%20Apollo/image%207.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%207.png" alt="image.png" /></p>
 <ol type="1">
 <li><strong>Refresh Mythic Web UI in Browser</strong></li>
 </ol>
@@ -120,7 +119,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="
 connections.</li>
 <li>Confirm <strong>SMB Profile</strong> is online and active.</li>
 </ul>
-<p><img src="Installing%20Apollo/image%208.png" alt="image.png" /></p>
+<p><img src="/_assets/installing-apollo/image%208.png" alt="image.png" /></p>
 <hr />
 <h2 id="dart-summary--before-moving-to-the-next-lecture">🎯 Summary –
 Before Moving to the Next Lecture</h2>

@@ -12,12 +12,11 @@ permalink: /solo-purple-teaming/mythic-tasking/
 <h1>Mythic Tasking</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="mythic-tasking-basics"><strong>Mythic Tasking
 Basics</strong></h2>
 <h3 id="1-understanding-tasking-in-mythic"><strong>1. Understanding
 Tasking in Mythic</strong></h3>
-<p><img src="Mythic%20Tasking/image.png" alt="image.png" /></p>
+<p><img src="/_assets/mythic-tasking/image.png" alt="image.png" /></p>
 <p>In Mythic, <em>tasking</em> is the process of sending commands to
 agents deployed inside the target environment.</p>
 <ul>
@@ -31,7 +30,7 @@ systems.</p></li>
 </ul>
 <p>The Mythic UI includes features that make tasking more efficient and
 safer:</p>
-<p><img src="Mythic%20Tasking/image%201.png" alt="image.png" /></p>
+<p><img src="/_assets/mythic-tasking/image%201.png" alt="image.png" /></p>
 <ul>
 <li><strong>Autocomplete</strong> and <strong>tool tips</strong> for
 accurate commands</li>
@@ -64,7 +63,7 @@ Available Commands</strong></h3>
 </ul>
 <p><strong>Method 2 – Help on a specific command:</strong></p>
 <ul>
-<li>Type <code>help &lt;command_name&gt;</code> (e.g.,
+<li>Type <code>help <command_name></code> (e.g.,
 <code>help assembly_inject</code>).</li>
 <li>Mythic will display detailed information about that specific
 command.</li>

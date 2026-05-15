@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/red-team-engage-privilege-escalation/
 <h1>Red Team Engage - Privilege Escalation</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="introduction">Introduction</h2>
 <p>In this phase, we will:</p>
 <ul>
@@ -42,8 +41,8 @@ in Mythic.</li>
 <li><strong>Rename the tab</strong> for clarity:
 <ul>
 <li><p>Set the tab description to:</p>
-<pre><code>initial access
-</code></pre>
+initial access
+
 <p>and note the compromised user as <code>Arlen</code>.</p></li>
 </ul></li>
 </ol>
@@ -67,8 +66,8 @@ Technique</strong></h3>
 <ol type="1">
 <li><p>Run <code>get injection techniques</code>.</p></li>
 <li><p>Select:</p>
-<pre><code>syscall_x64.ntcreatethreadex
-</code></pre></li>
+syscall_x64.ntcreatethreadex
+</li>
 <li><p>Submit to apply this injection method.</p></li>
 </ol>
 <hr />
@@ -76,8 +75,8 @@ Technique</strong></h3>
 Process</strong></h3>
 <ul>
 <li><p>Change spawn process to:</p>
-<pre><code>smartscreen.exe
-</code></pre>
+smartscreen.exe
+
 <p>(located in <code>C:\Windows\System32</code>)</p></li>
 </ul>
 <hr />
@@ -85,8 +84,8 @@ Process</strong></h3>
 Service Scan Assembly</strong></h3>
 <ol type="1">
 <li><p>Use <code>execute assembly</code> on:</p>
-<pre><code>service scan demo.exe
-</code></pre></li>
+service scan demo.exe
+</li>
 <li><p>Switch to the <strong>assume breach</strong> host to watch for
 detections.</p></li>
 <li><p>Confirm <strong>Windows Defender</strong> is enabled:</p>
@@ -117,16 +116,16 @@ modify</strong> its binary.</li>
 Exploiting</strong></h3>
 <ol type="1">
 <li><p>Open a shell:</p>
-<pre><code>cd Desktop
+cd Desktop
 ls
-</code></pre>
+
 <ul>
 <li>You should see the original <code>ecoin sync</code> binaries
 (malicious and legitimate) from Level 0.</li>
 </ul></li>
 <li><p>Delete the old malicious binary:</p>
-<pre><code>del ecoin sync.exe
-</code></pre>
+del ecoin sync.exe
+
 <ul>
 <li><strong>Lesson:</strong> Always reset and clean up after each
 scenario.</li>
@@ -145,8 +144,8 @@ class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-
 <code>Invoke-WebRequest</code>.</li>
 </ul></li>
 <li><p>Confirm with:</p>
-<pre><code>ls
-</code></pre>
+ls
+
 <p>The file should be present on the Desktop.</p></li>
 </ul>
 <hr />
@@ -166,8 +165,8 @@ executables in <code>Downloads</code>.</p></li>
 Service</strong></h3>
 <ul>
 <li><p>From shell:</p>
-<pre><code>sc start &quot;ecoin sync&quot;
-</code></pre></li>
+sc start "ecoin sync"
+</li>
 <li><p>Check Mythic — you should now have a <strong>high-integrity
 callback</strong> as <code>SVC ecoin sync</code>.</p></li>
 </ul>

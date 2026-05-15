@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/build-custom-correlation-rule/
 <h1>Build Custom Correlation Rule</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-understanding-the-purpose-of-rule-correlation"><strong>1.
 Understanding the Purpose of Rule Correlation</strong></h3>
 <ul>
@@ -79,16 +78,16 @@ Correlation Rule</strong></h3>
 <ul>
 <li><p><strong>Structure</strong>:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">group</span><span class="ot"> name=</span><span class="st">&quot;solo_purple_teaming_c2,windows,sysmon&quot;</span>&gt;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">rule</span><span class="ot"> id=</span><span class="st">&quot;100200&quot;</span><span class="ot"> level=</span><span class="st">&quot;13&quot;</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">if_match_group</span>&gt;solo_purple_teaming_c2&lt;/<span class="kw">if_match_group</span>&gt;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">frequency</span>&gt;2&lt;/<span class="kw">frequency</span>&gt;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">timeframe</span>&gt;2&lt;/<span class="kw">timeframe</span>&gt;</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">description</span>&gt;</span>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">group</span><span class="ot"> name=</span><span class="st">"solo_purple_teaming_c2,windows,sysmon"</span>></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">rule</span><span class="ot"> id=</span><span class="st">"100200"</span><span class="ot"> level=</span><span class="st">"13"</span>></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">if_match_group</span>>solo_purple_teaming_c2</<span class="kw">if_match_group</span>></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">frequency</span>>2</<span class="kw">frequency</span>></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">timeframe</span>>2</<span class="kw">timeframe</span>></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">description</span>></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      Correlation: 100100 and 100101 occurred within 2 seconds – Possible C2 activity</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">description</span>&gt;</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">rule</span>&gt;</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">group</span>&gt;</span></code></pre></div></li>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    </<span class="kw">description</span>></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  </<span class="kw">rule</span>></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></<span class="kw">group</span>></span></code></pre></div></li>
 <li><p><strong>Key attributes</strong>:</p>
 <ul>
 <li><code>group name</code>: Groups related rules together.</li>
@@ -113,7 +112,7 @@ Management → Rules</strong>.</li>
 <li><strong>Find your custom rule file</strong> (e.g.,
 <code>solo_purple_teaming.xml</code>).</li>
 <li><strong>Edit the file</strong> and paste your new correlation
-<code>&lt;group&gt;</code> and <code>&lt;rule&gt;</code> block.</li>
+<code><group></code> and <code><rule></code> block.</li>
 <li><strong>Check syntax</strong>:
 <ul>
 <li>Fix special quote characters if pasted from other sources.</li>

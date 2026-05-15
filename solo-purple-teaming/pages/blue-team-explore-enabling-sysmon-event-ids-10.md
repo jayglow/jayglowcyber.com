@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/blue-team-explore-enabling-sysmon-event-ids-10/
 <section class="spt-content">
 <h1 id="blue-team-explore---enabling-sysmon-event-ids-10-17--18">Blue
 Team Explore - Enabling Sysmon Event IDs 10, 17 &amp; 18</h1>
-<p>Owner: Mike Sterrett</p>
 <h2 id="objective"><strong>Objective</strong></h2>
 <p>In this lab, you will enable Sysmon logging for:</p>
 <ul>
@@ -35,7 +34,7 @@ located in your <strong>Downloads</strong> folder.</li>
 <li>Add an XML entry to match <strong>Granted Access</strong> with the
 value <code>0x1fffff</code> (full process access).
 <ul>
-<li>Use the <code>&lt;grantedAccess&gt;</code> tag.</li>
+<li>Use the <code><grantedAccess></code> tag.</li>
 <li>Set the <strong>condition</strong> to <code>"is"</code>.</li>
 <li>Set the <strong>match value</strong> to <code>0x1fffff</code>.</li>
 </ul></li>
@@ -64,14 +63,14 @@ Wazuh</strong></h3>
 <li><p>Switch your <strong>index pattern</strong> to
 <strong>archives</strong>.</p></li>
 <li><p>Search for:</p>
-<pre><code>data.win.system.eventID: 10
-</code></pre></li>
+data.win.system.eventID: 10
+</li>
 <li><p>Confirm process access events are appearing from the
 <code>ecoin-wrk-rlin</code> host.</p></li>
 <li><p>Expand an event and verify that the <strong>Granted
 Access</strong> field shows:</p>
-<pre><code>0x1fffff
-</code></pre></li>
+0x1fffff
+</li>
 </ol>
 <hr />
 <h3 id="4-resolve-field-mapping-warnings"><strong>4. Resolve Field
@@ -104,12 +103,12 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="
 18</strong></h3>
 <ol type="1">
 <li><p>In Wazuh Discover, filter for:</p>
-<pre><code>data.win.system.eventID: 17
-</code></pre>
+data.win.system.eventID: 17
+
 <p>Confirm <strong>Pipe Created</strong> events appear.</p></li>
 <li><p>Then filter for:</p>
-<pre><code>data.win.system.eventID: 18
-</code></pre>
+data.win.system.eventID: 18
+
 <p>Confirm <strong>Pipe Connected</strong> events appear.</p></li>
 </ol>
 <hr />

@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/adding-sec-ecoin-sync-to-domain-admins/
 <h1>Adding sec_ecoin_sync to Domain Admins</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="objective"><strong>Objective</strong></h3>
 <p>In this lab step, we’re going to make a small configuration change so
 we can easily pivot from our Linux (LIN) workstation to the Domain
@@ -67,8 +66,8 @@ the left list.</li>
 <li><p>Expand your domain in the left-hand panel.</p></li>
 <li><p>Click on <strong>Users</strong>.</p></li>
 <li><p>Find the account named:</p>
-<pre><code>svc_ecoin_sync
-</code></pre>
+svc_ecoin_sync
+
 <p>(This is the service account we’ll modify.)</p></li>
 </ul>
 <hr />
@@ -80,12 +79,12 @@ to Domain Admins</strong></h3>
 <li><p>Go to the <strong>Member Of</strong> tab.</p></li>
 <li><p>Click <strong>Add…</strong></p></li>
 <li><p>In the dialog box, type:</p>
-<pre><code>Domain Admins
-</code></pre>
+Domain Admins
+
 <ul>
 <li><p>If needed, use the format:</p>
-<pre><code>ecoin\Domain Admins
-</code></pre></li>
+ecoin\Domain Admins
+</li>
 </ul></li>
 <li><p>Click <strong>Check Names</strong> to verify the group
 name.</p></li>
@@ -98,7 +97,7 @@ finally <strong>OK</strong> again.</p></li>
 <li><p>Open Command Prompt (Administrator).</p></li>
 <li><p>To check your current logged-in account:</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">net</span> user <span class="op">&lt;</span>your-username<span class="op">&gt;</span> /domain</span></code></pre></div></li>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">net</span> user <span class="op"><</span>your-username<span class="op">></span> /domain</span></code></pre></div></li>
 <li><p>To check the service account:</p>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">net</span> user svc_ecoin_sync /domain</span></code></pre></div></li>

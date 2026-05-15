@@ -12,12 +12,11 @@ permalink: /solo-purple-teaming/establish-foothold-in-ecoin/
 <h1>Establish Foothold in ECOIN</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-understanding-initial-access"><strong>1. Understanding Initial
 Access</strong></h2>
 <p>In this lab, we will simulate gaining an initial foothold on the
 <strong>assumed breach host</strong> within the Ecoin network.</p>
-<p><img src="Establish%20Foothold%20in%20ECOIN/image.png"
+<p><img src="/_assets/establish-foothold-in-ecoin/image.png"
 alt="image.png" /></p>
 <p><strong>Initial Access</strong> is the stage in the attack lifecycle
 where an adversary first gains entry into a target environment. This can
@@ -47,7 +46,7 @@ Context</strong></h2>
 working through the first five stages:</p>
 <p><strong>Reconnaissance → Weaponization → Delivery → Exploitation →
 Installation</strong></p>
-<p><img src="Establish%20Foothold%20in%20ECOIN/image%201.png"
+<p><img src="/_assets/establish-foothold-in-ecoin/image%201.png"
 alt="image.png" /></p>
 <p><strong>Your goal</strong> (both as attacker and defender) is to:</p>
 <ul>
@@ -79,8 +78,8 @@ Payload</strong></h2>
 <ol type="1">
 <li><p>On the assumed breach host, open a web browser.</p></li>
 <li><p>Navigate to:</p>
-<pre><code>http://192.168.100.101:8000
-</code></pre>
+http://192.168.100.101:8000
+
 <ul>
 <li>This IP is the <strong>WAN interface of our Attack LAN</strong>,
 forwarded to the Kali host running our staging server.</li>
@@ -120,8 +119,8 @@ of WRK-R-LIN in the Ecoin LAN)</li>
 <li><p>Click the callback entry to open a <strong>Callback
 Tab</strong>.</p></li>
 <li><p>Rename the tab to something descriptive, e.g.:</p>
-<pre><code>Assumed Breach Host – RLIN
-</code></pre></li>
+Assumed Breach Host – RLIN
+</li>
 </ol>
 <hr />
 <h2 id="7-testing-agent-interactivity"><strong>7. Testing Agent
@@ -135,8 +134,8 @@ first.</li>
 </ul></li>
 <li><p>Once available, execute <code>whoami</code>.</p></li>
 <li><p>You should see:</p>
-<pre><code>ecoin\rlyn
-</code></pre>
+ecoin\rlyn
+
 <p>for both <strong>Local Identity</strong> and <strong>Impersonation
 Identity</strong>.</p></li>
 </ol>

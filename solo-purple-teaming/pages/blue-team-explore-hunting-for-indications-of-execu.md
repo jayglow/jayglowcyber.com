@@ -15,7 +15,6 @@ permalink: /solo-purple-teaming/blue-team-explore-hunting-for-indications-of-exe
 <h1
 id="blue-team-explore-hunting-for-indications-of-execute_assembly">Blue
 Team Explore: Hunting For Indications of execute_assembly</h1>
-<p>Owner: Mike Sterrett</p>
 <h2 id="introduction">Introduction</h2>
 <p>In this exercise, we’ll explore telemetry to detect:</p>
 <ul>

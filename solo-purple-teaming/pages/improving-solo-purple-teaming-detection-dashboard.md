@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/improving-solo-purple-teaming-detection-dashboar
 <h1>Improving Solo Purple Teaming Detection Dashboard</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-why-dashboards-matter-in-solo-purple-teaming"><strong>1. Why
 Dashboards Matter in Solo Purple Teaming</strong></h3>
 <ul>
@@ -46,8 +45,8 @@ Searches</strong></h3>
 <ul>
 <li><p>Go to <strong>Explore → Discover</strong>.</p></li>
 <li><p>Search:</p>
-<pre><code>rule.level &gt; 12
-</code></pre></li>
+rule.level > 12
+</li>
 <li><p>Adjust time filter to <strong>Last 7 days</strong>.</p></li>
 <li><p>Save search as:</p>
 <p><strong>solo purple teaming rules greater than
@@ -57,8 +56,8 @@ twelve</strong>.</p></li>
 15)</strong></h3>
 <ul>
 <li><p>Search:</p>
-<pre><code>rule.level = 15
-</code></pre></li>
+rule.level = 15
+</li>
 <li><p>Save as:</p>
 <p><strong>purple teaming critical alerts</strong>.</p></li>
 </ul>
@@ -66,8 +65,8 @@ twelve</strong>.</p></li>
 14)</strong></h3>
 <ul>
 <li><p>Search:</p>
-<pre><code>rule.level = 14
-</code></pre></li>
+rule.level = 14
+</li>
 <li><p>Save as:</p>
 <p><strong>high alerts</strong>.</p></li>
 </ul>
@@ -75,8 +74,8 @@ twelve</strong>.</p></li>
 13)</strong></h3>
 <ul>
 <li><p>Search:</p>
-<pre><code>rule.level = 13
-</code></pre></li>
+rule.level = 13
+</li>
 <li><p>Save as:</p>
 <p><strong>medium alerts</strong>.</p></li>
 </ul>

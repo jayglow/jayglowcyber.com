@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/blue-team-explore-enabling-sysmon-event-ids-12/
 <section class="spt-content">
 <h1 id="blue-team-explore---enabling-sysmon-event-ids-12-13--14">Blue
 Team Explore - Enabling Sysmon Event IDs 12, 13 &amp; 14</h1>
-<p>Owner: Mike Sterrett</p>
 <h2 id="overview"><strong>Overview</strong></h2>
 <p>In this exercise, we will enable <strong>Sysmon</strong> event IDs
 <strong>12</strong>, <strong>13</strong>, and <strong>14</strong> to
@@ -70,9 +69,9 @@ Sysmon Configuration</strong></h3>
 <h3 id="step-2--enable-the-events"><strong>Step 2 – Enable the
 Events</strong></h3>
 <ol type="1">
-<li>Locate the <code>&lt;Include&gt;</code> tag for these events.</li>
-<li>Change the empty <code>&lt;Include&gt;</code> to
-<code>&lt;Exclude&gt;</code> and <strong>leave it empty</strong> to
+<li>Locate the <code><Include></code> tag for these events.</li>
+<li>Change the empty <code><Include></code> to
+<code><Exclude></code> and <strong>leave it empty</strong> to
 ensure <em>no registry events are excluded</em>.</li>
 <li>Save the configuration file.</li>
 </ol>
@@ -84,7 +83,7 @@ Sysmon Config</strong></h3>
 <li><p>Enter your admin credentials when prompted.</p></li>
 <li><p>Change directory to the <code>Downloads</code> folder:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> C<span class="op">:</span>\Users\<span class="op">&lt;</span>username<span class="op">&gt;</span>\Downloads</span></code></pre></div></li>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> C<span class="op">:</span>\Users\<span class="op"><</span>username<span class="op">></span>\Downloads</span></code></pre></div></li>
 <li><p>Apply the updated Sysmon config:</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sysmon64<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>c basicsmon_sysmonconfig<span class="op">.</span><span class="fu">xml</span></span></code></pre></div></li>
@@ -99,8 +98,8 @@ Wazuh</strong></h3>
 <li><p>Navigate to <strong>Explore → Discover</strong>.</p></li>
 <li><p>Change the index to <strong>archives</strong>.</p></li>
 <li><p>Search for:</p>
-<pre><code>data.win.system.eventID:13
-</code></pre>
+data.win.system.eventID:13
+
 <ul>
 <li>Confirm <strong>Event ID 13</strong> entries are appearing.</li>
 </ul></li>

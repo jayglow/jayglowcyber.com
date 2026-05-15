@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/setup-the-wazuh-server/
 <h1>Setup the Wazuh Server</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-objective"><strong>1. Objective</strong></h3>
 <p>In this lecture, we will:</p>
 <ul>
@@ -28,7 +27,7 @@ endpoints.</li>
 <strong>AllSafe</strong>.</p>
 <p>The Wazuh server will be installed in this LAN and connected via our
 pfSense Edge device.</p>
-<p><img src="Setup%20the%20Wazuh%20Server/image.png"
+<p><img src="/_assets/setup-the-wazuh-server/image.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="3-creating-the-wazuh-server-vm"><strong>3. Creating the Wazuh
@@ -108,8 +107,8 @@ recover if lost.</li>
 Web UI</strong></h3>
 <ol type="1">
 <li><p>In a browser, go to:</p>
-<pre><code>https://localhost
-</code></pre></li>
+https://localhost
+</li>
 <li><p>Accept the <strong>self-signed certificate</strong>
 warning.</p></li>
 <li><p>Log in with:</p>
@@ -156,8 +155,8 @@ pfSense)</li>
 Access</strong></h3>
 <ol type="1">
 <li><p>In a browser, go to:</p>
-<pre><code>https://10.0.4.3
-</code></pre></li>
+https://10.0.4.3
+</li>
 <li><p>Accept certificate warning.</p></li>
 <li><p>Log in (default: <code>admin</code> / <code>pfsense</code>) and
 change the admin password.</p></li>
@@ -191,8 +190,8 @@ bogon networks</strong>.</li>
 from Outside</strong></h3>
 <ol type="1">
 <li><p>In a browser on another machine, go to:</p>
-<pre><code>https://192.168.100.103
-</code></pre>
+https://192.168.100.103
+
 <p><em>(WAN interface of AllSafe edge device)</em></p></li>
 <li><p>Accept certificate warning.</p></li>
 <li><p>Log in to the Wazuh Web UI.</p></li>

@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/introduction-to-av/
 <h1>Introduction to AV</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h1
 id="understanding-antivirus-software-before-bypassing-windows-defender-with-apollo">Understanding
 Antivirus Software (Before Bypassing Windows Defender with Apollo)</h1>

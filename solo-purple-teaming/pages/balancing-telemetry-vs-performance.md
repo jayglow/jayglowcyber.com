@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/balancing-telemetry-vs-performance/
 <h1>Balancing Telemetry VS Performance</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-introduction--your-role-as-a-solo-purple-teamer"><strong>1.
 Introduction – Your Role as a Solo Purple Teamer</strong></h3>
 <ul>

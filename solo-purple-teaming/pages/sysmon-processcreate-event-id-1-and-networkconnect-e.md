@@ -15,7 +15,6 @@ permalink: /solo-purple-teaming/sysmon-processcreate-event-id-1-and-networkconne
 <h1
 id="sysmon-processcreate-event-id-1--networkconnect-event-id-3">Sysmon
 ProcessCreate Event ID 1 &amp; NetworkConnect Event ID 3</h1>
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-understanding-the-focus-events"><strong>1. Understanding the
 Focus Events</strong></h3>
 <p><strong>Event ID 1 – Process Creation</strong></p>
@@ -72,8 +71,8 @@ events.</li>
 Sysmon Event ID 1</strong></h2>
 <ol type="1">
 <li><p><strong>In the search bar</strong>, run:</p>
-<pre><code>data.win.system.eventID:1
-</code></pre></li>
+data.win.system.eventID:1
+</li>
 <li><p><strong>Expected Result</strong> – None found → <strong>Telemetry
 gap identified</strong>.</p></li>
 </ol>
@@ -84,12 +83,12 @@ Enabling Sysmon Event ID 1 (Process Creation)</strong></h2>
 <li><p><strong>RDP into the Assumed Breach Host</strong>.</p></li>
 <li><p>Open
 <strong><code>base_sysmonconfig.xml</code></strong>.</p></li>
-<li><p>Locate the <code>&lt;Include&gt;</code> filter for
+<li><p>Locate the <code><Include></code> filter for
 <code>powershell.exe</code>.</p></li>
 <li><p>Replace with an <strong>empty
-<code>&lt;Exclude&gt;</code></strong> tag:</p>
+<code><Exclude></code></strong> tag:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">Exclude</span> /&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">Exclude</span> /></span></code></pre></div>
 <ul>
 <li>This logs <strong>all process creation events</strong>.</li>
 </ul></li>
@@ -133,12 +132,12 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="
 </ul></li>
 </ul></li>
 <li><p><strong>In Mythic</strong>, run:</p>
-<pre><code>shell net localgroup administrators
-</code></pre>
+shell net localgroup administrators
+
 <p><em>(Correct typos as needed.)</em></p></li>
 <li><p><strong>In Wazuh</strong>, search for:</p>
-<pre><code>data.win.system.eventID:1 AND data.win.eventdata.CommandLine:*localgroup*
-</code></pre></li>
+data.win.system.eventID:1 AND data.win.eventdata.CommandLine:*localgroup*
+</li>
 <li><p>Confirm matching events appear, including errors and correct
 commands.</p></li>
 </ol>
@@ -148,8 +147,8 @@ id="7-searching-for-sysmon-event-id-3-network-connections"><strong>7.
 Searching for Sysmon Event ID 3 (Network Connections)</strong></h2>
 <ol type="1">
 <li><p>Query:</p>
-<pre><code>data.win.system.eventID:3
-</code></pre></li>
+data.win.system.eventID:3
+</li>
 <li><p><strong>Expected Result</strong> – None found → <strong>Telemetry
 gap identified</strong>.</p></li>
 </ol>
@@ -165,12 +164,12 @@ Enabling Sysmon Event ID 3 (Network Connections)</strong></h2>
 <li><p><strong>Edit Sysmon Config</strong> to include specific
 destination ports:</p>
 <div class="sourceCode" id="cb8"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">NetworkConnect</span><span class="ot"> onmatch=</span><span class="st">&quot;include&quot;</span>&gt;</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">DestinationPort</span>&gt;80&lt;/<span class="kw">DestinationPort</span>&gt;</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">DestinationPort</span>&gt;135&lt;/<span class="kw">DestinationPort</span>&gt;</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">DestinationPort</span>&gt;443&lt;/<span class="kw">DestinationPort</span>&gt;</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">DestinationPort</span>&gt;445&lt;/<span class="kw">DestinationPort</span>&gt;</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">NetworkConnect</span>&gt;</span></code></pre></div></li>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">NetworkConnect</span><span class="ot"> onmatch=</span><span class="st">"include"</span>></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">DestinationPort</span>>80</<span class="kw">DestinationPort</span>></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">DestinationPort</span>>135</<span class="kw">DestinationPort</span>></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">DestinationPort</span>>443</<span class="kw">DestinationPort</span>></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">DestinationPort</span>>445</<span class="kw">DestinationPort</span>></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></<span class="kw">NetworkConnect</span>></span></code></pre></div></li>
 <li><p><strong>Save config</strong>.</p></li>
 <li><p><strong>Update Sysmon config</strong>:</p>
 <div class="sourceCode" id="cb9"><pre
@@ -194,8 +193,8 @@ in Wazuh</strong></h2>
 <li><p>Start a <strong>new beacon</strong> with
 <code>goodbye_AMSI.exe</code>.</p></li>
 <li><p>In Wazuh, search for:</p>
-<pre><code>data.win.system.eventID:3
-</code></pre></li>
+data.win.system.eventID:3
+</li>
 <li><p>Confirm network connection logs appear.</p></li>
 <li><p>Expand an event to view:</p>
 <ul>

@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/building-advanced-correlation-engine-part-4/
 <h1>Building Advanced Correlation Engine - Part 4</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-roadmap-overview"><strong>1. Roadmap Overview</strong></h2>
 <p>We’ve already:</p>
 <ul>
@@ -53,7 +52,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <ol type="1">
 <li>Add:</li>
 </ol>
-<pre><code>[Unit]
+[Unit]
 Description=Wazuh Advanced Correlation Engine
 After=network.target
 
@@ -69,7 +68,7 @@ StandardError=append:/var/log/wazuh-ace/ace.out
 
 [Install]
 WantedBy=multi-user.target
-</code></pre>
+
 <hr />
 <h3 id="4-create-log-directory-for-the-service"><strong>4. Create Log
 Directory for the Service</strong></h3>
@@ -103,13 +102,13 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="
 <ol type="1">
 <li>Add:</li>
 </ol>
-<pre><code>/opt/wazuh-tools/correlation.json {
+/opt/wazuh-tools/correlation.json {
     size 10M
     rotate 10
     compress
     copytruncate
 }
-</code></pre>
+
 <ol type="1">
 <li>Test rotation:</li>
 </ol>
@@ -126,13 +125,13 @@ to Monitor the Log</strong></h3>
 <div class="sourceCode" id="cb10"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /var/ossec/etc/ossec.conf</span></code></pre></div>
 <ol type="1">
-<li>Add inside <code>&lt;localfile&gt;</code> section:</li>
+<li>Add inside <code><localfile></code> section:</li>
 </ol>
 <div class="sourceCode" id="cb11"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">localfile</span>&gt;</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">log_format</span>&gt;json&lt;/<span class="kw">log_format</span>&gt;</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">location</span>&gt;/opt/wazuh-tools/correlation.json&lt;/<span class="kw">location</span>&gt;</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">localfile</span>&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">localfile</span>></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">log_format</span>>json</<span class="kw">log_format</span>></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">location</span>>/opt/wazuh-tools/correlation.json</<span class="kw">location</span>></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></<span class="kw">localfile</span>></span></code></pre></div>
 <ol type="1">
 <li>Restart Wazuh Manager:</li>
 </ol>
@@ -143,7 +142,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href=
 Python Script</strong></h3>
 <p>Modify <code>wazuh_ace.py</code> to tag correlation events:</p>
 <div class="sourceCode" id="cb13"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;event_type&quot;</span>: <span class="st">&quot;correlation&quot;</span></span></code></pre></div>
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">"event_type"</span>: <span class="st">"correlation"</span></span></code></pre></div>
 <p>Restart service:</p>
 <div class="sourceCode" id="cb14"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart wazuh-ace</span></code></pre></div>
@@ -167,15 +166,15 @@ Rule</strong></h3>
 <li>Add:</li>
 </ol>
 <div class="sourceCode" id="cb15"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">group</span><span class="ot"> name=</span><span class="st">&quot;correlation-alerts&quot;</span>&gt;</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">rule</span><span class="ot"> id=</span><span class="st">&quot;100500&quot;</span><span class="ot"> level=</span><span class="st">&quot;12&quot;</span>&gt;</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">decoded_as</span>&gt;json&lt;/<span class="kw">decoded_as</span>&gt;</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">field</span><span class="ot"> name=</span><span class="st">&quot;event_type&quot;</span>&gt;correlation&lt;/<span class="kw">field</span>&gt;</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">match</span><span class="ot"> type=</span><span class="st">&quot;pcre2&quot;</span>&gt;.*c2.*&lt;/<span class="kw">match</span>&gt;</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">description</span>&gt;Possible C2 activity detected&lt;/<span class="kw">description</span>&gt;</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">group</span>&gt;attack,suspicious,c2&lt;/<span class="kw">group</span>&gt;</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">rule</span>&gt;</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">group</span>&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">group</span><span class="ot"> name=</span><span class="st">"correlation-alerts"</span>></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">rule</span><span class="ot"> id=</span><span class="st">"100500"</span><span class="ot"> level=</span><span class="st">"12"</span>></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">decoded_as</span>>json</<span class="kw">decoded_as</span>></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">field</span><span class="ot"> name=</span><span class="st">"event_type"</span>>correlation</<span class="kw">field</span>></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">match</span><span class="ot"> type=</span><span class="st">"pcre2"</span>>.*c2.*</<span class="kw">match</span>></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">description</span>>Possible C2 activity detected</<span class="kw">description</span>></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">group</span>>attack,suspicious,c2</<span class="kw">group</span>></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  </<span class="kw">rule</span>></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></<span class="kw">group</span>></span></code></pre></div>
 <ol type="1">
 <li>Restart Wazuh Manager:</li>
 </ol>

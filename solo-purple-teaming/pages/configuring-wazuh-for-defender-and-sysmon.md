@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/configuring-wazuh-for-defender-and-sysmon/
 <h1>Configuring Wazuh for Defender and Sysmon</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-recap-of-lab-environment"><strong>1. Recap of Lab
 Environment</strong></h3>
 <ul>
@@ -25,7 +24,7 @@ forwarding on the AllSafe edge device.</li>
 </ul></li>
 </ul>
 <p><img
-src="Configuring%20Wazuh%20for%20Defender%20and%20Sysmon/image.png"
+src="/_assets/configuring-wazuh-for-defender-and-sysmon/image.png"
 alt="image.png" /></p>
 <p>Goal: Configure Wazuh agent to forward <strong>Sysmon</strong> and
 <strong>Windows Defender</strong> logs to the Wazuh server.</p>
@@ -110,15 +109,15 @@ id="step-2-enable-sysmon--windows-defender-log-collection"><strong>Step
 <li>Add these entries:</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">localfile</span>&gt;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">log_format</span>&gt;eventchannel&lt;/<span class="kw">log_format</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">location</span>&gt;Microsoft-Windows-Windows Defender/Operational&lt;/<span class="kw">location</span>&gt;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">localfile</span>&gt;</span>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">localfile</span>></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">log_format</span>>eventchannel</<span class="kw">log_format</span>></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">location</span>>Microsoft-Windows-Windows Defender/Operational</<span class="kw">location</span>></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></<span class="kw">localfile</span>></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">localfile</span>&gt;</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">log_format</span>&gt;eventchannel&lt;/<span class="kw">log_format</span>&gt;</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">location</span>&gt;Microsoft-Windows-Sysmon/Operational&lt;/<span class="kw">location</span>&gt;</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">localfile</span>&gt;</span></code></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><<span class="kw">localfile</span>></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">log_format</span>>eventchannel</<span class="kw">log_format</span>></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">location</span>>Microsoft-Windows-Sysmon/Operational</<span class="kw">location</span>></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></<span class="kw">localfile</span>></span></code></pre></div>
 <ol type="1">
 <li>Save — confirm “File successfully edited” message.</li>
 </ol>
@@ -132,10 +131,10 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi ossec.conf</span></code></pre></div></li>
 <li><p>Locate:</p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">logall_json</span>&gt;no&lt;/<span class="kw">logall_json</span>&gt;</span></code></pre></div></li>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">logall_json</span>>no</<span class="kw">logall_json</span>></span></code></pre></div></li>
 <li><p>Change to:</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">logall_json</span>&gt;yes&lt;/<span class="kw">logall_json</span>&gt;</span></code></pre></div></li>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">logall_json</span>>yes</<span class="kw">logall_json</span>></span></code></pre></div></li>
 <li><p>Save &amp; exit → Restart Wazuh Manager:</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart wazuh-manager</span></code></pre></div></li>
@@ -169,8 +168,8 @@ id="step-5-create-an-archives-index-pattern-in-wazuh-dashboard"><strong>Step
 <li><p>Wazuh Dashboard → <strong>Dashboard Management</strong> →
 <strong>Index Patterns</strong>.</p></li>
 <li><p>Click <strong>Create Index Pattern</strong> → Name:</p>
-<pre><code>winwazuh-archives-*
-</code></pre></li>
+winwazuh-archives-*
+</li>
 <li><p>Select <strong><code>timestamp</code></strong> as the time field
 → <strong>Create Index Pattern</strong>.</p></li>
 </ol>
@@ -194,8 +193,8 @@ Trigger a Windows Defender Alert (Test)</strong></h3>
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /opt/mythic/mythic/installed_services/Apollo/agent_code/mimikatz/x64/mimikatz.exe ~/downloads/</span></code></pre></div></li>
 <li><p>On the <strong>Assumed Breach Host</strong>, open browser →
 Download Mimikatz from:</p>
-<pre><code>http://&lt;Kali_IP&gt;:8000/mimikatz.exe
-</code></pre></li>
+http://<Kali_IP>:8000/mimikatz.exe
+</li>
 <li><p>Windows Defender should trigger an alert.</p></li>
 <li><p>Check Wazuh Dashboard → <strong>Overview</strong>:</p>
 <ul>

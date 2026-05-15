@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/sending-syslog-events-from-ecoin-edge/
 <h1>Sending Syslog Events From ECOIN Edge</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="1-recap-of-the-lab-setup"><strong>1. Recap of the Lab
 Setup</strong></h3>
 <ul>
@@ -30,7 +29,7 @@ location.</li>
 detection strategies.</li>
 </ul></li>
 </ul>
-<p><img src="Sending%20Syslog%20Events%20From%20ECOIN%20Edge/image.png"
+<p><img src="/_assets/sending-syslog-events-from-ecoin-edge/image.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="2-steps-overview"><strong>2. Steps Overview</strong></h3>
@@ -89,8 +88,8 @@ Add</strong>.</p></li>
 <li><p>Name: <code>Wazuh</code>.</p></li>
 <li><p>Type: Destination.</p></li>
 <li><p>Parameters:</p>
-<pre><code>udp(&quot;192.168.100.103&quot; port(514) localip(&quot;10.0.2.3&quot;))
-</code></pre>
+udp("192.168.100.103" port(514) localip("10.0.2.3"))
+
 <ul>
 <li><code>192.168.100.103</code>: WAN IP of AllSafe Edge.</li>
 <li><code>10.0.2.3</code>: LAN IP of pfSense Ecoin Edge.</li>
@@ -125,14 +124,14 @@ Step 3 – Configure Wazuh Manager to Accept Syslog</strong></h3>
 <ol type="1">
 <li><p>In Wazuh UI, go to <strong>Server Management → Settings → Edit
 Configuration</strong>.</p></li>
-<li><p>Add a <code>&lt;remote&gt;</code> block:</p>
+<li><p>Add a <code><remote></code> block:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">remote</span>&gt;</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">connection</span>&gt;syslog&lt;/<span class="kw">connection</span>&gt;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">port</span>&gt;514&lt;/<span class="kw">port</span>&gt;</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">protocol</span>&gt;udp&lt;/<span class="kw">protocol</span>&gt;</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">allowed-ips</span>&gt;192.168.100.0/24&lt;/<span class="kw">allowed-ips</span>&gt;</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">remote</span>&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">remote</span>></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">connection</span>>syslog</<span class="kw">connection</span>></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">port</span>>514</<span class="kw">port</span>></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">protocol</span>>udp</<span class="kw">protocol</span>></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <<span class="kw">allowed-ips</span>>192.168.100.0/24</<span class="kw">allowed-ips</span>></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></<span class="kw">remote</span>></span></code></pre></div>
 <ul>
 <li>Allows all devices in <code>192.168.100.0/24</code> to send
 Syslog.</li>
@@ -159,7 +158,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
 <li>Confirm Syslog entries from Ecoin Edge are present.</li>
 </ol>
 <p><img
-src="Sending%20Syslog%20Events%20From%20ECOIN%20Edge/image%201.png"
+src="/_assets/sending-syslog-events-from-ecoin-edge/image%201.png"
 alt="image.png" /></p>
 <hr />
 <h3 id="7-step-5--optimize-log-forwarding"><strong>7. Step 5 – Optimize

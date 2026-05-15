@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/building-advanced-correlation-engine-part-2/
 <h1>Building Advanced Correlation Engine - Part 2</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="objective"><strong>Objective</strong></h2>
 <p>We’re enhancing our <strong>advanced correlation engine</strong> by
 extracting additional useful fields from Wazuh alerts.</p>
@@ -51,8 +50,8 @@ Name</strong></h2>
 </ul>
 <p><strong>Example Code:</strong></p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> alert.get(<span class="st">&quot;agent&quot;</span>, {})</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>host_name <span class="op">=</span> agent.get(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> alert.get(<span class="st">"agent"</span>, {})</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>host_name <span class="op">=</span> agent.get(<span class="st">"name"</span>, <span class="st">""</span>)</span></code></pre></div>
 <p>We:</p>
 <ul>
 <li>Use <code>.get()</code> to safely retrieve values.</li>
@@ -76,7 +75,7 @@ for displaying the host name.</li>
 </ul>
 <p><strong>Example Change:</strong></p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>alert_message <span class="op">=</span> <span class="ss">f&quot;Correlated possible C2 activity on </span><span class="sc">{</span>host_name<span class="sc">}</span><span class="ss">&quot;</span></span></code></pre></div>
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>alert_message <span class="op">=</span> <span class="ss">f"Correlated possible C2 activity on </span><span class="sc">{</span>host_name<span class="sc">}</span><span class="ss">"</span></span></code></pre></div>
 <hr />
 <h2 id="step-5--test-host-name-parsing"><strong>Step 5 – Test Host Name
 Parsing</strong></h2>
@@ -96,8 +95,8 @@ Host Name Issues</strong></h2>
 <ul>
 <li><p>Ensure you used:</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> alert.get(<span class="st">&quot;agent&quot;</span>, {})</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>host_name <span class="op">=</span> agent.get(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div></li>
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> alert.get(<span class="st">"agent"</span>, {})</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>host_name <span class="op">=</span> agent.get(<span class="st">"name"</span>, <span class="st">""</span>)</span></code></pre></div></li>
 <li><p><strong>Do not</strong> try to get <code>"name"</code> directly
 from <code>alert</code> — it lives under the <code>agent</code>
 key.</p></li>
@@ -113,8 +112,8 @@ Image Field</strong></h2>
 <p>We use chained <code>.get()</code> calls to safely navigate:</p>
 <p><strong>Example Code:</strong></p>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>event_data <span class="op">=</span> alert.get(<span class="st">&quot;data&quot;</span>, {}).get(<span class="st">&quot;win&quot;</span>, {}).get(<span class="st">&quot;eventdata&quot;</span>, {})</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> event_data.get(<span class="st">&quot;Image&quot;</span>, <span class="st">&quot;unknown&quot;</span>)</span></code></pre></div>
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>event_data <span class="op">=</span> alert.get(<span class="st">"data"</span>, {}).get(<span class="st">"win"</span>, {}).get(<span class="st">"eventdata"</span>, {})</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> event_data.get(<span class="st">"Image"</span>, <span class="st">"unknown"</span>)</span></code></pre></div>
 <ul>
 <li>If any part is missing, we default to <code>{}</code> to prevent key
 errors.</li>
@@ -133,7 +132,7 @@ errors.</li>
 </ul>
 <p><strong>Example:</strong></p>
 <div class="sourceCode" id="cb7"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>alert_message <span class="op">=</span> <span class="ss">f&quot;Correlated possible C2 activity on </span><span class="sc">{</span>host_name<span class="sc">}</span><span class="ss"> [</span><span class="sc">{</span>image<span class="sc">}</span><span class="ss">]&quot;</span></span></code></pre></div>
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>alert_message <span class="op">=</span> <span class="ss">f"Correlated possible C2 activity on </span><span class="sc">{</span>host_name<span class="sc">}</span><span class="ss"> [</span><span class="sc">{</span>image<span class="sc">}</span><span class="ss">]"</span></span></code></pre></div>
 <hr />
 <h2 id="step-9--test-image-parsing"><strong>Step 9 – Test Image
 Parsing</strong></h2>

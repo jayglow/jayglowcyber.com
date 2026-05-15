@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/hunting-for-powershell-iocs-and-building-detecti
 <section class="spt-content">
 <h1 id="hunting-for-powershell-iocs-and-building-detections">Hunting For
 PowerShell IOCs and Building Detections</h1>
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-understanding-the-goal"><strong>1. Understanding the
 Goal</strong></h2>
 <p>In this lab, we will:</p>
@@ -66,13 +65,13 @@ for Malicious PowerShell in Wazuh</strong></h3>
 <li><p>Navigate to <strong>Explore → Discover</strong> (this gives
 access to all events).</p></li>
 <li><p>Change the <strong>index pattern</strong> to:</p>
-<pre><code>wazuh-archives-*
-</code></pre>
+wazuh-archives-*
+
 <p>(This ensures you’re searching all stored events.)</p></li>
 <li><p><strong>Filter for PowerShell Script Block events</strong> by
 Event ID:</p>
-<pre><code>data.win.system.eventID:4104
-</code></pre>
+data.win.system.eventID:4104
+
 <ul>
 <li>4104 = PowerShell Script Block Logging event.</li>
 <li>Example result: <strong>38 hits</strong> in our lab
@@ -83,8 +82,8 @@ results.</li>
 <li><p>Use <strong>keyword searching</strong> to find suspicious
 commands.</p>
 <p>Example:</p>
-<pre><code>invoke
-</code></pre>
+invoke
+
 <ul>
 <li>Found multiple <strong>Invoke-WebRequest</strong> instances.</li>
 <li>Expand a result → Check <code>scriptblocktext</code> field.</li>
@@ -123,17 +122,17 @@ Logging</strong> rules.
 <p><strong>4.2. Edit the Solo Purple Teaming rules file</strong></p>
 <ul>
 <li><p>Search for:</p>
-<pre><code>solo_purple_teaming.xml
-</code></pre></li>
+solo_purple_teaming.xml
+</li>
 <li><p>Add a new rule block:</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">group</span><span class="ot"> name=</span><span class="st">&quot;solo_purple_teaming,windows,powershell&quot;</span>&gt;</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">rule</span><span class="ot"> id=</span><span class="st">&quot;100102&quot;</span><span class="ot"> level=</span><span class="st">&quot;15&quot;</span>&gt;</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">if_sid</span>&gt;91802&lt;/<span class="kw">if_sid</span>&gt;</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">match</span>&gt;invoke web request&lt;/<span class="kw">match</span>&gt;</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">description</span>&gt;Detected malicious PowerShell activity: Invoke-WebRequest&lt;/<span class="kw">description</span>&gt;</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">rule</span>&gt;</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">group</span>&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">group</span><span class="ot"> name=</span><span class="st">"solo_purple_teaming,windows,powershell"</span>></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">rule</span><span class="ot"> id=</span><span class="st">"100102"</span><span class="ot"> level=</span><span class="st">"15"</span>></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <<span class="kw">if_sid</span>>91802</<span class="kw">if_sid</span>></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <<span class="kw">match</span>>invoke web request</<span class="kw">match</span>></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <<span class="kw">description</span>>Detected malicious PowerShell activity: Invoke-WebRequest</<span class="kw">description</span>></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    </<span class="kw">rule</span>></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></<span class="kw">group</span>></span></code></pre></div>
 <p><strong>Notes:</strong></p>
 <ul>
 <li>Group name: includes <code>solo_purple_teaming</code>,
@@ -152,8 +151,8 @@ class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#c
 <ul>
 <li><p>Run:</p>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> archives.json <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;invoke web request&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1 <span class="op">&gt;</span> test_event.json</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/ossec/bin/wazuh-logtest</span> <span class="op">&lt;</span> test_event.json</span></code></pre></div></li>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> archives.json <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"invoke web request"</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1 <span class="op">></span> test_event.json</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/ossec/bin/wazuh-logtest</span> <span class="op"><</span> test_event.json</span></code></pre></div></li>
 <li><p><em>Note:</em> <code>rule-test</code> may not always behave
 exactly like production detection.</p></li>
 </ul>
@@ -165,8 +164,8 @@ exactly like production detection.</p></li>
 <li><p><strong>Solo Purple Teaming dashboard</strong>.</p></li>
 <li><p><strong>Time filter</strong>: last 5 minutes.</p></li>
 <li><p>Look for <strong>critical event</strong> with:</p>
-<pre><code>Detected malicious PowerShell activity: Invoke-WebRequest
-</code></pre></li>
+Detected malicious PowerShell activity: Invoke-WebRequest
+</li>
 </ul></li>
 </ul>
 <hr />

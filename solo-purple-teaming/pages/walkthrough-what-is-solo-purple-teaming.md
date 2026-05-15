@@ -14,7 +14,6 @@ permalink: /solo-purple-teaming/walkthrough-what-is-solo-purple-teaming/
 <section class="spt-content">
 <h1 id="walkthrough-what-is-solo-purple-teaming">Walkthrough: What is
 Solo Purple Teaming?</h1>
-<p>Owner: Josh</p>
 <p>As I advanced in my career as cyber security professional, I quickly
 realized that building effective detections,</p>
 <p>As I advanced in my career as a defensive cybersecurity professional,
@@ -29,7 +28,7 @@ call <strong>solo purple teaming</strong>.</p>
 <h1 id="phases-of-solo-purple-teaming">Phases of Solo Purple
 Teaming</h1>
 <p><img
-src="Walkthrough%20What%20is%20Solo%20Purple%20Teaming/image.png"
+src="/_assets/walkthrough-what-is-solo-purple-teaming/image.png"
 alt="image.png" /></p>
 <h2 id="layout"><strong>Layout</strong></h2>
 <ul>

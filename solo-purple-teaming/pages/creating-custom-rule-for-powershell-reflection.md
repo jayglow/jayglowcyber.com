@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/creating-custom-rule-for-powershell-reflection/
 <h1>Creating Custom Rule for PowerShell Reflection</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h3 id="objective"><strong>Objective</strong></h3>
 <p>In this lab, you’ll create a <strong>custom Wazuh rule</strong> to
 detect <strong>PowerShell reflection activity</strong> using Script
@@ -45,14 +44,14 @@ want to add the new rule.</p></li>
 </ol>
 <hr />
 <h3 id="3-creating-the-rule"><strong>3. Creating the Rule</strong></h3>
-<p>Add a new <code>&lt;rule&gt;</code> block inside the PowerShell
+<p>Add a new <code><rule></code> block inside the PowerShell
 group:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">rule</span><span class="ot"> id=</span><span class="st">&quot;100103&quot;</span><span class="ot"> level=</span><span class="st">&quot;15&quot;</span>&gt;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">if_sid</span>&gt;91802&lt;/<span class="kw">if_sid</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">match</span>&gt;reflection&lt;/<span class="kw">match</span>&gt;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">description</span>&gt;Detected PowerShell reflection&lt;/<span class="kw">description</span>&gt;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">rule</span>&gt;</span></code></pre></div>
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><<span class="kw">rule</span><span class="ot"> id=</span><span class="st">"100103"</span><span class="ot"> level=</span><span class="st">"15"</span>></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">if_sid</span>>91802</<span class="kw">if_sid</span>></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">match</span>>reflection</<span class="kw">match</span>></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <<span class="kw">description</span>>Detected PowerShell reflection</<span class="kw">description</span>></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></<span class="kw">rule</span>></span></code></pre></div>
 <p><strong>Key points:</strong></p>
 <ul>
 <li><code>id</code> must be unique and within your chosen custom rules
@@ -84,8 +83,8 @@ payload.</li>
 <ul>
 <li><p>Go to <strong>Discover</strong> in Wazuh.</p></li>
 <li><p>Search by Rule ID:</p>
-<pre><code>rule.id:100103
-</code></pre></li>
+rule.id:100103
+</li>
 <li><p>Verify that the alert appears for the reflection event.</p></li>
 </ul></li>
 <li><strong>Inspect the Alert</strong>

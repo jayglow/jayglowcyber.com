@@ -12,7 +12,6 @@ permalink: /solo-purple-teaming/blue-team-explore-what-to-expect/
 <h1>Blue Team Explore - What to Expect</h1>
 </section>
 <section class="spt-content">
-<p>Owner: Mike Sterrett</p>
 <h2 id="1-purpose-of-the-explore-phase"><strong>1. Purpose of the
 Explore Phase</strong></h2>
 <p>The <strong>Blue Team Explore Phase</strong> focuses on researching
