@@ -957,3 +957,130 @@ th {
     width: 85px;
   }
 }
+
+.home-hero {
+  position: relative;
+  min-height: 72vh;
+  background:
+    linear-gradient(90deg, rgba(3, 6, 18, 0.95), rgba(3, 6, 18, 0.45), rgba(3, 6, 18, 0.85)),
+    url("/assets/images/jayglowcyber-home-hero.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 6rem 6%;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.home-hero-content {
+  max-width: 720px;
+  position: relative;
+  z-index: 2;
+}
+
+.home-hero-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+.home-hero-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.home-hero h1 {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffffff, #00d9ff, #b100ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.home-hero p {
+  max-width: 620px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #d7e6ff;
+}
+
+.home-hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.85rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.btn-primary {
+  color: #020617;
+  background: #00d9ff;
+}
+
+.btn-secondary {
+  color: #fff;
+  border: 1px solid #b100ff;
+}
+
+.home-content {
+  padding: 4rem 6%;
+}
+
+.intro-block {
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.home-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 14px;
+  background: rgba(8, 12, 30, 0.85);
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-card:hover {
+  border-color: #b100ff;
+  transform: translateY(-3px);
+}
+
+.home-card h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .home-hero {
+    min-height: 62vh;
+    padding: 4rem 1.5rem;
+    background-position: center;
+  }
+
+  .home-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
