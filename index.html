@@ -3,200 +3,68 @@ layout: default
 title: JayGlowCyber
 ---
 
-<style>
-  .site-content,
-  main,
-  .page-content {
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: none !important;
-  }
+<link rel="stylesheet" href="/assets/css/jgc-landing.css">
 
-  .jgc-home {
-    min-height: calc(100vh - 70px);
-    background:
-      linear-gradient(90deg, rgba(2,6,23,.96), rgba(2,6,23,.58), rgba(2,6,23,.92)),
-      url("/assets/images/jayglowcyber-home-hero.png");
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-  }
-
-  .jgc-hero {
-    min-height: calc(100vh - 70px);
-    display: flex;
-    align-items: center;
-    padding: 5rem 7%;
-  }
-
-  .jgc-content {
-    max-width: 780px;
-  }
-
-  .jgc-brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    font-weight: 900;
-    letter-spacing: .12em;
-  }
-
-  .jgc-brand img {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-  }
-
-  .jgc-kicker {
-    color: #00d9ff;
-    letter-spacing: .18em;
-    font-size: .8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-
-  .jgc-content h1 {
-    margin: 0;
-    font-size: clamp(4rem, 10vw, 8rem);
-    line-height: .84;
-    font-weight: 950;
-    letter-spacing: -.06em;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow:
-      0 0 25px rgba(0,217,255,.35),
-      0 0 45px rgba(177,0,255,.25);
-  }
-
-  .jgc-content p {
-    max-width: 650px;
-    color: #d7e6ff;
-    line-height: 1.7;
-    font-size: 1.12rem;
-  }
-
-  .jgc-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .jgc-actions a {
-    padding: .9rem 1.35rem;
-    border-radius: 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: .08em;
-  }
-
-  .jgc-actions a:first-child {
-    background: #00d9ff;
-    color: #020617;
-  }
-
-  .jgc-actions a:last-child {
-    border: 1px solid #b100ff;
-    color: #fff;
-  }
-
-  .jgc-panels {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-    padding: 0 7% 4rem;
-  }
-
-  .jgc-panel {
-    background: rgba(3,7,18,.78);
-    border: 1px solid rgba(0,217,255,.18);
-    border-radius: 18px;
-    padding: 1.5rem;
-    color: inherit;
-    text-decoration: none;
-    backdrop-filter: blur(10px);
-  }
-
-  .jgc-panel h3 {
-    margin-top: 0;
-    color: #00d9ff;
-  }
-
-  .jgc-panel p {
-    color: #d7e6ff;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 900px) {
-    .jgc-hero {
-      padding: 4rem 1.5rem;
-      text-align: center;
-      justify-content: center;
-    }
-
-    .jgc-brand,
-    .jgc-actions {
-      justify-content: center;
-    }
-
-    .jgc-panels {
-      grid-template-columns: 1fr;
-      padding: 0 1.5rem 3rem;
-    }
-  }
-</style>
-
-<div class="jgc-home">
+<div class="jgc-page">
 
   <section class="jgc-hero">
-    <div class="jgc-content">
+
+    <div class="jgc-hero-content">
 
       <div class="jgc-brand">
-        <img src="/assets/images/jayglowcyber-avatar.png" alt="JayGlowCyber Logo">
-        <span>JAYGLOWCYBER</span>
+        <img src="/assets/images/jayglowcyber-logo.png" alt="JayGlowCyber Logo">
       </div>
 
-      <div class="jgc-kicker">
+      <p class="jgc-kicker">
         CYBERSECURITY • RESEARCH • EDUCATION
-      </div>
+      </p>
 
-      <h1>Attack.<br>Defend.<br>Learn.</h1>
+      <h1>
+        ATTACK.<br>
+        DEFEND.<br>
+        LEARN.
+      </h1>
 
-      <p>
+      <p class="jgc-description">
         Practical cybersecurity research, malware analysis, Solo Purple Teaming,
         adversary emulation, and hands-on lab engineering.
       </p>
 
       <div class="jgc-actions">
-        <a href="/research/">Research</a>
-        <a href="/courses/">Courses</a>
+        <a href="/research/" class="jgc-btn jgc-btn-primary">Research</a>
+        <a href="/courses/" class="jgc-btn jgc-btn-secondary">Courses</a>
       </div>
 
     </div>
+
   </section>
 
-  <section class="jgc-panels">
-    <a href="/research/" class="jgc-panel">
-      <h3>Research</h3>
-      <p>Malware analysis, telemetry engineering, adversary emulation, and infrastructure projects.</p>
+  <section class="jgc-card-row">
+
+    <a href="/research/" class="jgc-card">
+      <span class="jgc-icon">⌖</span>
+      <h2>Research</h2>
+      <p>Writeups, malware analysis, threat hunting, and cyber research.</p>
     </a>
 
-    <a href="/courses/" class="jgc-panel">
-      <h3>Courses</h3>
-      <p>Hands-on cybersecurity training focused on practical labs and defender workflows.</p>
+    <a href="/courses/" class="jgc-card">
+      <span class="jgc-icon">▱</span>
+      <h2>Courses</h2>
+      <p>Hands-on cybersecurity training with real-world labs and projects.</p>
     </a>
 
-    <a href="/labs/" class="jgc-panel">
-      <h3>Labs</h3>
-      <p>Cyber ranges, malware analysis environments, virtualization, and AI lab builds.</p>
+    <a href="/labs/" class="jgc-card">
+      <span class="jgc-icon">⚗</span>
+      <h2>Labs</h2>
+      <p>Custom lab builds, malware analysis environments, and cyber ranges.</p>
     </a>
 
-    <a href="/resources/" class="jgc-panel">
-      <h3>Resources</h3>
-      <p>Tools, references, walkthroughs, and supporting learning material.</p>
+    <a href="/resources/" class="jgc-card">
+      <span class="jgc-icon">▣</span>
+      <h2>Resources</h2>
+      <p>Tools, references, cheat sheets, and learning materials.</p>
     </a>
+
   </section>
 
 </div>
