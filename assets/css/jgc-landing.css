@@ -1,0 +1,242 @@
+/* ================================
+   JayGlowCyber Landing Page
+   Fully isolated homepage styling
+================================ */
+
+.site-content,
+.page-content,
+main,
+.wrapper {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body {
+  background: #020617;
+}
+
+.jgc-page {
+  min-height: 100vh;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 6, 23, 0.90) 0%,
+      rgba(2, 6, 23, 0.72) 34%,
+      rgba(2, 6, 23, 0.30) 62%,
+      rgba(2, 6, 23, 0.55) 100%
+    ),
+    url("/assets/images/jgc-background.png");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* HERO */
+
+.jgc-hero {
+  min-height: calc(100vh - 86px);
+  display: flex;
+  align-items: center;
+  padding: 5rem 8% 3rem;
+}
+
+.jgc-hero-content {
+  max-width: 680px;
+}
+
+.jgc-brand {
+  margin-bottom: 2rem;
+}
+
+.jgc-brand img {
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 0 18px rgba(0, 217, 255, 0.35))
+    drop-shadow(0 0 26px rgba(177, 0, 255, 0.25));
+}
+
+.jgc-kicker {
+  margin: 0 0 1.1rem 0;
+  color: #00d9ff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.jgc-hero h1 {
+  margin: 0;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 0.85;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow:
+    0 0 24px rgba(0, 217, 255, 0.35),
+    0 0 48px rgba(177, 0, 255, 0.28);
+}
+
+.jgc-description {
+  max-width: 610px;
+  margin: 1.6rem 0 0;
+  color: #d7e6ff;
+  font-size: 1.15rem;
+  line-height: 1.75;
+}
+
+/* BUTTONS */
+
+.jgc-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.2rem;
+}
+
+.jgc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  padding: 1rem 1.4rem;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  transition: 0.2s ease;
+}
+
+.jgc-btn-primary {
+  background: #00d9ff;
+  color: #020617;
+  box-shadow: 0 0 28px rgba(0, 217, 255, 0.25);
+}
+
+.jgc-btn-secondary {
+  color: #ffffff;
+  border: 1px solid #d946ef;
+  background: rgba(2, 6, 23, 0.45);
+}
+
+.jgc-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* CARDS */
+
+.jgc-card-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.35rem;
+  padding: 0 8% 4rem;
+}
+
+.jgc-card {
+  min-height: 220px;
+  padding: 1.6rem;
+  border-radius: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  background: rgba(3, 7, 18, 0.76);
+  border: 1px solid rgba(0, 217, 255, 0.22);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 0 30px rgba(0, 217, 255, 0.03),
+    0 12px 32px rgba(0, 0, 0, 0.35);
+  transition: 0.2s ease;
+}
+
+.jgc-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(217, 70, 239, 0.6);
+}
+
+.jgc-icon {
+  display: block;
+  color: #d946ef;
+  font-size: 2.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.jgc-card h2 {
+  margin: 0 0 0.75rem;
+  color: #ffffff;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.jgc-card p {
+  margin: 0;
+  color: #d7e6ff;
+  line-height: 1.65;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+  .jgc-page {
+    background-position: center center;
+  }
+
+  .jgc-hero {
+    min-height: auto;
+    padding: 4rem 6% 2rem;
+  }
+
+  .jgc-card-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 2rem 6% 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .jgc-page {
+    background:
+      linear-gradient(
+        rgba(2, 6, 23, 0.90),
+        rgba(2, 6, 23, 0.82)
+      ),
+      url("/assets/images/jgc-background.png");
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .jgc-hero {
+    padding: 3rem 1.25rem 2rem;
+    text-align: left;
+  }
+
+  .jgc-brand img {
+    max-width: 260px;
+  }
+
+  .jgc-hero h1 {
+    font-size: clamp(3.2rem, 17vw, 5rem);
+  }
+
+  .jgc-description {
+    font-size: 1rem;
+  }
+
+  .jgc-actions {
+    flex-direction: column;
+  }
+
+  .jgc-btn {
+    width: 100%;
+  }
+
+  .jgc-card-row {
+    grid-template-columns: 1fr;
+    padding: 1rem 1.25rem 3rem;
+  }
+}
