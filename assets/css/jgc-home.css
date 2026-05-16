@@ -1,357 +1,107 @@
-/* =========================================
-   JayGlowCyber Homepage
-========================================= */
-
-html,
 body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
   background: #020617;
 }
 
-/* =========================================
-   PAGE
-========================================= */
-
-.jgc-home {
-  position: relative;
-  min-height: 100vh;
-  color: #ffffff;
-
+.jgc-landing {
+  min-height: calc(100vh - 90px);
   background:
-    linear-gradient(
-      90deg,
-      rgba(2,6,23,0.96),
-      rgba(2,6,23,0.72),
-      rgba(2,6,23,0.94)
-    ),
+    linear-gradient(90deg, rgba(2,6,23,.95), rgba(2,6,23,.35), rgba(2,6,23,.9)),
     url("/assets/images/jayglowcyber-home-hero.png");
-
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  padding: 4rem 6%;
 }
 
-.jgc-overlay {
-  position: absolute;
-  inset: 0;
-
-  background:
-    radial-gradient(circle at top left,
-    rgba(0,217,255,0.12),
-    transparent 28%),
-
-    radial-gradient(circle at top right,
-    rgba(177,0,255,0.14),
-    transparent 28%);
-}
-
-/* =========================================
-   MAIN
-========================================= */
-
-.jgc-main {
-  position: relative;
-  z-index: 2;
-
-  width: min(1400px, 100%);
-  margin: 0 auto;
-
-  padding:
-    clamp(2rem, 5vw, 5rem)
-    clamp(1.25rem, 4vw, 4rem);
-}
-
-/* =========================================
-   HERO
-========================================= */
-
-.jgc-hero {
-  display: grid;
-
-  grid-template-columns:
-    minmax(220px, 420px)
-    minmax(0, 1fr);
-
-  align-items: center;
-
-  gap: clamp(2rem, 5vw, 5rem);
-
-  min-height: 72vh;
-}
-
-.jgc-left {
+.jgc-hero-panel {
+  min-height: 70vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  max-width: 760px;
 }
 
-.jgc-logo {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  display: block;
-
-  filter:
-    drop-shadow(0 0 20px rgba(0,217,255,0.30))
-    drop-shadow(0 0 32px rgba(177,0,255,0.25));
-}
-
-.jgc-right {
-  min-width: 0;
-}
-
-.jgc-topline {
-  margin: 0 0 1rem 0;
-
-  color: #00d9ff;
-
-  font-size: clamp(0.7rem, 1vw, 0.82rem);
-
-  letter-spacing: 0.18em;
-}
-
-.jgc-right h1 {
-  margin: 0;
-
-  font-size: clamp(3rem, 8vw, 7rem);
-
-  line-height: 0.92;
-
-  font-weight: 900;
-
-  letter-spacing: -0.04em;
-
-  overflow-wrap: anywhere;
-
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      #00d9ff,
-      #b100ff
-    );
-
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.jgc-right h2 {
-  margin-top: 1rem;
-
-  font-size: clamp(1rem, 2vw, 1.5rem);
-
-  letter-spacing: 0.18em;
-
-  color: #d946ef;
-}
-
-.jgc-description {
-  max-width: 720px;
-
-  margin-top: 1.5rem;
-
-  line-height: 1.8;
-
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-
-  color: #d7e6ff;
-}
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-.jgc-buttons {
+.jgc-brand {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: .85rem;
+  margin-bottom: 2rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
 
+.jgc-brand img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.jgc-kicker {
+  color: #00d9ff;
+  letter-spacing: .18em;
+  font-size: .78rem;
+  margin-bottom: 1rem;
+}
+
+.jgc-copy h1 {
+  margin: 0;
+  font-size: clamp(3.8rem, 10vw, 8rem);
+  line-height: .85;
+  font-weight: 900;
+  letter-spacing: -.06em;
+  color: #ffffff;
+  text-shadow:
+    0 0 24px rgba(0,217,255,.35),
+    0 0 40px rgba(177,0,255,.25);
+}
+
+.jgc-copy p {
+  max-width: 620px;
+  color: #d7e6ff;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.jgc-actions {
+  display: flex;
   gap: 1rem;
-
   margin-top: 2rem;
 }
 
-.jgc-btn-primary,
-.jgc-btn-secondary {
-  display: inline-block;
-
-  padding: 0.95rem 1.5rem;
-
+.jgc-actions a {
+  padding: .9rem 1.35rem;
   border-radius: 10px;
-
   text-decoration: none;
-
   text-transform: uppercase;
-
-  letter-spacing: 0.08em;
-
-  font-weight: 700;
-
-  transition: 0.2s ease;
+  font-weight: 800;
+  letter-spacing: .08em;
 }
 
-.jgc-btn-primary {
+.jgc-actions a:first-child {
   background: #00d9ff;
   color: #020617;
 }
 
-.jgc-btn-secondary {
+.jgc-actions a:last-child {
+  color: #fff;
   border: 1px solid #b100ff;
-  color: #ffffff;
 }
 
-.jgc-btn-primary:hover,
-.jgc-btn-secondary:hover {
-  transform: translateY(-3px);
-}
-
-/* =========================================
-   PILLS
-========================================= */
-
-.jgc-pill-row {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 0.75rem;
-
-  margin-top: 2rem;
-}
-
-.jgc-pill {
-  padding: 0.55rem 0.9rem;
-
-  border-radius: 999px;
-
-  border: 1px solid rgba(0,217,255,0.22);
-
-  background: rgba(255,255,255,0.04);
-
-  font-size: 0.8rem;
-
-  letter-spacing: 0.08em;
-}
-
-/* =========================================
-   CARDS
-========================================= */
-
-.jgc-cards {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
-  gap: 1.5rem;
-
-  margin-top: 3rem;
-}
-
-.jgc-card {
-  padding: 1.75rem;
-
-  border-radius: 18px;
-
-  background: rgba(4,10,28,0.82);
-
-  border: 1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter: blur(8px);
-
-  text-decoration: none;
-
-  color: inherit;
-
-  transition: 0.2s ease;
-}
-
-.jgc-card:hover {
-  transform: translateY(-4px);
-
-  border-color: rgba(0,217,255,0.35);
-}
-
-.jgc-card h3 {
-  margin-top: 0;
-
-  color: #00d9ff;
-}
-
-.jgc-card p {
-  margin-bottom: 0;
-
-  line-height: 1.7;
-
-  color: #d7e6ff;
-}
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 1024px) {
-
-  .jgc-hero {
-    grid-template-columns: 1fr;
-
-    text-align: center;
-
-    min-height: auto;
+@media (max-width: 700px) {
+  .jgc-landing {
+    padding: 2rem 1.25rem;
+    background-position: center;
   }
 
-  .jgc-logo {
-    max-width: 280px;
+  .jgc-brand img {
+    width: 48px;
+    height: 48px;
   }
 
-  .jgc-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .jgc-buttons,
-  .jgc-pill-row {
-    justify-content: center;
-  }
-
-  .jgc-cards {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
-}
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 640px) {
-
-  .jgc-main {
-    padding: 1.25rem;
-  }
-
-  .jgc-logo {
-    max-width: 220px;
-  }
-
-  .jgc-buttons {
+  .jgc-actions {
     flex-direction: column;
   }
 
-  .jgc-btn-primary,
-  .jgc-btn-secondary {
-    width: 100%;
+  .jgc-actions a {
     text-align: center;
   }
-
-  .jgc-pill {
-    width: 100%;
-    text-align: center;
-  }
-
-  .jgc-cards {
-    grid-template-columns: 1fr;
-  }
-
 }
