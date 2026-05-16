@@ -958,159 +958,47 @@ th {
   }
 }
 
-.home-hero {
-  position: relative;
-  min-height: 72vh;
-  background:
-    linear-gradient(90deg, rgba(3, 6, 18, 0.95), rgba(3, 6, 18, 0.45), rgba(3, 6, 18, 0.85)),
-    url("/assets/images/jayglowcyber-home-hero.png");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding: 6rem 6%;
-  border-bottom: 1px solid rgba(0, 229, 255, 0.25);
-}
-
-.home-hero-content {
-  max-width: 720px;
-  position: relative;
-  z-index: 2;
-}
-
-.home-hero-logo-row {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: #fff;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
-}
-
-.home-hero-logo {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
-}
-
-.home-hero h1 {
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  line-height: 0.95;
-  margin: 0 0 1rem 0;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, #ffffff, #00d9ff, #b100ff);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.home-hero p {
-  max-width: 620px;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: #d7e6ff;
-}
-
-.home-hero-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-
-.btn-primary,
-.btn-secondary {
-  display: inline-block;
-  padding: 0.85rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-}
-
-.btn-primary {
-  color: #020617;
-  background: #00d9ff;
-}
-
-.btn-secondary {
-  color: #fff;
-  border: 1px solid #b100ff;
-}
-
-.home-content {
-  padding: 4rem 6%;
-}
-
-.intro-block {
-  max-width: 800px;
-  margin-bottom: 2rem;
-}
-
-.home-card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-
-.home-card {
-  display: block;
-  padding: 1.5rem;
-  border: 1px solid rgba(0, 229, 255, 0.25);
-  border-radius: 14px;
-  background: rgba(8, 12, 30, 0.85);
-  text-decoration: none;
-  color: inherit;
-}
-
-.home-card:hover {
-  border-color: #b100ff;
-  transform: translateY(-3px);
-}
-
-.home-card h3 {
-  margin-top: 0;
-}
-
-@media (max-width: 900px) {
-  .home-hero {
-    min-height: 62vh;
-    padding: 4rem 1.5rem;
-    background-position: center;
-  }
-
-  .home-card-grid {
-    grid-template-columns: 1fr;
-  }
-}
 /* =========================================
-   JayGlowCyber Landing Page
+   JayGlowCyber Landing Page - Fixed
 ========================================= */
 
 .jgc-homepage {
-  background:
-    radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%),
-    radial-gradient(circle at top right, rgba(177,0,255,0.10), transparent 30%),
-    #030712;
-
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   color: #ffffff;
+  background:
+    linear-gradient(90deg, rgba(3,7,18,0.96), rgba(3,7,18,0.55), rgba(3,7,18,0.92)),
+    url("/assets/images/jayglowcyber-home-hero.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  padding: 3rem 6%;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.jgc-homepage *,
+.jgc-homepage *::before,
+.jgc-homepage *::after {
+  box-sizing: border-box;
 }
 
 /* HERO */
 
 .jgc-hero {
-  display: flex;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 420px) minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
-  min-height: 72vh;
+  gap: clamp(2rem, 5vw, 4rem);
+  min-height: 68vh;
 }
 
 .jgc-hero-left {
-  flex: 0 0 420px;
+  min-width: 0;
   display: flex;
   justify-content: center;
 }
@@ -1118,52 +1006,49 @@ th {
 .jgc-logo {
   width: 100%;
   max-width: 420px;
+  height: auto;
+  display: block;
   filter:
     drop-shadow(0 0 18px rgba(0,217,255,0.35))
     drop-shadow(0 0 28px rgba(177,0,255,0.25));
 }
 
 .jgc-hero-right {
+  min-width: 0;
   max-width: 720px;
 }
 
 .jgc-eyebrow {
   color: #00d9ff;
-  letter-spacing: 0.18em;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
+  letter-spacing: 0.16em;
+  font-size: clamp(0.68rem, 1.2vw, 0.8rem);
+  margin: 0 0 1rem 0;
 }
 
 .jgc-hero-right h1 {
   margin: 0;
-  font-size: clamp(4rem, 8vw, 7rem);
-  line-height: 0.9;
+  font-size: clamp(2.6rem, 7vw, 6.5rem);
+  line-height: 0.92;
   font-weight: 900;
   letter-spacing: -0.04em;
-
-  background: linear-gradient(
-    90deg,
-    #ffffff,
-    #00d9ff,
-    #b100ff
-  );
-
+  overflow-wrap: anywhere;
+  background: linear-gradient(90deg, #ffffff, #00d9ff, #b100ff);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .jgc-hero-right h2 {
-  margin-top: 1rem;
-  font-size: 1.5rem;
-  letter-spacing: 0.2em;
+  margin: 1rem 0 0 0;
+  font-size: clamp(1rem, 2.4vw, 1.5rem);
+  letter-spacing: clamp(0.08em, 1vw, 0.2em);
   color: #d946ef;
 }
 
 .jgc-description {
-  margin-top: 1.5rem;
+  margin: 1.5rem 0 0 0;
   max-width: 650px;
-  line-height: 1.8;
-  font-size: 1.1rem;
+  line-height: 1.75;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   color: #d7e6ff;
 }
 
@@ -1172,11 +1057,13 @@ th {
 .jgc-buttons {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-top: 2rem;
 }
 
 .jgc-btn-primary,
 .jgc-btn-secondary {
+  display: inline-block;
   padding: 0.9rem 1.4rem;
   border-radius: 10px;
   text-decoration: none;
@@ -1184,6 +1071,7 @@ th {
   letter-spacing: 0.08em;
   font-weight: 700;
   transition: 0.2s ease;
+  white-space: nowrap;
 }
 
 .jgc-btn-primary {
@@ -1211,31 +1099,36 @@ th {
 }
 
 .jgc-tags span {
+  max-width: 100%;
   border: 1px solid rgba(0,217,255,0.25);
   background: rgba(255,255,255,0.03);
   padding: 0.55rem 0.9rem;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   letter-spacing: 0.08em;
 }
 
 /* GRID */
 
 .jgc-grid {
+  width: 100%;
+  max-width: 1300px;
+  margin: 3rem auto 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
 }
 
 .jgc-card {
-  background: rgba(255,255,255,0.03);
+  min-width: 0;
+  background: rgba(3,7,18,0.72);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
-  padding: 1.75rem;
+  padding: 1.5rem;
   text-decoration: none;
   color: inherit;
   transition: 0.2s ease;
+  backdrop-filter: blur(8px);
 }
 
 .jgc-card:hover {
@@ -1244,22 +1137,37 @@ th {
 }
 
 .jgc-card h3 {
-  margin-top: 0;
+  margin: 0 0 0.75rem 0;
   color: #00d9ff;
 }
 
-/* MOBILE */
+.jgc-card p {
+  margin: 0;
+  line-height: 1.6;
+}
 
-@media (max-width: 1100px) {
+/* TABLET */
 
+@media (max-width: 1000px) {
   .jgc-hero {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     text-align: center;
     min-height: auto;
+    padding-top: 2rem;
   }
 
-  .jgc-hero-left {
-    flex: unset;
+  .jgc-logo {
+    max-width: 280px;
+  }
+
+  .jgc-hero-right {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .jgc-description {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .jgc-buttons,
@@ -1268,7 +1176,42 @@ th {
   }
 
   .jgc-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .jgc-homepage {
+    padding: 1.25rem;
+    background-position: center top;
   }
 
+  .jgc-logo {
+    max-width: 210px;
+  }
+
+  .jgc-hero-right h1 {
+    font-size: clamp(2.4rem, 14vw, 3.8rem);
+  }
+
+  .jgc-buttons {
+    flex-direction: column;
+  }
+
+  .jgc-btn-primary,
+  .jgc-btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .jgc-tags span {
+    width: 100%;
+    text-align: center;
+  }
+
+  .jgc-grid {
+    grid-template-columns: 1fr;
+  }
 }
