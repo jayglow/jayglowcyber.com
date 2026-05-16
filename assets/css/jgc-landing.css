@@ -240,3 +240,24 @@ body {
     padding: 1rem 1.25rem 3rem;
   }
 }
+
+.jgc-slogan {
+  margin: 0;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 0.85;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.jgc-slogan .attack {
+  color: #ffffff;
+}
+
+.jgc-slogan .defend {
+  color: #00d9ff;
+}
+
+.jgc-slogan .learn {
+  color: #d946ef;
+}
